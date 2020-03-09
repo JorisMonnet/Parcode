@@ -60,21 +60,12 @@ class Codes extends Model
           // initalize $checked as an empty string
     	$checked = "";
 
-			$str .= "<div>";
-      $str .= "<a href=\"task?id=" . urlencode($this->id) . "\">" . htmlentities($this->id) ." ". "</a>";
-      if($this->completed == true)
-      {
-          $checked = "checked";
-    			$str .= "<strike>" . htmlentities($this->content) . "</strike>";
-  		}
-  		else
-  		{
-  			  $str .= htmlentities($this->content);
-      }
-      $str .= "<input type=\"checkbox\" disabled=\"disabled\" $checked>";
-      $date = strtotime($this->deadline);
-      $str .= date("j F Y", $date);
-			$str .= "</div>";
+		$str .= "<div>";
+      		$str .= "<a href=\"task?id=" . urlencode($this->id) . "\">" . htmlentities($this->id) ." ". "</a><br>";
+    		$str .= "<code>" . htmlentities($this->content) . "</code><br>";
+			$str .= date("j F Y", strtotime($this->date))."<br>";
+			$str .= htmlentities($this->author);
+		$str .= "</div>";
       return $str;
       }
 
