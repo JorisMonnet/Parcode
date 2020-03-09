@@ -4,64 +4,53 @@ require('Model.php');
 /**
 * The Task class
 */
-class Task extends Model
+class Codes extends Model
 {
     // Attributes
-	private $description;
-	private $completed;
-	private $deadline;
-  private $login;
+	private $content;
+	private $date;
+  	private $author;
 
   // Getters and Setters
 
-	public function getDescription(){
-		return $this->description;
+	public function getContent(){
+		return $this->content;
 	}
 
-  public function setDescription($value){
-        $this->description = $value;
+  public function setContent($value){
+        $this->content = $value;
     }
 
-  public function getDeadline(){
-		return $this->deadline;
+  public function getDate(){
+		return $this->date;
 	}
 
-  public function setDeadline($value){
-        $this->deadline = $value;
+  public function setDAte($value){
+        $this->date = $value;
     }
 
-	public function isComplete(){
-		return $this->completed;
+	public function getAuthor(){
+		return $this->author;
 	}
 
-	public function setCompleted($value){
-		$this->completed = $value;
-	}
-
-	public function getLogin(){
-		return $this->login;
-	}
-
-	public function setLogin($login){
-		$this->login = $login;
+	public function setAuthor($value){
+		$this->author = $value;
 	}
 
   public static function getParam(){
     return [
-      "description" => PDO::PARAM_STR,
-      "completed" => PDO::PARAM_BOOL,
-      "deadline" => PDO::PARAM_STR,
-			"login" => PDO::PARAM_INT,
+      "content" => PDO::PARAM_STR,
+      "date" => PDO::PARAM_STR,
+		"author" => PDO::PARAM_STR,
       "id" => PDO::PARAM_INT
     ];
   }
 
 	public function getAttributes(){
 		return [
-			'description' => $this->getDescription(),
-			'completed' => $this->isComplete(),
-			'deadline' => $this->getDeadline(),
-			'login' => $this->getLogin()
+			'content' => $this->getcontent(),
+			'date' => $this->getDate(),
+			'author' => $this->getAuthor()
 		];
 	}
 
@@ -76,11 +65,11 @@ class Task extends Model
       if($this->completed == true)
       {
           $checked = "checked";
-    			$str .= "<strike>" . htmlentities($this->description) . "</strike>";
+    			$str .= "<strike>" . htmlentities($this->content) . "</strike>";
   		}
   		else
   		{
-  			  $str .= htmlentities($this->description);
+  			  $str .= htmlentities($this->content);
       }
       $str .= "<input type=\"checkbox\" disabled=\"disabled\" $checked>";
       $date = strtotime($this->deadline);
