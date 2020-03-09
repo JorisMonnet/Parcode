@@ -8,7 +8,7 @@
  <h1>Home</h1>
 
  <p>
-     Nothing to do here go to <a href="tasks">Task</a>
+     Nothing to do here go to <a href="codes">Code</a>
  </p>
 </div>
 
