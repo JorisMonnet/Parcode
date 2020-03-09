@@ -1,5 +1,5 @@
 
---creating User table
+#creating User table
 
 DROP TABLE IF EXISTS User;
 CREATE TABLE User (
@@ -7,12 +7,12 @@ CREATE TABLE User (
   name varchar(20) NOT NULL UNIQUE,
   pass varchar(20) NOT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf-8;
+) ENGINE=InnoDB DEFAULT CHARSET="utf-8";
 
 INSERT INTO user (id,name,pass) VALUES
 (1, 'admin','admin');
 
---creating code table
+#creating code table
 
 DROP TABLE IF EXISTS Code;
 CREATE TABLE Code (
@@ -22,4 +22,4 @@ CREATE TABLE Code (
   content TEXT,
   PRIMARY KEY (id),
   FOREIGN KEY(author) REFERENCES User(name)
-) ENGINE=InnoDB DEFAULT CHARSET=utf-8;
+) ENGINE=InnoDB DEFAULT CHARSET="utf-8";
