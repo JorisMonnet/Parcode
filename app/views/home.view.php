@@ -1,5 +1,5 @@
 <?php
-    $title = "About " . $company;
+    $title = "Home " . $company;
     require('partials/header.php')
 ?>
 <div class="main">
