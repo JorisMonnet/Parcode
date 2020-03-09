@@ -9,6 +9,7 @@ CREATE TABLE User (
 INSERT INTO User (id,name,pass) VALUES
 (1, 'admin','admin');
 
+
 DROP TABLE IF EXISTS Codes;
 CREATE TABLE Codes (
   id int(11) NOT NULL AUTO_INCREMENT,
