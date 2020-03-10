@@ -1,12 +1,12 @@
 <?php
 
-require "app/models/Task.php";
+require "app/models/Codes.php";
 require "core/Logger.php";
 
 class CodeController
 {
     public function index(){
-        $codes = Code::fetchAll($_SESSION['userid']);
+        $codes = Codes::fetchAll($_SESSION['userid']);
 
         $code_added_success = 0; // avoid warning
 
@@ -31,7 +31,7 @@ class CodeController
     public function show(){
         if(isset($_GET["id"]) && ctype_digit($_GET["id"]))
         {
-            $code = Code::fetchId($_GET["id"]);
+            $code = Codes::fetchId($_GET["id"]);
             if($code == null)
             {
                 // raising an exception maybe not the best solution
@@ -50,7 +50,7 @@ class CodeController
     public function update(){
         if(isset($_GET['id']) && ctype_digit($_GET['id']))
         {
-            $code = Code::fetchId($_GET["id"]);
+            $code = Codes::fetchId($_GET["id"]);
             if($code == null)
             {
                 // raising an exception maybe not the best solution
@@ -83,14 +83,14 @@ class CodeController
                   'author' => $_SESSION['userid'],
                   'id' => $_POST['id']
                 ];
-                Code::update($entry);
+                Codes::update($entry);
             }
             else {
                 throw new Exception("Some data are missing...", 1);
             }
             // alternative: use the $_SESSION, so you can't make
             // our application say (constrained by number) things
-            $code = Code::fetchId($_POST['id']);
+            $code = Codes::fetchId($_POST['id']);
             Logger::addLogEvent($_SESSION['user'].' updated: "'. $code->getContent() . '" (code number: '. $task->getId().')');
             $path = App::get('config')['install_prefix'] . '/codes?updated=2';
             header("Location: /{$path}");
@@ -111,7 +111,7 @@ class CodeController
             if(isset($_POST['content']))
             {
                 // echo "Parsing the requests\n";
-              $code = new Code;
+              $code = new Codes;
                 if($_POST['date'] === "")
                 {
                     // date is not set - setting the current date
@@ -161,8 +161,8 @@ class CodeController
     public function parseDelete(){
       if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(isset($_POST['id'])){
-          $code = Code::fetchId($_POST['id']);
-          Code::delete($_POST['id']);
+          $code = Codes::fetchId($_POST['id']);
+          Codes::delete($_POST['id']);
         }
         else{
           throw new Exception("Code don't exist", 1);
