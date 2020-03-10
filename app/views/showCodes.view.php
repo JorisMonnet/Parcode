@@ -23,7 +23,7 @@
     }?>
     </div>
 
-    <a href="add_task">Add Task</a>
+    <a href="add_task">Add Code</a>
 
     </form>
 
