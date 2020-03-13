@@ -112,6 +112,7 @@ class CodeController
             {
                 // echo "Parsing the requests\n";
               $code = new Codes;
+              $code->setContent($_POST['content']);
                 if($_POST['date'] === "")
                 {
                     // date is not set - setting the current date
@@ -120,7 +121,7 @@ class CodeController
                 else {
                     $code->setDAte($_POST['date']);
                 }
-                $code->setAuthor($_SESSION['userid']);
+                $code->setAuthor($_SESSION['user']);
                 $allow_insert = true;
                 if (isset($_COOKIE['code_per_minute_counter']))
                 {
