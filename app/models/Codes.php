@@ -25,7 +25,7 @@ class Codes extends Model
 		return $this->date;
 	}
 
-  public function setDAte($value){
+  public function setDate($value){
         $this->date = $value;
     }
 
@@ -39,10 +39,10 @@ class Codes extends Model
 
   public static function getParam(){
     return [
-      "content" => PDO::PARAM_STR,
-      "date" => PDO::PARAM_STR,
-		"author" => PDO::PARAM_STR,
-      "id" => PDO::PARAM_INT
+      	"content" => PDO::PARAM_STR,
+      	"date" => PDO::PARAM_STR,
+	  	"author" => PDO::PARAM_STR,
+      	"id" => PDO::PARAM_INT
     ];
   }
 
@@ -55,13 +55,9 @@ class Codes extends Model
 	}
 
   public function asHTMLTableRow(){
-      $str = "";
-
-          // initalize $checked as an empty string
-    	$checked = "";
-
+      	$str = "";
 		$str .= "<div>";
-      		$str .= "<a href=\"task?id=" . urlencode($this->id) . "\">" . htmlentities($this->id) ." ". "</a><br>";
+      		$str .= "<a href=\"code?id=" . urlencode($this->id) . "\">" . htmlentities($this->id) ." ". "</a><br>";
     		$str .= "<code>" . htmlentities($this->content) . "</code><br>";
 			$str .= date("j F Y", strtotime($this->date))."<br>";
 			$str .= htmlentities($this->author);
@@ -71,7 +67,7 @@ class Codes extends Model
 
   public function asHTMLTableRowWithEdit(){
         $str = $this->asHTMLTableRow();
-				$str .= '<button id="buttonEdit" type="button" onclick="showForm()">edit task</button>';
+				$str .= '<button id="buttonEdit" type="button" onclick="showForm()">edit Code</button>';
 				//$str .= '<a onclick="showForm()" href="update_task?id=' . $this->id .'">edit task</a>';
         return $str;
   }

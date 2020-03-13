@@ -11,14 +11,13 @@ class CodeController
         $code_added_success = 0; // avoid warning
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            if (isset($_GET['updated']) &&  ctype_digit($_GET['updated'])){
+            if (isset($_GET['updated']) &&  ctype_digit($_GET['updated']))
                 $code_added_success = $_GET['updated'];
-            }
 
             $code_added_failure = "";
-            if (isset($_GET['delay_failed'])) {
+
+            if (isset($_GET['delay_failed'])) 
                 $code_added_failure = "submission too fast";
-            }
         }
 
         return Helper::view("showCodes",[
@@ -29,18 +28,13 @@ class CodeController
     }
 
     public function show(){
-        if(isset($_GET["id"]) && ctype_digit($_GET["id"]))
-        {
+        if(isset($_GET["id"]) && ctype_digit($_GET["id"])) {
             $code = Codes::fetchId($_GET["id"]);
             if($code == null)
-            {
-                // raising an exception maybe not the best solution
                 throw new Exception("CODE NOT FOUND.", 1);
-            }
         }
-        else {
+        else 
             throw new Exception("CODE NOT FOUND.", 1);
-        }
 
         return Helper::view("showCode",[
                 'currentCode' => $code,
@@ -48,20 +42,12 @@ class CodeController
     }
 
     public function update(){
-        if(isset($_GET['id']) && ctype_digit($_GET['id']))
-        {
+        if(isset($_GET['id']) && ctype_digit($_GET['id'])) {
             $code = Codes::fetchId($_GET["id"]);
             if($code == null)
-            {
-                // raising an exception maybe not the best solution
                 throw new Exception("CODE NOT FOUND.", 1);
-            }
-
-        }
-        else
-        {
+        }else
             throw new Exception("Error retrieving the code. ID is not valid", 1);
-        }
         return Helper::view('update_code',[
                 'currentCode' => $code,
             ]);
@@ -75,8 +61,7 @@ class CodeController
                 isset($_POST['content']) &&
                 // isset($_POST['completed']) && // a checkbox is not sent if not checked
                 isset($_POST['date'])
-                )
-            {
+                ) {
                 $entry = [
                   'content' => $_POST['content'],
                   'date' => $_POST['date'],
@@ -85,9 +70,8 @@ class CodeController
                 ];
                 Codes::update($entry);
             }
-            else {
+            else
                 throw new Exception("Some data are missing...", 1);
-            }
             // alternative: use the $_SESSION, so you can't make
             // our application say (constrained by number) things
             $code = Codes::fetchId($_POST['id']);
@@ -108,54 +92,34 @@ class CodeController
 
     public function parseInput(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(isset($_POST['content']))
-            {
+            if(isset($_POST['content'])) {
                 // echo "Parsing the requests\n";
-              $code = new Codes;
-              $code->setContent($_POST['content']);
-                if($_POST['date'] === "")
-                {
-                    // date is not set - setting the current date
-                    $code->setDate(date('Y-m-d'));
-                }
-                else {
-                    $code->setDAte($_POST['date']);
-                }
+                $code = new Codes;
+                $code->setContent($_POST['content']);
                 $code->setAuthor($_SESSION['user']);
+                $code->setDate($_POST['date'] === ""?date('Y-m-d'):$_POST['date']);
                 $allow_insert = true;
-                if (isset($_COOKIE['code_per_minute_counter']))
-                {
-                  if ($_COOKIE['code_per_minute_counter'] > 90)
-                  {
+                if (isset($_COOKIE['code_per_minute_counter'])){
+                  if ($_COOKIE['code_per_minute_counter'] > 90){
                     echo "set false";
                     $allow_insert = false;
-                  }
-                  else
-                  {
-                    setcookie("code_per_minute_counter",
-                              $_COOKIE['code_per_minute_counter'] + 1);
-                  }
+                  }else
+                    setcookie("code_per_minute_counter",$_COOKIE['code_per_minute_counter'] + 1);
                 }
                 else
-                {
                    setcookie("code_per_minute_counter", 1, time() + 60);
-
-                }
                 if ($allow_insert) {
                     $code->save();
                     $path = App::get('config')['install_prefix'] . '/codes?updated=1';
                 }
-                else {
+                else 
                    $path = App::get('config')['install_prefix'] . '/codes?delay_failed=1';
-                }
                 Logger::addLogEvent($_SESSION['user'].' added "'.$_POST['content'] . '" code');
                 header("Location: /{$path}");
                 exit();
             }
             else
-            {
             	throw new Exception("Content can't be empty.", 1);
-            }
         }
     }
 
@@ -165,9 +129,8 @@ class CodeController
           $code = Codes::fetchId($_POST['id']);
           Codes::delete($_POST['id']);
         }
-        else{
+        else
           throw new Exception("Code don't exist", 1);
-        }
         Logger::addLogEvent($_SESSION['user'].' deleted '. $code->getContent());
         $path = App::get('config')['install_prefix'];
         header("Location: /{$path}");
