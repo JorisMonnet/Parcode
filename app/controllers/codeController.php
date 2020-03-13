@@ -8,7 +8,7 @@ class CodeController
     public function index(){
         $codes = Codes::fetchAll($_SESSION['userid']);
 
-        $code_added_success = 0; // avoid warning
+        $code_added_success = 0; 
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             if (isset($_GET['updated']) &&  ctype_digit($_GET['updated']))
@@ -93,21 +93,21 @@ class CodeController
     public function parseInput(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['content'])) {
-                // echo "Parsing the requests\n";
                 $code = new Codes;
                 $code->setContent($_POST['content']);
                 $code->setAuthor($_SESSION['user']);
                 $code->setDate($_POST['date'] === ""?date('Y-m-d'):$_POST['date']);
+
                 $allow_insert = true;
-                if (isset($_COOKIE['code_per_minute_counter'])){
-                  if ($_COOKIE['code_per_minute_counter'] > 90){
+                if (isset($_COOKIE['code_per_min_counter'])){
+                  if ($_COOKIE['code_per_min_counter'] > 90){
                     echo "set false";
                     $allow_insert = false;
                   }else
-                    setcookie("code_per_minute_counter",$_COOKIE['code_per_minute_counter'] + 1);
+                    setcookie("code_per_min_counter",$_COOKIE['code_per_min_counter'] + 1);
                 }
                 else
-                   setcookie("code_per_minute_counter", 1, time() + 60);
+                   setcookie("code_per_min_counter", 1, time() + 60);
                 if ($allow_insert) {
                     $code->save();
                     $path = App::get('config')['install_prefix'] . '/codes?updated=1';

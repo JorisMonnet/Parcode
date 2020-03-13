@@ -1,8 +1,8 @@
 <?php
     $title = "Home";
     require('partials/header.php');
-    /*if(!isset($_SESSION['user']))
-      return require('login.view.php');*/ // implement login after 
+    if(!isset($_SESSION['user']))
+      return require('login.view.php');
 ?>
 <div class="main">
  <h1>Home</h1>

@@ -17,18 +17,14 @@
     <h1>My codes</h1>
 
     <div class="flex-container">
-
-    <?php foreach ($codes as $code) {
-    	echo $tacodesk->asHTMLTableRow();
-    }?>
+      <?php foreach ($codes as $code)
+    	        echo $code->asHTMLTableRow();
+      ?>
     </div>
 
     <a href="addCodes">Add Code</a>
-
     </form>
-
 </main>
 <br />
 </div>
-
 <?php require('partials/footer.php'); ?>
