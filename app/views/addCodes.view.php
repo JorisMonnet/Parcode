@@ -1,5 +1,5 @@
 <?php
-    $title = "Add New Task";
+    $title = "Add New Code";
     require('partials/header.php')
 ?>
 <div class="main">

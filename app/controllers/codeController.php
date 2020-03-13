@@ -99,7 +99,7 @@ class CodeController
     }
 
     public function showAddView(){
-        return Helper::view('addCode');
+        return Helper::view('addCodes');
     }
 
     public function showUpdateView(){
@@ -120,7 +120,7 @@ class CodeController
                 else {
                     $code->setDAte($_POST['date']);
                 }
-                $task->setAuthor($_SESSION['userid']);
+                $code->setAuthor($_SESSION['userid']);
                 $allow_insert = true;
                 if (isset($_COOKIE['code_per_minute_counter']))
                 {
@@ -141,7 +141,7 @@ class CodeController
 
                 }
                 if ($allow_insert) {
-                    $task->save();
+                    $code->save();
                     $path = App::get('config')['install_prefix'] . '/codes?updated=1';
                 }
                 else {
