@@ -58,13 +58,11 @@ class CodeController
             if(
                 isset($_POST['id']) &&
                 ctype_digit($_POST['id']) &&
-                isset($_POST['content']) &&
-                // isset($_POST['completed']) && // a checkbox is not sent if not checked
-                isset($_POST['date'])
+                isset($_POST['content']) 
                 ) {
                 $entry = [
                   'content' => $_POST['content'],
-                  'date' => $_POST['date'],
+                  'date' => date('Y-m-d-H-i-s'),
                   'author' => $_SESSION['userid'],
                   'id' => $_POST['id']
                 ];
@@ -96,7 +94,7 @@ class CodeController
                 $code = new Codes;
                 $code->setContent($_POST['content']);
                 $code->setAuthor($_SESSION['user']);
-                $code->setDate($_POST['date'] === ""?date('Y-m-d'):$_POST['date']);
+                $code->setDate(date('Y-m-d-H-i-s'));
 
                 $allow_insert = true;
                 if (isset($_COOKIE['code_per_min_counter'])){

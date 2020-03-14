@@ -10,7 +10,6 @@
     </p>
     <form action = "parse_add_form" method="post">
       <input type="text" name="content" required>
-      <input type="date" name="date">
       <input type="submit" value="Submit">
     </form>
     <p>
