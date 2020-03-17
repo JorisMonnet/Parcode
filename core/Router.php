@@ -14,16 +14,11 @@ class Router
     $uri = parse_url($uri)["path"]; // more info: http://php.net/manual/en/function.parse-url.php
 
     // remove installation prefix
-    if (isset(App::get('config')['install_prefix'])){
-       if (strncmp($uri,
-                 App::get('config')['install_prefix'],
-                 strlen(App::get('config')['install_prefix'])) == 0)
-       {
-        if (!($uri = substr($uri, strlen(App::get('config')['install_prefix']) + 1))){
+    if (isset(App::get('config')['install_prefix']))
+      if (strncmp($uri,App::get('config')['install_prefix'],
+                    strlen(App::get('config')['install_prefix'])) == 0)
+        if (!($uri = substr($uri, strlen(App::get('config')['install_prefix']) + 1)))
           $uri = "";
-        }
-      }
-    }
 
     if(array_key_exists ($uri, $this->routes)){
         // En PHP 5.6 et suivants, la liste des arguments peut inclure
@@ -36,11 +31,8 @@ class Router
                                                  // explode (split a string by a string): http://php.net/manual/en/function.explode.php
         );
     }
-
     throw new Exception("Not routes defined for this URI.", 1);
-
   }
-
   // call a specific action (method) of a controller
   // if not action is specified, the action index() is called by default
   protected function callAction($controller, $action = 'index'){

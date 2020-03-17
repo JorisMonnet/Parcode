@@ -62,7 +62,11 @@ body {
   font-size: 2em;
 }
 
-#hiddenForm{
+#editForm{
+  visibility: hidden;
+}
+
+#deleteForm{
   visibility: hidden;
 }
 
