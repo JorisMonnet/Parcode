@@ -74,7 +74,7 @@ class CodeController
             // alternative: use the $_SESSION, so you can't make
             // our application say (constrained by number) things
             $code = Codes::fetchId($_POST['id']);
-            Logger::addLogEvent($_SESSION['user'].' updated: "'. $code->getContent() . '" (code number: '. $task->getId().')');
+            Logger::addLogEvent($_SESSION['user'].' updated: "'. $code->getContent() . '" (code number: '. $code->getId().')');
             $path = App::get('config')['install_prefix'] . '/codes?updated=2';
             header("Location: /{$path}");
             exit();

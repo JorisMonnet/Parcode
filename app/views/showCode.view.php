@@ -17,6 +17,7 @@
     <form id='editForm' action="parse_update_form" method="post">
       <p>This form allow you to edit the code</p>
       <input type="text" name="content" value="<?= htmlentities($currentCode->getContent()); ?>" required >
+      <input type="hidden" name="id" value="<?= htmlentities($currentCode->getId()); ?>">
       <input type="submit" value="Submit">
     </form>
 

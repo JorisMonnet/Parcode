@@ -71,7 +71,7 @@ class Codes extends Model
 		$str = "<div>";
 		$str .= "<a href=\"code?id=".urlencode($this->id)."\">".htmlentities($this->id) ." </a><br>";
 		$str .= "<code>".htmlentities($this->content)."</code><br>";
-		$str .= date("j F Y H i s",strtotime($this->date))."<br>";
+		$str .= date("j F Y H:i:s",strtotime($this->date))."<br>";
 		return $str;
 	}
 	private function strAuthor(){
