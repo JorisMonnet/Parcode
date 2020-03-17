@@ -21,7 +21,7 @@
       <input type="submit" value="Submit">
     </form>
 
-    <form id="deleteForm" action="delete_form" method="post">
+    <form id='deleteForm' action="delete_form" method="post">
       <input type="hidden" name="id" value="<?= htmlentities($currentCode->getId()); ?>">
       <input type="submit" value="Delete Code">
     </form>

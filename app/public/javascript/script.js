@@ -1,9 +1,9 @@
 function showForm(){
-    if(document.getElementById(editForm).Visibility==hidden){
-        document.getElementById(editForm).setVisibility= visible;
-        document.getElementById(deleteForm).setVisibility= visible;
+    if(document.getElementById('editForm').style.visibility === 'hidden'){
+        document.getElementById('editForm').style.visibility = 'visible';
+        document.getElementById('deleteForm').style.visibility = 'visible';
     }else{
-        document.getElementById(editForm).setVisibility= hidden;
-        document.getElementById(deleteForm).setVisibility= hidden;
+        document.getElementById('editForm').style.visibility = 'hidden';
+        document.getElementById('deleteForm').style.visibility = 'hidden';
     }
 }
