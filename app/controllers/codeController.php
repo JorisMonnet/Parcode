@@ -7,7 +7,7 @@ class CodeController
 {
     public function index(){
         $codes = Codes::fetchAll($_SESSION['user']);
-        
+
         $code_added_success = 0; 
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -38,6 +38,7 @@ class CodeController
 
         return Helper::view("showCode",[
                 'currentCode' => $code,
+                'username' => $_SESSION['user']
             ]);
     }
 

@@ -8,12 +8,11 @@
     <h1>Selected Code</h1>
 
     <div class="flex-container">
-    <?php echo $currentCode->asHTMLTableRowWithEdit(); ?>
-
+      <?php echo $currentCode->asHTMLTableRowWithEdit($username); ?>
     </div>
 
     <p>
-        <a href="codes">Show all codes</a>
+      <a href="codes">Show all codes</a>
     </p>
     <form id='hiddenForm' action="parse_update_form" method="post">
       <p>This form allow you to edit the code</p>

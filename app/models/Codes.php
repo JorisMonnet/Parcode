@@ -17,15 +17,15 @@ class Codes extends Model
 		return $this->content;
 	}
 
-  public function setContent($value){
+  	public function setContent($value){
         $this->content = $value;
     }
 
-  public function getDate(){
+  	public function getDate(){
 		return $this->date;
 	}
 
-  public function setDate($value){
+  	public function setDate($value){
         $this->date = $value;
     }
 
@@ -37,14 +37,14 @@ class Codes extends Model
 		$this->author = $value;
 	}
 
-  public static function getParam(){
-    return [
-      	"content" => PDO::PARAM_STR,
-      	"date" => PDO::PARAM_STR,
-	  	"author" => PDO::PARAM_STR,
-      	"id" => PDO::PARAM_INT
-    ];
-  }
+	public static function getParam(){
+		return [
+			"content" => PDO::PARAM_STR,
+			"date" => PDO::PARAM_STR,
+			"author" => PDO::PARAM_STR,
+			"id" => PDO::PARAM_INT
+		];
+	}
 
 	public function getAttributes(){
 		return [
@@ -54,22 +54,27 @@ class Codes extends Model
 		];
 	}
 
-  public function asHTMLTableRow(){
-      	$str = "";
-		$str .= "<div>";
-      		$str .= "<a href=\"code?id=" . urlencode($this->id) . "\">" . htmlentities($this->id) ." ". "</a><br>";
-    		$str .= "<code>" . htmlentities($this->content) . "</code><br>";
-			$str .= date("j F Y", strtotime($this->date))."<br>";
-			$str .= htmlentities($this->author);
-		$str .= "</div>";
-      return $str;
-      }
+  	public function asHTMLTableRow(){
+      	return $this->strWithoutAuthor().$this->strAuthor();
+    }
 
-  public function asHTMLTableRowWithEdit(){
-        $str = $this->asHTMLTableRow();
-				$str .= '<button id="buttonEdit" type="button" onclick="showForm()">edit Code</button>';
-				//$str .= '<a onclick="showForm()" href="update_task?id=' . $this->id .'">edit task</a>';
+  	public function asHTMLTableRowWithEdit($username){
+		$str = $this->strWithoutAuthor();
+		if($this->author===$username)
+			$str .= '</div><button id="buttonEdit" type="button" onclick="showForm()">edit Code</button>';
+			//$str .= '<a onclick="showForm()" href="update_task?id=' . $this->id .'">edit task</a>';
+		else
+			$str.=$this->strAuthor();
         return $str;
-  }
-
+	  }
+	private function strWithoutAuthor(){
+		$str = "<div>";
+		$str .= "<a href=\"code?id=".urlencode($this->id)."\">".htmlentities($this->id) ." </a><br>";
+		$str .= "<code>".htmlentities($this->content)."</code><br>";
+		$str .= date("j F Y H i s",strtotime($this->date))."<br>";
+		return $str;
+	}
+	private function strAuthor(){
+		return htmlentities($this->author)."</div>";
+	}
 }
