@@ -6,8 +6,8 @@ require "core/Logger.php";
 class CodeController
 {
     public function index(){
-        $codes = Codes::fetchAll($_SESSION['userid']);
-
+        $codes = Codes::fetchAll($_SESSION['user']);
+        
         $code_added_success = 0; 
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -63,7 +63,7 @@ class CodeController
                 $entry = [
                   'content' => $_POST['content'],
                   'date' => date('Y-m-d-H-i-s'),
-                  'author' => $_SESSION['userid'],
+                  'author' => $_SESSION['user'],
                   'id' => $_POST['id']
                 ];
                 Codes::update($entry);

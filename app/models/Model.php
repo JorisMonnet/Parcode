@@ -21,7 +21,7 @@ abstract class Model{
   public static function fetchId($id){
     $dbh = App::get('dbh');
     //trouver le nom de la table dans l'objet
-    $req = "SELECT * FROM ".strtolower(get_called_class())." WHERE id = ? AND login =". $_SESSION['userid'];
+    $req = "SELECT * FROM ".strtolower(get_called_class())." WHERE id = ?";
     $statement = $dbh->prepare($req);
     $statement->bindParam(1, $id, PDO::PARAM_INT);
     $statement->setFetchMode(PDO::FETCH_CLASS, get_called_class());
