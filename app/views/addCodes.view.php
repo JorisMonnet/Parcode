@@ -9,7 +9,7 @@
         The following form allow you to add a new code
     </p>
     <form action = "parse_add_form" method="post">
-      <input type="text" name="content" required>
+      <textarea type="text" name="content" required></textarea>
       <input type="submit" value="Submit">
     </form>
     <p>

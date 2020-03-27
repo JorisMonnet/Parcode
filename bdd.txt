@@ -14,8 +14,17 @@ DROP TABLE IF EXISTS Codes;
 CREATE TABLE Codes (
   id int(11) NOT NULL AUTO_INCREMENT,
   date DATETIME NOT NULL,
-  author varchar(20) NOT NULL,
+  author int REFERENCES User,
   content TEXT,
-  PRIMARY KEY (id),
-  FOREIGN KEY(author) REFERENCES User(name)
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS Comments;
+CREATE TABLE Comments (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  date DATETIME NOT NULL,
+  author int REFERENCES User,
+  content TEXT,
+  codes int(11) REFERENCES Codes,
+  PRIMARY KEY(id)
+)
