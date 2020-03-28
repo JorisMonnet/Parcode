@@ -13,3 +13,4 @@ models/Task.php : un urlencode() autour de $this→id ne gènerait pas dans asH
 Contrôle d’accès : un peu par accident quand vous faites le fetchId() vous contrôlez la session, 
 mais c’est plutôt dans les routes ou dans le contrôleur qu’il faudrait le faire : 
 d’autant plus que parseUpdate() lui ne vérifie pas que la tâche appartient à l’utilisateur (l’update() est fait avant le fetchId!). 
+--pas encore fait--
