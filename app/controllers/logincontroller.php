@@ -33,11 +33,6 @@ class LoginController
           exit();
         }
         else {
-          echo "<div class = \"falselog\">";
-          echo "user not found <br>";
-          echo "please try again <br>";
-          echo "</div>";
-
           Logger::addLogEvent('connection attempt: failed');
           return require('app/views/login.view.php');
         }

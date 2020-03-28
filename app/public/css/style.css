@@ -28,12 +28,13 @@
   border-style: ridge;
   box-shadow: 0px 2px 40px black;
 }
-
 .flex-container{
     display: flex;
     flex-direction: column;
     }
-
+#falseLog{
+  text-align: center;
+}
 .flex-container > div {
   margin: 10px;
   background-color: #b3d9ff;
