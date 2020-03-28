@@ -17,28 +17,16 @@ abstract class Model{
 
 //return the attributes of the object
   abstract public function getAttributes();
-
-  public static function fetchId($id){
-    $dbh = App::get('dbh');
-    //trouver le nom de la table dans l'objet
-    $req = "SELECT * FROM ".strtolower(get_called_class())." WHERE id = ?";
-    $statement = $dbh->prepare($req);
-    $statement->bindParam(1, $id, PDO::PARAM_INT);
-    $statement->setFetchMode(PDO::FETCH_CLASS, get_called_class());
-    $statement->execute();
-    return $statement->fetch();
-  }
   
-  //beginning of trying to do a fetchSomething to avoid the fetchName/fetchId and generalyze
-  public static function fetchSomething($entry,$stringParam,$type = PDO::PARAM_STR){
+  //allows to fetch any row of the DB instead of using fetchId/fetchName
+  public static function fetchSomething($entry,$stringParam,$type = PDO::PARAM_INT,$arrayResult=null){
     $dbh = App::get('dbh');
-    $req = "SELECT * FROM ".strtolower(get_called_class())." WHERE ? = ?";
+    $req = "SELECT * FROM ".strtolower(get_called_class())." WHERE ".$stringParam." = ?";
     $statement = $dbh->prepare($req);
-    $statement = $dbh->bindParam(1,$stringParam,PDO::PARAM_STR);
-    $statement->bindParam(2, $entry, $type);
+    $statement->bindParam(1, $entry, $type);
     $statement->setFetchMode(PDO::FETCH_CLASS, get_called_class());
     $statement->execute();
-    return $statement->fetch();
+    return $statement->fetch($arrayResult);
   }
 
   // Method useful for the view

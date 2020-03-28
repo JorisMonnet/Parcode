@@ -29,7 +29,7 @@ class CodeController
 
     public function show(){
         if(isset($_GET["id"]) && ctype_digit($_GET["id"])) {
-            $code = Codes::fetchId($_GET["id"]);
+            $code = Codes::fetchSomething($_GET["id"],"id");
             if($code == null)
                 throw new Exception("CODE NOT FOUND.", 1);
         }
@@ -44,7 +44,7 @@ class CodeController
 
     public function update(){
         if(isset($_GET['id']) && ctype_digit($_GET['id'])) {
-            $code = Codes::fetchId($_GET["id"]);
+            $code = Codes::fetchSomething($_GET["id"],"id");
             if($code == null)
                 throw new Exception("CODE NOT FOUND.", 1);
         }else
@@ -69,7 +69,7 @@ class CodeController
                 throw new Exception("Some data are missing...", 1);
             // alternative: use the $_SESSION, so you can't make
             // our application say (constrained by number) things
-            $code = Codes::fetchId($_POST['id']);
+            $code = Codes::fetchSomething($_POST["id"],"id");
             Logger::addLogEvent($_SESSION['user'].' updated: "'. $code->getContent() . '" (code number: '. $code->getId().')');
             $path = App::get('config')['install_prefix'] . '/codes?updated=2';
             header("Location: /{$path}");

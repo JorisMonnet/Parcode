@@ -21,7 +21,7 @@ class LoginController
         $user = $_POST['user'];
         $pwd = $_POST['pass'];
         // echo "enter in the Controller <br>";
-        $connection = User::fetchName($user);
+        $connection = User::fetchSomething($user,"name",PDO::PARAM_STR,PDO::FETCH_ASSOC);
         if($connection['pass'] === $pwd)
         {
           $_SESSION['user'] = $user;

@@ -18,17 +18,6 @@ class User extends Model
       return $this->pass;
     }
 
-    public static function fetchName($name){
-      $dbh = App::get('dbh');
-      $req = "SELECT name, id, pass FROM User WHERE name =?";
-
-      $statement = $dbh->prepare($req);
-      $statement->bindParam(1, $name, PDO::PARAM_STR);
-      $statement->execute();
-      $user = $statement->fetch(PDO::FETCH_ASSOC);
-      return $user;
-    }
-
     public static function getParam(){
       return [
         "name" => PDO::PARAM_STR,
