@@ -1,4 +1,3 @@
-DB : bien, encore mieux d’ajouter quelques entrées avec des accents ou &<> pour tester les échappements. 
 Que se passe-t-il si dans le $event dans Logger il y a déjà un \n ? injection d’entrées de log ? 
 session_destroy() : lisez la documentation pour voir les alternatives. 
 Recommandation de hacher le mdp. 
