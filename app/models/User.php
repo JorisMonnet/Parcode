@@ -29,9 +29,6 @@ class User extends Model
       $statement->bindParam(1, $name, PDO::PARAM_STR);
       $statement->execute();
       $user = $statement->fetch(PDO::FETCH_ASSOC);
-      // foreach ($user as $key => $value) {
-      //    echo $key." => ".$value."<br>";
-      // }
       return $user;
     }
 

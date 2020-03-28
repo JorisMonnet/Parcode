@@ -12,6 +12,7 @@ class LoginController
     session_destroy();
     $path = App::get('config')['install_prefix'];
     header("Location: /{$path}/index");
+    exit();
   }
 
   public function login(){
