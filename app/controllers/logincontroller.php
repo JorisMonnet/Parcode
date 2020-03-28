@@ -8,8 +8,8 @@ class LoginController
 
   public function logout(){
     Logger::addLogEvent($_SESSION['user'].' disconnected.');
-
-    session_destroy();
+    $_SESSION=array();
+    //session_destroy();
     $path = App::get('config')['install_prefix'];
     header("Location: /{$path}/index");
     exit();

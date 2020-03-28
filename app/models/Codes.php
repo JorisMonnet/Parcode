@@ -1,8 +1,8 @@
 <?php
 
-require('Model.php');
+require('User.php');
 /**
-* The Task class
+* The Codes class
 */
 class Codes extends Model
 {
@@ -74,6 +74,7 @@ class Codes extends Model
 		return $str;
 	}
 	private function strAuthor(){
-		return htmlentities($this->author)."</div>";
+		$authorName = User::fetchSomething($this->author,"id");
+		return htmlentities($authorName->getName())."</div>";
 	}
 }

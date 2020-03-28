@@ -1,13 +1,15 @@
 session_destroy() : lisez la documentation pour voir les alternatives. 
-
+--session unset ? continue de chercher--
 Recommandation de hacher le mdp. 
 --VERSION FINALE--
 TaskController : passer le message par la variable updated GET est possible, toutefois, plus sûr par la session, ce qui permettrait de généraliser. ParseUpdate() lui passe par redirect sémantique bien, et passe le message via GET aussi. 
-
-ParseDelete() : sert à rien de chercher la tâche : plutôt valider qu’id est un entier, puis DELETE, si affected rows == 0, pas marché, sinon fenêtre de vulnérabilité SELECT/DELETE sans transactions isolées.  
-
+--pas encore de solution--
+ParseDelete() : si affected rows == 0, pas marché.
+--pas encore implémenté--
 Save() : pas des question marks cf votre requête. 
-
+--pas encore regardé--
 models/Task.php : un urlencode() autour de $this→id ne gènerait pas dans asHTMLTabl*. 
 --pas trouvé de probleme--
-Contrôle d’accès : un peu par accident quand vous faites le fetchId() vous contrôlez la session, mais c’est plutôt dans les routes ou dans le contrôleur qu’il faudrait le faire : d’autant plus que parseUpdate() lui ne vérifie pas que la tâche appartient à l’utilisateur (l’update() est fait avant le fetchId!). 
+Contrôle d’accès : un peu par accident quand vous faites le fetchId() vous contrôlez la session, 
+mais c’est plutôt dans les routes ou dans le contrôleur qu’il faudrait le faire : 
+d’autant plus que parseUpdate() lui ne vérifie pas que la tâche appartient à l’utilisateur (l’update() est fait avant le fetchId!). 
