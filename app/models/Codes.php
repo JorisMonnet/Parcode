@@ -62,7 +62,6 @@ class Codes extends Model
 		$str = $this->strWithoutAuthor();
 		if($this->author===$user)
 			$str .= '</div><button id="buttonEdit" type="button" onclick="showForm()">edit Code</button>';
-			//$str .= '<a onclick="showForm()" href="update_task?id=' . $this->id .'">edit task</a>';
 		else
 			$str.=$this->strAuthor();
         return $str;

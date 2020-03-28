@@ -27,7 +27,7 @@ class CodeController
             ]);
     }
 
-    public function show(){
+    /*public function show(){
         if(isset($_GET["id"]) && ctype_digit($_GET["id"])) {
             $code = Codes::fetchSomething($_GET["id"],"id");
             if($code == null)
@@ -40,19 +40,7 @@ class CodeController
                 'currentCode' => $code,
                 'user' => $_SESSION['userid']
             ]);
-    }
-
-    public function update(){
-        if(isset($_GET['id']) && ctype_digit($_GET['id'])) {
-            $code = Codes::fetchSomething($_GET["id"],"id");
-            if($code == null)
-                throw new Exception("CODE NOT FOUND.", 1);
-        }else
-            throw new Exception("Error retrieving the code. ID is not valid", 1);
-        return Helper::view('update_code',[
-                'currentCode' => $code,
-            ]);
-    }
+    }*/
 
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -67,8 +55,6 @@ class CodeController
             }
             else
                 throw new Exception("Some data are missing...", 1);
-            // alternative: use the $_SESSION, so you can't make
-            // our application say (constrained by number) things
             $code = Codes::fetchSomething($_POST["id"],"id");
             Logger::addLogEvent($_SESSION['user'].' updated: "'. $code->getContent() . '" (code number: '. $code->getId().')');
             $path = App::get('config')['install_prefix'] . '/codes?updated=2';
