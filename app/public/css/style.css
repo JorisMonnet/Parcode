@@ -31,7 +31,8 @@
 .flex-container{
     display: flex;
     flex-direction: column;
-    }
+}
+
 #falseLog{
   text-align: center;
 }
@@ -55,12 +56,6 @@
 body {
   min-width: 900px;
   font-family: Arial,Arial Black;
-}
-
-.falselog {
-  text-align: center;
-  padding-bottom: 5px;
-  font-size: 2em;
 }
 
 #hiddenForm{

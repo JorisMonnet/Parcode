@@ -68,8 +68,8 @@ class Codes extends Model
 	  }
 	private function strWithoutAuthor(){
 		$str = "<div>";
-		$str .= "<a href=\"code?id=".urlencode($this->id)."\">".htmlentities($this->id) ." </a><br>";
-		$str .= "<code>".htmlentities($this->content)."</code><br>";
+		$str .= "<a href=\"code?id=".urlencode($this->id)."\">".htmlentities($this->id) ." </a><br><br>";
+		$str .= "<code>".nl2br(htmlentities($this->content))."</code><br><br>";
 		$str .= date("j F Y H:i:s",strtotime($this->date))."<br>";
 		return $str;
 	}
