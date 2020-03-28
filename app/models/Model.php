@@ -28,9 +28,20 @@ abstract class Model{
     $statement->execute();
     return $statement->fetch();
   }
+  
+  //beginning of trying to do a fetchSomething to avoid the fetchName/fetchId and generalyze
+  public static function fetchSomething($entry,$stringParam,$type = PDO::PARAM_STR){
+    $dbh = App::get('dbh');
+    $req = "SELECT * FROM ".strtolower(get_called_class())." WHERE ? = ?";
+    $statement = $dbh->prepare($req);
+    $statement = $dbh->bindParam(1,$stringParam,PDO::PARAM_STR);
+    $statement->bindParam(2, $entry, $type);
+    $statement->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+    $statement->execute();
+    return $statement->fetch();
+  }
 
   // Method useful for the view
-
   public static function fetchAll($user){
     $dbh = App::get('dbh');
     $statement = $dbh->prepare("select * from ".strtolower(get_called_class())." WHERE author = ? ORDER BY date ASC");

@@ -6,7 +6,7 @@ require "core/Logger.php";
 class CodeController
 {
     public function index(){
-        $codes = Codes::fetchAll($_SESSION['user']);
+        $codes = Codes::fetchAll($_SESSION['userid']);
 
         $code_added_success = 0; 
 
@@ -56,15 +56,11 @@ class CodeController
 
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(
-                isset($_POST['id']) &&
-                ctype_digit($_POST['id']) &&
-                isset($_POST['content']) 
-                ) {
+            if( isset($_POST['id']) && isset($_POST['content']) && ctype_digit($_POST['id'])) {
                 $entry = [
                   'content' => $_POST['content'],
                   'date' => date('Y-m-d-H-i-s'),
-                  'author' => $_SESSION['user'],
+                  'author' => $_SESSION['userid'],
                   'id' => $_POST['id']
                 ];
                 Codes::update($entry);
@@ -94,7 +90,7 @@ class CodeController
             if(isset($_POST['content'])) {
                 $code = new Codes;
                 $code->setContent($_POST['content']);
-                $code->setAuthor($_SESSION['user']);
+                $code->setAuthor($_SESSION['userid']);
                 $code->setDate(date('Y-m-d-H-i-s'));
 
                 $allow_insert = true;

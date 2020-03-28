@@ -13,10 +13,7 @@ class User extends Model
       return $this->name;
     }
 
-    // Le mot de passe n'est pas hasher : Mauvaise pratique !!
-    // Mais pour tester le programme sans trop de problèmes, ce n'est pas grave,
-    // Lorsque que l'on pourra ajouter un utilisateur, il faudra par contre y remédier:
-    // Il ne faut pas stocker de mot de passe en dur dans la bdd !
+    // the password will be hash in the final project, we have begun the research on the password_hash and password_verify functions
     public function getPass(){
       return $this->pass;
     }
