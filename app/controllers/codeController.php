@@ -27,7 +27,7 @@ class CodeController
             ]);
     }
 
-    /*public function show(){
+    public function show(){
         if(isset($_GET["id"]) && ctype_digit($_GET["id"])) {
             $code = Codes::fetchSomething($_GET["id"],"id");
             if($code == null)
@@ -40,7 +40,7 @@ class CodeController
                 'currentCode' => $code,
                 'user' => $_SESSION['userid']
             ]);
-    }*/
+    }
 
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
