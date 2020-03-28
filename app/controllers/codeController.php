@@ -6,7 +6,7 @@ require "core/Logger.php";
 class CodeController
 {
     public function index(){
-        $codes = Codes::fetchAll($_SESSION['userid']);
+        $codes = Codes::fetchAll();
 
         $code_added_success = 0; 
 

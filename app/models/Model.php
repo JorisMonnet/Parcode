@@ -42,10 +42,9 @@ abstract class Model{
   }
 
   // Method useful for the view
-  public static function fetchAll($user){
+  public static function fetchAll(){
     $dbh = App::get('dbh');
-    $statement = $dbh->prepare("select * from ".strtolower(get_called_class())." WHERE author = ? ORDER BY date ASC");
-    $statement->bindParam(1, $user, PDO::PARAM_INT);
+    $statement = $dbh->prepare("select * from ".strtolower(get_called_class())." ORDER BY date ASC");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_CLASS, strtolower(get_called_class()));
   }

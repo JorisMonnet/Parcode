@@ -41,7 +41,7 @@ class Codes extends Model
 		return [
 			"content" => PDO::PARAM_STR,
 			"date" => PDO::PARAM_STR,
-			"author" => PDO::PARAM_STR,
+			"author" => PDO::PARAM_INT,
 			"id" => PDO::PARAM_INT
 		];
 	}
