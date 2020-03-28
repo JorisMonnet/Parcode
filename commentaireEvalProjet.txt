@@ -1,7 +1,7 @@
 session_destroy() : lisez la documentation pour voir les alternatives. 
---session unset ? continue de chercher--
+--$_SESSION=array(); ? continue de chercher--
 Recommandation de hacher le mdp. 
---VERSION FINALE--
+--sera fait a la VERSION FINALE--
 TaskController : passer le message par la variable updated GET est possible, toutefois, plus sûr par la session, ce qui permettrait de généraliser. ParseUpdate() lui passe par redirect sémantique bien, et passe le message via GET aussi. 
 --pas encore de solution--
 ParseDelete() : si affected rows == 0, pas marché.
