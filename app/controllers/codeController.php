@@ -56,7 +56,7 @@ class CodeController
             else
                 throw new Exception("Some data are missing...", 1);
             $code = Codes::fetchSomething($_POST["id"],"id");
-            Logger::addLogEvent($_SESSION['user'].' updated: "'. $code->getContent() . '" (code number: '. $code->getId().')');
+            Logger::addLogEvent($_SESSION['user'].' updated: code number: '. $code->getId());
             $path = App::get('config')['install_prefix'] . '/codes?updated=2';
             header("Location: /{$path}");
             exit();
@@ -95,7 +95,7 @@ class CodeController
                 }
                 else 
                    $path = App::get('config')['install_prefix'] . '/codes?delay_failed=1';
-                Logger::addLogEvent($_SESSION['user'].' added "'.$_POST['content'] . '" code');
+                Logger::addLogEvent($_SESSION['user'].' added code number"'.$_POST['id']);
                 header("Location: /{$path}");
                 exit();
             }
