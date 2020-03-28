@@ -111,8 +111,6 @@ abstract class Model{
       $req = "DELETE FROM ". get_called_class(). " WHERE id = ?";
       $statement = $dbh->prepare($req);
       $statement->bindParam(1, $id, PDO::PARAM_INT);
-
       $statement->execute();
   }
-
 }

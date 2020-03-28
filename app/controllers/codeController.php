@@ -38,7 +38,7 @@ class CodeController
 
         return Helper::view("showCode",[
                 'currentCode' => $code,
-                'username' => $_SESSION['user']
+                'user' => $_SESSION['userid']
             ]);
     }
 
@@ -120,13 +120,11 @@ class CodeController
 
     public function parseDelete(){
       if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        if(isset($_POST['id'])){
-          $code = Codes::fetchId($_POST['id']);
+        if(isset($_POST['id'])&&ctype_digit($_POST['id']))
           Codes::delete($_POST['id']);
-        }
         else
           throw new Exception("Code don't exist", 1);
-        Logger::addLogEvent($_SESSION['user'].' deleted '. $code->getContent());
+        Logger::addLogEvent($_SESSION['user'].' deleted code number'.$_POST['id'] );
         $path = App::get('config')['install_prefix'];
         header("Location: /{$path}");
         exit();

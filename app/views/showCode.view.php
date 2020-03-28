@@ -8,7 +8,7 @@
   <h1>Selected Code</h1>
 
   <div class="flex-container">
-    <?php echo $currentCode->asHTMLTableRowWithEdit($username); ?>
+    <?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
   </div>
 
   <p>

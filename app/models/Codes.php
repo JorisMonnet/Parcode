@@ -58,9 +58,9 @@ class Codes extends Model
       	return $this->strWithoutAuthor().$this->strAuthor();
     }
 
-  	public function asHTMLTableRowWithEdit($username){
+  	public function asHTMLTableRowWithEdit($user){
 		$str = $this->strWithoutAuthor();
-		if($this->author===$username)
+		if($this->author===$user)
 			$str .= '</div><button id="buttonEdit" type="button" onclick="showForm()">edit Code</button>';
 			//$str .= '<a onclick="showForm()" href="update_task?id=' . $this->id .'">edit task</a>';
 		else
