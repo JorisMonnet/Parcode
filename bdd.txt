@@ -1,0 +1,30 @@
+DROP TABLE IF EXISTS User;
+CREATE TABLE User (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  name varchar(20) NOT NULL UNIQUE,
+  pass varchar(20) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO User (id,name,pass) VALUES
+(1, 'admin','admin');
+
+
+DROP TABLE IF EXISTS Codes;
+CREATE TABLE Codes (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  date DATETIME NOT NULL,
+  author int REFERENCES User,
+  content TEXT,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS Comments;
+CREATE TABLE Comments (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  date DATETIME NOT NULL,
+  author int REFERENCES User,
+  content TEXT,
+  codes int(11) REFERENCES Codes,
+  PRIMARY KEY(id)
+)
