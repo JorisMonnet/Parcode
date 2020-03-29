@@ -15,10 +15,9 @@ class Logger
      * ça n'affichera pas le message d'erreur
      */
     public static function lastLogEventisFalseLog(){
-      //return file_get_contents("log.txt",FALSE,NULL,-7,6)==='failed';
       if(file_get_contents("log.txt",false,null,-7,6)==='failed'){            
-        $dateLog =new DateTime(file_get_contents("log.txt",FALSE,NULL,-51,20));
-        $dateNow= new DateTime(date("d M Y H:i:s"));
+        $dateLog = new DateTime(file_get_contents("log.txt",FALSE,NULL,-51,20));
+        $dateNow = new DateTime(date("d M Y H:i:s"));
         $interval = $dateNow->getTimestamp() - $dateLog->getTimeStamp();
         if ($interval<15)
           return true;

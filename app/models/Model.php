@@ -21,7 +21,7 @@ abstract class Model{
   //allows to fetch any row of the DB instead of using fetchId/fetchName
   public static function fetchSomething($entry,$stringParam,$type = PDO::PARAM_INT,$arrayResult=null){
     $dbh = App::get('dbh');
-    $req = "SELECT * FROM ".strtolower(get_called_class())." WHERE ".$stringParam." = ?";
+    $req = "SELECT * FROM ".get_called_class()." WHERE ".$stringParam." = ?";
     $statement = $dbh->prepare($req);
     $statement->bindParam(1, $entry, $type);
     $statement->setFetchMode(PDO::FETCH_CLASS, get_called_class());
@@ -32,9 +32,9 @@ abstract class Model{
   // Method useful for the view
   public static function fetchAll(){
     $dbh = App::get('dbh');
-    $statement = $dbh->prepare("select * from ".strtolower(get_called_class())." ORDER BY date ASC");
+    $statement = $dbh->prepare("select * from ".get_called_class()." ORDER BY date ASC");
     $statement->execute();
-    return $statement->fetchAll(PDO::FETCH_CLASS, strtolower(get_called_class()));
+    return $statement->fetchAll(PDO::FETCH_CLASS, get_called_class());
   }
 
 //update something in the called class
@@ -70,7 +70,7 @@ abstract class Model{
       $values = $this->getAttributes();
       $param = get_called_class()::getParam();
       unset($param['id']);
-      $req = "INSERT INTO ". strtolower(get_called_class()) ."(";
+      $req = "INSERT INTO ". get_called_class() ."(";
       $i=0;
       foreach ($param as $key => $value) {
         $i++;
