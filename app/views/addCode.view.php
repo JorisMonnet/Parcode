@@ -1,6 +1,6 @@
 <?php
     $title = "Add New Code";
-    require('partials/header.php')
+    require('partials/header.php');
     $_SESSION['currentPage'] ="addCode";
 ?>
 <div class="main">

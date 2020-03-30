@@ -9,7 +9,7 @@
 
 <body>
 	<div class="upperpage">
-	<?php if(isset($_SESSION['user'])):?>
+	<?php if(isset($_SESSION['userid'])):?>
 		Welcome <?= htmlentities($_SESSION['user']);	?>
 		<a href="logout">logout</a>
 	<?php else: ?>

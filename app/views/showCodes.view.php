@@ -22,8 +22,9 @@
     	        echo $code->asHTMLTableRow();
       ?>
     </div>
-
-    <a href="addCode">Add Code</a>
+    <?php if(isset($_SESSION['userid'])):?>
+        <a href="addCode">Add Code</a>
+    <?php endif; ?>
     </form>
 </main>
 <br />
