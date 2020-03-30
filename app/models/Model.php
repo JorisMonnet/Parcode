@@ -81,7 +81,7 @@ abstract class Model{
       $i=0;
       foreach ($param as $row => $binding) {
         $i++;
-        $req.= ":$row";
+        $req.= ":".$row;
         $i < (sizeof($param))? $req .= ", ":$req .= ")";
       }
 
