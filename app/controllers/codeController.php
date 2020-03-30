@@ -6,7 +6,7 @@ require "core/Logger.php";
 class CodeController
 {
     public function index(){
-        $codes = Codes::fetchAll();
+        $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codeOrder']??"DESC");
 
         $codeAddSuccess = "0"; 
         $codeAddFailure = "";

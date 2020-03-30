@@ -29,9 +29,9 @@ abstract class Model{
 		return $statement->fetch($arrayResult);
 	}
 	// Method useful for the view
-	public static function fetchAll(){
+	public static function fetchAll($sort,$order){
 		$dbh = App::get('dbh');
-		$statement = $dbh->prepare("select * from ".get_called_class()." ORDER BY date ASC");
+		$statement = $dbh->prepare("select * from ".get_called_class()." ORDER BY ".$sort." ".$order);
 		$statement->execute();
 		return $statement->fetchAll(PDO::FETCH_CLASS, get_called_class());
 	}
