@@ -28,7 +28,6 @@ abstract class Model{
     $statement->execute();
     return $statement->fetch($arrayResult);
   }
-
   // Method useful for the view
   public static function fetchAll(){
     $dbh = App::get('dbh');

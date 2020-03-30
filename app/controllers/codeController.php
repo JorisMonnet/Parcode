@@ -44,7 +44,7 @@ class CodeController
 
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if( isset($_POST['id']) && isset($_POST['content']) && ctype_digit($_POST['id'])) {
+            if(isset($_POST['id']) && isset($_POST['content']) && ctype_digit($_POST['id'])) {
                 $entry = [
                   'content' => $_POST['content'],
                   'date' => date('Y-m-d-H-i-s'),
