@@ -127,3 +127,11 @@ body {
 }
 
 
+a {
+  border-radius: 20px;
+  border-style: outset;
+  border-color: lightgrey;
+  background-color: lightgrey;
+  text-decoration-color: lightgrey;
+  color :black;
+}
