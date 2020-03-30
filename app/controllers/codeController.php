@@ -10,8 +10,10 @@ class CodeController
 
         $codeAddSuccess = "0"; 
         $codeAddFailure = "";
-        if (isset($_SESSION['updated']) &&  ctype_digit($_SESSION['updated']))
-               $codeAddSuccess = $_SESSION['updated'];
+        if (isset($_SESSION['codeUpdated']) &&  ctype_digit($_SESSION['codeUpdated'])){
+               $codeAddSuccess = $_SESSION['codeUpdated'];
+               $_SESSION['codeUpdated']="0";
+        }
         else if ($_SERVER['REQUEST_METHOD'] === 'GET'&& isset($_GET['delay_failed'])) 
             $codeAddFailure = "submission too fast";
 
@@ -52,7 +54,7 @@ class CodeController
                 throw new Exception("Some data are missing...", 1);
             $code = Codes::fetchSomething($_POST["id"],"id");
             Logger::addLogEvent($_SESSION['user'].' updated: code number: '. $code->getId());
-            $_SESSION['updated']="2";
+            $_SESSION['codeUpdated']="2";
             $path = App::get('config')['install_prefix'] . '/codes';
             header("Location: /{$path}");
             exit();
@@ -87,7 +89,7 @@ class CodeController
                    setcookie("code_per_min_counter", 1, time() + 60);
                 if ($allow_insert) {
                     $code->save();
-                    $_SESSION['updated']="1";
+                    $_SESSION['codeUpdated']="1";
                     $path = App::get('config')['install_prefix'] . '/codes';
                 }
                 else 

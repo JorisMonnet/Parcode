@@ -1,7 +1,6 @@
 function showForm(){
-    if(document.getElementById('hiddenForm').style.visibility === 'hidden'){
+    if(document.getElementById('hiddenForm').style.visibility === 'hidden')
         document.getElementById('hiddenForm').style.visibility = 'visible';
-    }else{
+    else
         document.getElementById('hiddenForm').style.visibility = 'hidden';
-    }
 }
