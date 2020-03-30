@@ -1,15 +1,16 @@
 <?php
 
-require('User.php');
+require('Codes.php');
 /**
-* The Codes class
+* The Comments class
 */
-class Codes extends Model
+class Comments extends Model
 {
     // Attributes
 	private $content;
 	private $date;
-  	private $author;
+    private $author;
+    private $codes;
 
   // Getters and Setters
 
@@ -25,6 +26,9 @@ class Codes extends Model
 		return $this->date;
 	}
 
+    public function getCodes(){
+        return $this->codes;
+    }
   	public function setDate($value){
         $this->date = $value;
     }
@@ -36,12 +40,15 @@ class Codes extends Model
 	public function setAuthor($value){
 		$this->author = $value;
 	}
-
+    public function setCodes($value){
+        $this->codes = $value;
+    }
 	public static function getParam(){
 		return [
 			"content" => PDO::PARAM_STR,
 			"date" => PDO::PARAM_STR,
-			"author" => PDO::PARAM_INT,
+            "author" => PDO::PARAM_INT,
+            "codes" => PDO::PARAM_INT,
 			"id" => PDO::PARAM_INT
 		];
 	}
@@ -50,7 +57,8 @@ class Codes extends Model
 		return [
 			'content' => $this->getcontent(),
 			'date' => $this->getDate(),
-			'author' => $this->getAuthor()
+            'author' => $this->getAuthor(),
+            'codes' => $this->getCodes()
 		];
 	}
 
@@ -61,7 +69,7 @@ class Codes extends Model
   	public function asHTMLTableRowWithEdit($user){
 		$str = $this->strWithoutAuthor();
 		if($this->author===$user)
-			$str .= '</div><button id="buttonEdit" type="button" onclick="showForm()">edit Code</button>';
+			$str .= '</div><button id="buttonEditComment" type="button" onclick="showForm()">edit Code</button>';
 		else
 			$str.=$this->strAuthor();
         return $str;
