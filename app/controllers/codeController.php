@@ -8,22 +8,17 @@ class CodeController
     public function index(){
         $codes = Codes::fetchAll();
 
-        $code_added_success = 0; 
-
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            if (isset($_GET['updated']) &&  ctype_digit($_GET['updated']))
-                $code_added_success = $_GET['updated'];
-
-            $code_added_failure = "";
-
-            if (isset($_GET['delay_failed'])) 
-                $code_added_failure = "submission too fast";
-        }
+        $codeAddSuccess = "0"; 
+        $codeAddFailure = "";
+        if (isset($_SESSION['updated']) &&  ctype_digit($_SESSION['updated']))
+               $codeAddSuccess = $_SESSION['updated'];
+        else if ($_SERVER['REQUEST_METHOD'] === 'GET'&& isset($_GET['delay_failed'])) 
+            $codeAddFailure = "submission too fast";
 
         return Helper::view("showCodes",[
                 'codes' => $codes,
-                'code_added_success' => $code_added_success,
-                'code_added_failure' => $code_added_failure,
+                'codeAddSuccess' => $codeAddSuccess,
+                'codeAddFailure' => $codeAddFailure,
             ]);
     }
 
@@ -57,7 +52,8 @@ class CodeController
                 throw new Exception("Some data are missing...", 1);
             $code = Codes::fetchSomething($_POST["id"],"id");
             Logger::addLogEvent($_SESSION['user'].' updated: code number: '. $code->getId());
-            $path = App::get('config')['install_prefix'] . '/codes?updated=2';
+            $_SESSION['updated']="2";
+            $path = App::get('config')['install_prefix'] . '/codes';
             header("Location: /{$path}");
             exit();
         }
@@ -91,7 +87,8 @@ class CodeController
                    setcookie("code_per_min_counter", 1, time() + 60);
                 if ($allow_insert) {
                     $code->save();
-                    $path = App::get('config')['install_prefix'] . '/codes?updated=1';
+                    $_SESSION['updated']="1";
+                    $path = App::get('config')['install_prefix'] . '/codes';
                 }
                 else 
                    $path = App::get('config')['install_prefix'] . '/codes?delay_failed=1';

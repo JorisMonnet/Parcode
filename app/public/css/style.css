@@ -49,10 +49,6 @@
   padding-top:30px;
 }
 
-.success{
-  color: #ff0000;
-}
-
 body {
   min-width: 900px;
   font-family: Arial,Arial Black;
@@ -66,4 +62,16 @@ body {
   border-radius: 10px;
   text-align: center;
   margin-right : 95%;
+}
+.successMessage {
+  animation-name: anim_success;
+  animation-duration: 5s;
+  visibility:hidden;
+}
+
+@keyframes anim_success {
+    from {visibility:visible;
+      background-color:rgb(211, 211, 211);}
+    to {visibility:hidden;
+      background-color:rgb(211, 211, 211);}
 }

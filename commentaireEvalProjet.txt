@@ -1,10 +1,4 @@
 Recommandation de hacher le mdp. 
 --sera fait a la VERSION FINALE--
-TaskController : passer le message par la variable updated GET est possible, toutefois, plus sûr par la session, ce qui permettrait de généraliser. ParseUpdate() lui passe par redirect sémantique bien, et passe le message via GET aussi. 
---pas encore de solution--
 Save() : pas des question marks cf votre requête. 
 --pas encore regardé--
-Contrôle d’accès : un peu par accident quand vous faites le fetchId() vous contrôlez la session, 
-mais c’est plutôt dans les routes ou dans le contrôleur qu’il faudrait le faire : 
-d’autant plus que parseUpdate() lui ne vérifie pas que la tâche appartient à l’utilisateur (l’update() est fait avant le fetchId!). 
---pas encore fait--
