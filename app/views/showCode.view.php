@@ -1,6 +1,7 @@
 <?php
     $title = "Code page";
     require('partials/header.php');
+    $_SESSION['currentPage'] ="code";
 ?>
 
 <div class="main">

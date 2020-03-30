@@ -1,6 +1,7 @@
 <?php
     $title = "Codes page";
     require('partials/header.php');
+    $_SESSION['currentPage'] ="codes";
 ?>
 <div class="main">
 <main>
@@ -22,7 +23,7 @@
       ?>
     </div>
 
-    <a href="addCodes">Add Code</a>
+    <a href="addCode">Add Code</a>
     </form>
 </main>
 <br />

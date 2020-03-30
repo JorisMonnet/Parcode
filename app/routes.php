@@ -7,10 +7,11 @@ $router->define([
   'index.php' => 'IndexController',
   'codes' => 'CodeController',
   'code' => 'CodeController@show',
-  'addCodes' => 'CodeController@showAddView',
-  'parse_add_form' => 'CodeController@parseInput',
+  'addCode' => 'CodeController@showAddView',
+  'parse_add_form' => 'CodeController@parseAdd',
   'parse_update_form' => 'CodeController@parseUpdate',
   'delete_form' => 'CodeController@parseDelete',
   'login' => 'LoginController@login',
-  'logout' => 'LoginController@logout'
+  'logout' => 'LoginController@logout',
+  'loginPage' => 'LoginController@loginPage'
 ]);

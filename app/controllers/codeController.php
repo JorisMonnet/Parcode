@@ -64,15 +64,15 @@ class CodeController
     }
 
     public function showAddView(){
-        return Helper::view('addCodes');
+        return Helper::view('addCode');
     }
 
     public function showUpdateView(){
         return Helper::view('update_view');
     }
 
-    public function parseInput(){
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    public function parseAdd(){
+        if ($this->authorIsConnected()&&$_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['content'])) {
                 $code = new Codes;
                 $code->setContent($_POST['content']);
@@ -105,15 +105,21 @@ class CodeController
     }
 
     public function parseDelete(){
-      if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        if(isset($_POST['id'])&&ctype_digit($_POST['id'])
-            &&Codes::delete($_POST['id']))
-            Logger::addLogEvent($_SESSION['user'].' deleted code number'.$_POST['id'] );
-        else
-          throw new Exception("Code don't exist", 1);
-        $path = App::get('config')['install_prefix'];
-        header("Location: /{$path}");
-        exit();
-      }
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(isset($_POST['id'])&&ctype_digit($_POST['id'])
+                &&Codes::delete($_POST['id']))
+                Logger::addLogEvent($_SESSION['user'].' deleted code number'.$_POST['id'] );
+            else
+                throw new Exception("Code don't exist", 1);
+            $path = App::get('config')['install_prefix'];
+            header("Location: /{$path}");
+            exit();
+        }
+    }
+    public function authorIsConnected(){
+        if(isset($_SESSION['userid']))
+            return true;
+        require("app/views/login.view.php");
+        return false;
     }
 }

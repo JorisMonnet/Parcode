@@ -8,10 +8,11 @@
 </head>
 
 <body>
-	<?php
-	if(isset($_SESSION['user'])):?>
 	<div class="upperpage">
+	<?php if(isset($_SESSION['user'])):?>
 		Welcome <?= htmlentities($_SESSION['user']);	?>
 		<a href="logout">logout</a>
+	<?php else: ?>
+		<a href="loginPage">login</a>
+	<?php endif;?>
 	</div>
-	<?php endif; ?>

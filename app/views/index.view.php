@@ -1,8 +1,7 @@
 <?php
     $title = "Home";
     require('partials/header.php');
-    if(!isset($_SESSION['user']))
-      return require('login.view.php');
+    $_SESSION['currentPage'] ="index";
 ?>
 <div class="main">
  <h1>Home</h1>
