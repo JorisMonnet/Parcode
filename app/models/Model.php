@@ -99,5 +99,6 @@ abstract class Model{
       $statement = $dbh->prepare($req);
       $statement->bindParam(1, $id, PDO::PARAM_INT);
       $statement->execute();
+      return $statement->rowCount()!=0;
   }
 }
