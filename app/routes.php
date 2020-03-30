@@ -1,7 +1,6 @@
 <?php
 
 $router->define([
-  //'' => 'controllers/index.php',  // by conventions all controllers are in 'controllers' folder
   '' => 'IndexController',
   'index' => 'IndexController',
   'index.php' => 'IndexController',
@@ -13,5 +12,6 @@ $router->define([
   'delete_form' => 'CodeController@parseDelete',
   'login' => 'LoginController@login',
   'logout' => 'LoginController@logout',
-  'loginPage' => 'LoginController@loginPage'
+  'loginPage' => 'LoginController@loginPage',
+  'parseFormSort' => 'CodeController@parseSort'
 ]);

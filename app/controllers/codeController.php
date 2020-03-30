@@ -121,4 +121,13 @@ class CodeController
         require("app/views/login.view.php");
         return false;
     }
+    public function parseSort(){
+        if(isset($_POST['sort']))
+            $_SESSION['codeSort']=$_POST['sort'];
+        if(isset($_POST['order']))
+            $_SESSION['codeOrder']=$_POST['order'];
+        $path = App::get('config')['install_prefix']. '/codes';
+        header("Location: /{$path}");
+        exit();
+    }
 }

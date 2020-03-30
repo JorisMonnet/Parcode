@@ -13,6 +13,21 @@
         else
           echo "<p class='successMessage'>".$codeAddFailure."</p>";
     ?>
+    <label for="sort">Trier Par</label>
+    <form action="parseFormSort" method="post" name="formSort" id="formSort">
+      <select id="sortSelect" name="sort">
+        <option value="date">Date</option>
+        <option value="id">Id</option>
+        <option value="author">Author</option>
+      </select>
+      
+      <label for="order">Par Ordre</label>
+      <select id="orderSelect" name="order">
+        <option value="desc">Décroissant</option>
+        <option value="asc">Croissant</option>
+      </select>
+      <input type="submit" value="Submit">
+    </form>
     <div class="flex-container">
       <?php foreach ($codes as $code)
     	        echo $code->asHTMLTableRow();
