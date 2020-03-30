@@ -1,7 +1,7 @@
 <?php
     $title = "Code page";
     require('partials/header.php');
-    $_SESSION['currentPage'] ="code";
+    $_SESSION['currentPage'] ="codes";  //if we login here, we want the user to return to the codes page, if he want to add some
 ?>
 
 <div class="main">

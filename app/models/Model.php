@@ -78,15 +78,15 @@ abstract class Model{
       }
       $req .= " VALUES (";
       $i=0;
-      foreach ($param as $row => $binding) {
+      foreach ($param as $key => $value) {
         $i++;
-        $req.= ":".$row;
+        $req.= ":".$key;
         $i < (sizeof($param))? $req .= ", ":$req .= ")";
       }
 
       $statement = $dbh->prepare($req);
-      foreach ($param as $row => $binding) {
-        $statement->bindParam($row, $values[$row], $binding);
+      foreach ($param as $key => $value) {
+        $statement->bindParam($key, $values[$key], $value);
       }
       // prepared statement with question mark placeholders (marqueurs de positionnement)
       $statement->execute();

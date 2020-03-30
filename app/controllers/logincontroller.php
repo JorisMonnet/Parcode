@@ -20,8 +20,7 @@ class LoginController
     if($_SERVER['REQUEST_METHOD'] === 'POST')
     	if(isset($_POST['user']) && isset($_POST['pass'])){
 			$connection = User::fetchSomething($_POST['user'],"name",PDO::PARAM_STR,PDO::FETCH_ASSOC);
-			if(password_verify($_POST['pass'],$connection['pass']))
-			/*if($connection['pass'] === $pwd)*/ {
+			if(password_verify($_POST['pass'],$connection['pass'])){
 				$_SESSION['user'] = $_POST['user'];
 				$_SESSION['userid'] = $connection['id'];
 
