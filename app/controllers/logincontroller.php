@@ -5,7 +5,6 @@ require "core/Logger.php";
 
 class LoginController
 {
-
   public function logout(){
     Logger::addLogEvent($_SESSION['user'].' disconnected.');
     $_SESSION=array();
@@ -18,27 +17,26 @@ class LoginController
     return require('app/views/login.view.php');
   }
   public function login(){
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      if(isset($_POST['user']) && isset($_POST['pass'])){
-        $user = $_POST['user'];
-        $pwd = $_POST['pass'];
-        $connection = User::fetchSomething($user,"name",PDO::PARAM_STR,PDO::FETCH_ASSOC);
-        if($connection['pass'] === $pwd) {
-          $_SESSION['user'] = $user;
-          $_SESSION['userid'] = $connection['id'];
+    if($_SERVER['REQUEST_METHOD'] === 'POST')
+    	if(isset($_POST['user']) && isset($_POST['pass'])){
+			$connection = User::fetchSomething($_POST['user'],"name",PDO::PARAM_STR,PDO::FETCH_ASSOC);
+			if(password_verify($_POST['pass'],$connection['pass']))
+			/*if($connection['pass'] === $pwd)*/ {
+				$_SESSION['user'] = $_POST['user'];
+				$_SESSION['userid'] = $connection['id'];
 
-          Logger::addLogEvent($_SESSION['user'].' logged in');
+				Logger::addLogEvent($_SESSION['user'].' logged in');
 
-          $path = App::get('config')['install_prefix'];
-          header("Location: /{$path}/".$_SESSION['currentPage']);
-          exit();
-        } else {
-          Logger::addLogEvent('connection attempt: failed');
-          return require('app/views/login.view.php');
-        }
-      } else 
-        throw new Exception('user or password not set', 1);
-    } else 
-      throw new Exception('Bad server method', 1);
+				$path = App::get('config')['install_prefix'];
+				header("Location: /{$path}/".$_SESSION['currentPage']);
+				exit();
+			} else {
+				Logger::addLogEvent('connection attempt: failed');
+				return require('app/views/login.view.php');
+			}
+      	} else 
+        	throw new Exception('user or password not set', 1);
+    else 
+      	throw new Exception('Bad server method', 1);
   }
 }

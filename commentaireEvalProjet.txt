@@ -1,4 +1,2 @@
-Recommandation de hacher le mdp. 
---sera fait a la VERSION FINALE--
 Save() : pas des question marks cf votre requête. 
 --pas encore regardé--
