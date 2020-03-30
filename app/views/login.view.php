@@ -15,5 +15,5 @@
     <br> user not found <br>
     please try again <br>
   </div>
-<?php endif ?>
+<?php endif; ?>
 <?php require('partials/footer.php'); ?>
