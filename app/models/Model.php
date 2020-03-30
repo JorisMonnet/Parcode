@@ -88,7 +88,7 @@ abstract class Model{
       foreach ($param as $key => $value) {
         $statement->bindParam($key, $values[$key], $value);
       }
-      // prepared statement with question mark placeholders (marqueurs de positionnement)
+      // prepared statement with name placeholders 
       $statement->execute();
   }
 
