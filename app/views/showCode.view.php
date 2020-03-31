@@ -16,17 +16,20 @@
     <a href="codes">Show all codes</a>
   </p>
   <div id="hiddenForm">
-    <form action="parse_update_form" method="post">
+    <form action="updateForm" method="post">
       <p>This form allow you to edit the code</p>
       <textarea name="content" required><?= htmlentities($currentCode->getContent()); ?></textarea>
       <input type="hidden" name="id" value="<?= htmlentities($currentCode->getId()); ?>">
       <input type="submit" value="Submit">
     </form>
     </br>
-    <form action="delete_form" method="post">
+    <form action="deleteForm" method="post">
       <input type="hidden" name="id" value="<?= htmlentities($currentCode->getId()); ?>">
       <input type="submit" value="Delete Code">
     </form>
+    <?php if(isset($_SESSION['userid'])):?>
+        <a href="addComment">Add Comment</a>
+    <?php endif; ?>
   </div>
 </main>
 </div>

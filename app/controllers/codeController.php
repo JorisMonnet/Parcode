@@ -25,14 +25,12 @@ class CodeController
     }
 
     public function show(){
-        if(isset($_GET["id"]) && ctype_digit($_GET["id"])) {
+        if(isset($_GET["id"]) && ctype_digit($_GET["id"]))
             $code = Codes::fetchSomething($_GET["id"],"id");
-            if($code == null)
-                throw new Exception("CODE NOT FOUND.", 1);
-        }
         else 
             throw new Exception("CODE NOT FOUND.", 1);
-
+        if($code == null)
+            throw new Exception("CODE NOT FOUND.", 1);
         return Helper::view("showCode",[
                 'currentCode' => $code,
                 'user' => $_SESSION['userid']
@@ -77,17 +75,15 @@ class CodeController
                 $code->setAuthor($_SESSION['userid']);
                 $code->setDate(date('Y-m-d-H-i-s'));
 
-                $allow_insert = true;
-                if (isset($_COOKIE['code_per_min_counter'])){
-                  if ($_COOKIE['code_per_min_counter'] > 90){
-                    echo "set false";
-                    $allow_insert = false;
-                  }else
-                    setcookie("code_per_min_counter",$_COOKIE['code_per_min_counter'] + 1);
-                }
+                $allowInsert = true;
+                if (isset($_COOKIE['code_per_min_counter']))
+                    if ($_COOKIE['code_per_min_counter'] > 90)
+                        $allowInsert = false;
+                    else
+                        setcookie("code_per_min_counter",$_COOKIE['code_per_min_counter'] + 1);
                 else
                    setcookie("code_per_min_counter", 1, time() + 60);
-                if ($allow_insert) {
+                if ($allowInsert) {
                     $code->save();
                     $_SESSION['codeUpdated']="1";
                     $path = App::get('config')['install_prefix'] . '/codes';
