@@ -11,7 +11,11 @@
   <div class="flex-container">
     <?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
   </div>
-
+  <div class="commentContainer">
+    <?php foreach($comments as $comment)
+              $comment->show();
+    ?>
+  </div>
   <p>
     <a href="codes">Show all codes</a>
   </p>
