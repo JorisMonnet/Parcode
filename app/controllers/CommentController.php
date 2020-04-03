@@ -24,7 +24,7 @@ class CodeController
             ]);
     }*/
 
-    public function show(){
+    /*public function show(){
         if(isset($_GET["id"]) && ctype_digit($_GET["id"])) {
             $comment = Comments::fetchSomething($_GET["id"],"id");
             if($comment == null)
@@ -37,37 +37,31 @@ class CodeController
                 'currentComment' => $comment,
                 'user' => $_SESSION['userid']
             ]);
-    }
+    }*/
 
-    /*public function parseUpdate(){
+    public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(isset($_POST['id']) && isset($_POST['content']) && ctype_digit($_POST['id'])) {
+            if(isset($_POST['id']) && isset($_POST['content']) 
+                && isset($_SESSION['userid']) && ctype_digit($_SESSION['userid'])
+                && ctype_digit($_POST['id']) && isset($_POST['codesid'])
+                &&ctype_digit($_POST['codesid'])) {
                 $entry = [
                   'content' => $_POST['content'],
                   'date' => date('Y-m-d-H-i-s'),
                   'author' => $_SESSION['userid'],
-                  'comments' =>$_POST['commentd'],
+                  'codes' => $_POST['codesid'],
                   'id' => $_POST['id']
                 ];
                 Comments::update($entry);
             }
             else
                 throw new Exception("Some data are missing...", 1);
-            $comment = Comments::fetchSomething($_POST["id"],"id");
-            Logger::addLogEvent($_SESSION['user'].' updated: commment number: '. $comment->getId());
+            Logger::addLogEvent($_SESSION['user'].' updated: commment number: '. $_POST['id']);
             $_SESSION['commentUpdated']="2";
-            $path = App::get('config')['install_prefix'] . '/codes';
+            $path = App::get('config')['install_prefix'] . '/code?id='.$_POST['codesid'];
             header("Location: /{$path}");
             exit();
         }
-    }*/
-
-    /*public function showAddView(){
-        return Helper::view('addCode');
-    }*/
-
-    /*public function showUpdateView(){
-        return Helper::view('update_view');
     }
 
     public function parseAdd(){
@@ -116,12 +110,6 @@ class CodeController
             exit();
         }
     }
-    public function authorIsConnected(){
-        if(isset($_SESSION['userid']))
-            return true;
-        require("app/views/login.view.php");
-        return false;
-    }
     public function parseSort(){
         if(isset($_POST['sort']))
             $_SESSION['commentSort']=$_POST['sort'];
@@ -130,5 +118,5 @@ class CodeController
         $path = App::get('config')['install_prefix']. '/codes';
         header("Location: /{$path}");
         exit();
-    }*/
+    }
 }

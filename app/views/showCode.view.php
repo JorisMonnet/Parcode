@@ -17,6 +17,9 @@
     	        echo $comment->asHTMLTableRow();
       ?>
   </div>
+  <br>        <!--must be removed after some css-->
+  <?php if(isset($_SESSION['userid']))
+      echo '<a href="addComment">Add Comment</a>'?>
   <p>
     <a href="codes">Show all codes</a>
   </p>
@@ -27,14 +30,11 @@
       <input type="hidden" name="id" value="<?= htmlentities($currentCode->getId()); ?>">
       <input type="submit" value="Submit">
     </form>
-    </br>
+    </br>           <!--must be removed after some css-->
     <form action="deleteForm" method="post">
       <input type="hidden" name="id" value="<?= htmlentities($currentCode->getId()); ?>">
       <input type="submit" value="Delete Code">
     </form>
-    <?php if(isset($_SESSION['userid'])):?>
-        <a href="addComment">Add Comment</a>
-    <?php endif; ?>
   </div>
 </main>
 </div>
