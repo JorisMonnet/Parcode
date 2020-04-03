@@ -12,9 +12,10 @@
     <?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
   </div>
   <div class="commentContainer">
-    <?php foreach($comments as $comment)
-              $comment->asHTMLTableRow();
-    ?>
+      <?php 
+          foreach ($comments as $comment)
+    	        echo $comment->asHTMLTableRow();
+      ?>
   </div>
   <p>
     <a href="codes">Show all codes</a>

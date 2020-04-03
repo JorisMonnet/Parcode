@@ -26,4 +26,7 @@ CREATE TABLE Comments (
   content TEXT NOT NULL,
   codes int(11) REFERENCES Codes,
   PRIMARY KEY(id)
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO Comments(date,author, content, codes) VALUES 
+("1900-1-12 23:00:21",1,"yo premier commentaire",1);

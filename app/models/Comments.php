@@ -1,6 +1,6 @@
 <?php
 
-//require('Codes.php');
+require_once('Codes.php');
 /**
 * The Comments class
 */
@@ -70,7 +70,7 @@ class Comments extends Model
 		$statement = $dbh->prepare("select * from ".get_called_class()." WHERE codes= ? ORDER BY ".$sort." ".$order);
 		$statement->bindParam(1,$id,PDO::PARAM_INT);
 		$statement->execute();
-		return $statement->fetchAll(PDO::FETCH_CLASS, get_called_class());
+	return $statement->fetchAll(PDO::FETCH_CLASS, get_called_class());
 	}
   	public function asHTMLTableRowWithEdit($user){
 		$str = $this->strWithoutAuthor();
