@@ -5,7 +5,7 @@ require "core/Logger.php";
 
 class CodeController
 {
-    public function index(){
+    /*public function index(){
         $comments = Comments::fetchAll($_SESSION['commentSort']??"date",$_SESSION['commentOrder']??"DESC");
 
         $commentAddSuccess = "0"; 
@@ -22,7 +22,7 @@ class CodeController
                 'commentAddSuccess' => $commentAddSuccess,
                 'commentAddFailure' => $commentAddFailure,
             ]);
-    }
+    }*/
 
     public function show(){
         if(isset($_GET["id"]) && ctype_digit($_GET["id"])) {
@@ -39,7 +39,7 @@ class CodeController
             ]);
     }
 
-    public function parseUpdate(){
+    /*public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['id']) && isset($_POST['content']) && ctype_digit($_POST['id'])) {
                 $entry = [
@@ -60,13 +60,13 @@ class CodeController
             header("Location: /{$path}");
             exit();
         }
-    }
+    }*/
 
     /*public function showAddView(){
         return Helper::view('addCode');
     }*/
 
-    public function showUpdateView(){
+    /*public function showUpdateView(){
         return Helper::view('update_view');
     }
 
@@ -130,5 +130,5 @@ class CodeController
         $path = App::get('config')['install_prefix']. '/codes';
         header("Location: /{$path}");
         exit();
-    }
+    }*/
 }

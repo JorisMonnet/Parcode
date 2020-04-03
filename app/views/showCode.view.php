@@ -13,7 +13,7 @@
   </div>
   <div class="commentContainer">
     <?php foreach($comments as $comment)
-              $comment->show();
+              $comment->asHTMLTableRow();
     ?>
   </div>
   <p>
