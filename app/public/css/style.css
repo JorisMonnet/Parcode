@@ -75,11 +75,8 @@
 @keyframes anim_log {
     from {visibility:visible;
       background-color:lightgrey;}
-    to {background-color:;
-      visibility:hidden;}
+    to {visibility:hidden;}
 }
-
-
 
 .flex-container > div {
   margin: 10px;

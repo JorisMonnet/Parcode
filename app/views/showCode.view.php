@@ -18,11 +18,17 @@
       ?>
   </div>
   <br>        <!--must be removed after some css-->
-  <?php if(isset($_SESSION['userid']))
-      echo '<a href="addComment">Add Comment</a>'?>
+  <?php if(isset($_SESSION['userid'])):?>
+      <span>Add Comment</span>
   <p>
+    <form action = "addComment" method="post">
+      <textarea type="text" name="content" required></textarea>
+      <input type="hidden" name="codesid" value="<?= htmlentities($currentCode->getId()); ?>">
+      <input type="submit" class="button" value="Submit">
+    </form>
     <a href="codes">Show all codes</a>
   </p>
+  <?php endif;?>
   <div id="hiddenForm">
     <form action="updateForm" method="post">
       <p>This form allow you to edit the code</p>

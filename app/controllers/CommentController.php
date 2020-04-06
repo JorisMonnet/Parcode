@@ -1,9 +1,9 @@
 <?php
 
-require "app/models/Codes.php";
+require "app/models/Comments.php";
 require "core/Logger.php";
 
-class CodeController
+class CommentController
 {
     /*public function index(){
         $comments = Comments::fetchAll($_SESSION['commentSort']??"date",$_SESSION['commentOrder']??"DESC");
@@ -64,12 +64,12 @@ class CodeController
 
     public function parseAdd(){
         if ($this->authorIsConnected()&&$_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(isset($_POST['content'])&&isset($_POST['codesid'])) {
+            if(isset($_POST['content'])&&isset($_POST['codesid'])&&ctype_digit($_POST['codesid'])) {
                 $comment = new Comments;
                 $comment->setContent($_POST['content']);
                 $comment->setAuthor($_SESSION['userid']);
-                $commment->setDate(date('Y-m-d-H-i-s'));
-                $comment->setCodes($_SESSION['codeid']);
+                $comment->setDate(date('Y-m-d-H-i-s'));
+                $comment->setCodes($_POST['codesid']);
                 $allowInsert = true;
                 if (isset($_COOKIE['comment_per_min_counter'])){
                   if ($_COOKIE['comment_per_min_counter'] > 90){
@@ -111,5 +111,11 @@ class CodeController
         if(isset($_POST['order']))
             $_SESSION['commentOrder']=$_POST['order'];
         Helper::redirect(true);
+    }
+    public function authorIsConnected(){
+        if(isset($_SESSION['userid']))
+            return true;
+        require("app/views/login.view.php");
+        return false;
     }
 }
