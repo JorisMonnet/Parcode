@@ -66,7 +66,7 @@ class CodeController
 
     public function parseAdd(){
         if ($this->authorIsConnected()&&$_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(isset($_POST['content'])) {
+            if(isset($_POST['content'])&&isset($_POST['codesid'])) {
                 $comment = new Comments;
                 $comment->setContent($_POST['content']);
                 $comment->setAuthor($_SESSION['userid']);
@@ -83,9 +83,9 @@ class CodeController
                 else
                    setcookie("comment_per_min_counter", 1, time() + 60);
                 if ($allowInsert) {
-                    $code->save();
+                    $comment->save();
                     $_SESSION['commentUpdated']="1";
-                    $path = App::get('config')['install_prefix'] . '/codes';
+                    $path = App::get('config')['install_prefix'] . '/codes?id='.$_POST['codesid'];
                 }
                 else 
                    $path = App::get('config')['install_prefix'] . '/codes?delay_failed=1';
@@ -105,7 +105,7 @@ class CodeController
                 Logger::addLogEvent($_SESSION['user'].' deleted comment number'.$_POST['id'] );
             else
                 throw new Exception("Comment don't exist", 1);
-            $path = App::get('config')['install_prefix'];
+            $path = App::get('config')['install_prefix'].'/codes';//return to the good code !!
             header("Location: /{$path}");
             exit();
         }
