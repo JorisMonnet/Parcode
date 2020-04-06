@@ -8,11 +8,15 @@
 </head>
 
 <body>
-	<div class="upperpage">
-	<?php if(isset($_SESSION['userid'])):?>
-		Welcome <?= htmlentities($_SESSION['user']);	?>
-		<a href="logout">logout</a>
-	<?php else: ?>
-		<a href="loginPage">login</a>
+	<?php 
+	if ($title!="Login page"):?>
+		<div class="upperpage">
+
+		<?php if(isset($_SESSION['userid'])):?>
+			Welcome <?= htmlentities($_SESSION['user']);?>
+			<a href="logout">logout</a>
+		<?php else: ?>
+			<a href="loginPage">login</a>
+		<?php endif;?>
+		</div>
 	<?php endif;?>
-	</div>

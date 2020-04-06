@@ -26,7 +26,7 @@
         <option value="desc">Décroissant</option>
         <option value="asc">Croissant</option>
       </select>
-      <input type="submit" value="Submit">
+      <input type="submit" class="button" value="Submit">
     </form>
     <div class="flex-container">
       <?php foreach ($codes as $code)
