@@ -1,6 +1,8 @@
 <?php
     $title = "Home";
     require('partials/header.php');
+
+    // mieux dans le controleur, avec un redirect semantique.
     if(!isset($_SESSION['user']))
       return require('login.view.php');
 ?>

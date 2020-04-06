@@ -57,6 +57,10 @@ class CodeController
                 throw new Exception("Some data are missing...", 1);
             $code = Codes::fetchSomething($_POST["id"],"id");
             Logger::addLogEvent($_SESSION['user'].' updated: code number: '. $code->getId());
+            // utilisez la session pour passer des messages; affichez (avec echappement)
+            // ces messages dans le partial/header.php et effacez-les, c'est plus sur et
+            // generique.
+            // ca pourrait etre un helper, non? ces 3 lignes?
             $path = App::get('config')['install_prefix'] . '/codes?updated=2';
             header("Location: /{$path}");
             exit();
