@@ -9,9 +9,7 @@ class LoginController
     Logger::addLogEvent($_SESSION['user'].' disconnected.');
     $_SESSION=array();
     session_destroy();
-    $path = App::get('config')['install_prefix'];
-    header("Location: /{$path}/".$_SESSION['currentPage']);
-    exit();
+    Helper::redirectLogin();
   }
   public function loginPage(){
     return require('app/views/login.view.php');
@@ -25,10 +23,7 @@ class LoginController
 				$_SESSION['userid'] = $connection['id'];
 
 				Logger::addLogEvent($_SESSION['user'].' logged in');
-
-				$path = App::get('config')['install_prefix'];
-				header("Location: /{$path}/".$_SESSION['currentPage']);
-				exit();
+				Helper::redirectLogin();
 			} else {
 				Logger::addLogEvent('connection attempt: failed');
 				return require('app/views/login.view.php');

@@ -21,4 +21,14 @@ class Helper
                         // dans la table des symboles
       return require "app/views/{$name}.view.php";
   }
+  public static function redirect($redirectToCodes){
+      $path = App::get('config')['install_prefix'] . ($redirectToCodes?"/codes":"");
+      header("Location: /{$path}");
+      exit();
+  }
+  public static function redirectLogin(){
+      $path = App::get('config')['install_prefix'];
+			header("Location: /{$path}/".$_SESSION['currentPage']);
+			exit();
+  }
 }

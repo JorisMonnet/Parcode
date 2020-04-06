@@ -53,9 +53,7 @@ class CodeController
             $code = Codes::fetchSomething($_POST["id"],"id");
             Logger::addLogEvent($_SESSION['user'].' updated: code number: '. $code->getId());
             $_SESSION['codeUpdated']="2";
-            $path = App::get('config')['install_prefix'] . '/codes';
-            header("Location: /{$path}");
-            exit();
+            Helper::redirect(true);
         }
     }
 
@@ -106,9 +104,7 @@ class CodeController
                 Logger::addLogEvent($_SESSION['user'].' deleted code number'.$_POST['id'] );
             else
                 throw new Exception("Code don't exist", 1);
-            $path = App::get('config')['install_prefix'];
-            header("Location: /{$path}");
-            exit();
+                Helper::redirect(false);
         }
     }
     public function authorIsConnected(){
@@ -122,8 +118,6 @@ class CodeController
             $_SESSION['codeSort']=$_POST['sort'];
         if(isset($_POST['order']))
             $_SESSION['codeOrder']=$_POST['order'];
-        $path = App::get('config')['install_prefix']. '/codes';
-        header("Location: /{$path}");
-        exit();
+        Helper::redirect(true);
     }
 }
