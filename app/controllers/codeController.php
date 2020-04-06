@@ -1,6 +1,7 @@
 <?php
 
 require "app/models/Codes.php";
+require "app/models/Comments.php";
 require "core/Logger.php";
 
 class CodeController
@@ -25,15 +26,17 @@ class CodeController
     }
 
     public function show(){
-        if(isset($_GET["id"]) && ctype_digit($_GET["id"]))
+        if(isset($_GET["id"]) && ctype_digit($_GET["id"])){
             $code = Codes::fetchSomething($_GET["id"],"id");
-        else 
+            $comments = Comments::fetchAllComments("date","DESC",$code->getId());
+        } else 
             throw new Exception("CODE NOT FOUND.", 1);
         if($code == null)
             throw new Exception("CODE NOT FOUND.", 1);
         return Helper::view("showCode",[
                 'currentCode' => $code,
-                'user' => $_SESSION['userid']
+                'user' => $_SESSION['userid'],
+                'comments' => $comments
             ]);
     }
 

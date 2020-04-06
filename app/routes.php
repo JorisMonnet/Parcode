@@ -13,5 +13,8 @@ $router->define([
   'login' => 'LoginController@login',
   'logout' => 'LoginController@logout',
   'loginPage' => 'LoginController@loginPage',
-  'parseFormSort' => 'CodeController@parseSort'
+  'parseFormSort' => 'CodeController@parseSort',
+  'addComment' => 'CommentController@parseAdd',
+  'updateComment' => 'CommentController@parseUpdate',
+  'deleteComment' => 'CommentController@parseDelete'
 ]);

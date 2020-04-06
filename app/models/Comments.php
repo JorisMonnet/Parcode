@@ -1,6 +1,6 @@
 <?php
 
-require('Codes.php');
+require_once('Codes.php');
 /**
 * The Comments class
 */
@@ -65,7 +65,13 @@ class Comments extends Model
   	public function asHTMLTableRow(){
       	return $this->strWithoutAuthor().$this->strAuthor();
     }
-
+	public static function fetchAllComments($sort,$order,$id){
+		$dbh = App::get('dbh');
+		$statement = $dbh->prepare("select * from ".get_called_class()." WHERE codes= ? ORDER BY ".$sort." ".$order);
+		$statement->bindParam(1,$id,PDO::PARAM_INT);
+		$statement->execute();
+	return $statement->fetchAll(PDO::FETCH_CLASS, get_called_class());
+	}
   	public function asHTMLTableRowWithEdit($user){
 		$str = $this->strWithoutAuthor();
 		if($this->author===$user)
@@ -76,8 +82,8 @@ class Comments extends Model
 	}
 	private function strWithoutAuthor(){
 		$str = "<div>";
-		$str .= "<a href=\"code?id=".urlencode($this->id)."\">".htmlentities($this->id) ." </a><br><br>";
-		$str .= "<code>".nl2br(htmlentities($this->content))."</code><br><br>";
+		//$str .= "<a href=\"code?id=".urlencode($this->id)."\">".htmlentities($this->id) ." </a><br><br>";
+		$str .= htmlentities($this->content)."<br><br>";
 		$str .= date("j F Y H:i:s",strtotime($this->date))."<br>";
 		return $str;
 	}
