@@ -11,7 +11,7 @@
     </p>
     <form action = "addForm" method="post">
       <textarea type="text" name="content" required></textarea>
-      <input type="submit" value="Submit">
+      <input type="submit" class="button" value="Submit">
     </form>
     <p>
         <a href="codes">Show all codes</a>

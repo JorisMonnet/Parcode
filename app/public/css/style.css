@@ -16,26 +16,71 @@
   margin-right: 15px;
 }
 
+.login_elem{
+  text-align: center;
+}
+
 .log {
-  background: #e7ffff;
+  background: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 300px;
   margin: auto;
-  border-radius: 10px;
-  border-style: ridge;
-  box-shadow: 0px 2px 40px black;
+
 }
 .flex-container{
     display: flex;
     flex-direction: column;
 }
 
-#falseLog{
-  text-align: center;
+.button{
+  border-radius: 20px;
+  border-style: outset;
 }
+
+.input_text{
+  border-radius: 20px; 
+  border-style: groove; 
+  border-color: lightgrey;
+  color:white;
+}
+
+#logo_parcode{
+  width: 6em;
+  border-radius: 20px; 
+  border-style: outset; 
+  border-top-color: red; 
+  border-left-color: red;
+  border-bottom-color:grey;
+  border-right-color: grey;
+}
+
+
+#falseLog{
+  width: 250px;
+  margin: auto;
+  border-radius: 200px;
+  border-style: solid;
+  box-shadow: 0px 0px 1000px grey;
+  font-size:1em;
+  color:red;
+  text-align:center;
+    animation-name: anim_log;
+    animation-duration: 3s;
+   visibility:hidden;
+}
+
+@keyframes anim_log {
+    from {visibility:visible;
+      background-color:lightgrey;}
+    to {background-color:;
+      visibility:hidden;}
+}
+
+
+
 .flex-container > div {
   margin: 10px;
   background-color: #b3d9ff;
@@ -48,6 +93,11 @@
 .main{
   padding-top:30px;
 }
+
+.success{
+  color: #ff0000;
+}
+
 
 body {
   min-width: 900px;
@@ -74,4 +124,14 @@ body {
       color:green;}
     to {visibility:hidden;
       color:lightgreen;}
+}
+
+
+a {
+  border-radius: 20px;
+  border-style: outset;
+  border-color: lightgrey;
+  background-color: lightgrey;
+  text-decoration-color: lightgrey;
+  color :black;
 }
