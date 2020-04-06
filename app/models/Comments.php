@@ -4,7 +4,7 @@ require('Codes.php');
 /**
 * The Comments class
 */
-class Comments extends CodeCommentModel
+class Comments extends Model
 {
     // Attributes
 	private $content;

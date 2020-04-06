@@ -84,13 +84,11 @@ class CodeController
                 if ($allowInsert) {
                     $code->save();
                     $_SESSION['codeUpdated']="1";
-                    $path = App::get('config')['install_prefix'] . '/codes';
+                    Logger::addLogEvent($_SESSION['user'].' added code number"'.$_POST['id']);
+                    Helper::redirect(true);
                 }
                 else 
-                   $path = App::get('config')['install_prefix'] . '/codes?delay_failed=1';
-                Logger::addLogEvent($_SESSION['user'].' added code number"'.$_POST['id']);
-                header("Location: /{$path}");
-                exit();
+                   Helper::redirect(true,true);
             }
             else
             	throw new Exception("Content can't be empty.", 1);

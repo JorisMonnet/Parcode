@@ -21,8 +21,8 @@ class Helper
                         // dans la table des symboles
       return require "app/views/{$name}.view.php";
   }
-  public static function redirect($redirectToCodes){
-      $path = App::get('config')['install_prefix'] . ($redirectToCodes?"/codes":"");
+  public static function redirect($redirectToCodes,$isDelayFailed=false){
+      $path = App::get('config')['install_prefix'] . ($redirectToCodes?"/codes":"").($isDelayFailed?"?delay_failed=1":"");
       header("Location: /{$path}");
       exit();
   }
