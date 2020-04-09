@@ -74,9 +74,10 @@ class Comments extends Model
 	}
   	public function asHTMLTableRowWithEdit($user){
 		$str = $this->strWithoutAuthor();
-		if($this->author===$user)
-			$str .= '</div><button id="buttonEditComment" type="button" onclick="showForm()">edit Code</button>';
-		else
+		if($this->author===$user){
+			$str .= '<input type="hidden"  name="commentId" value="'.htmlentities($this->getId()).'"> ';
+			$str .= '</div><button class="button" type="button" onclick="showCommentForm()">edit Comment</button>';
+		} else
 			$str.=$this->strAuthor();
         return $str;
 	}

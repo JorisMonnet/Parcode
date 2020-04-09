@@ -1,7 +1,7 @@
 <?php
     $title = "Code page";
     require('partials/header.php');
-    $_SESSION['currentPage'] ="codes";  //if we login here, we want the user to return to the codes page, if he want to add some
+    $_SESSION['currentPage'] ="codes?id=".$currentCode->getId();  //if we login here, we want the user to return to the codes page, if he want to add some
 ?>
 
 <div class="main">
@@ -14,7 +14,7 @@
   <div class="commentContainer">
       <?php 
           foreach ($comments as $comment)
-    	        echo $comment->asHTMLTableRow();
+    	        echo $comment->asHTMLTableRowWithEdit($user);
       ?>
   </div>
   <br>        <!--must be removed after some css-->
@@ -26,6 +26,20 @@
       <input type="hidden" name="codesid" value="<?= htmlentities($currentCode->getId()); ?>">
       <input type="submit" class="button" value="Submit">
     </form>
+    <div id="hiddenCommentForm">
+    <form action="updateComment" method="post">
+      <p>This form allow you to edit the comment</p>
+      <textarea name="content" required><?= htmlentities($currentComment->getContent()); ?></textarea>
+      <input type="hidden"  name="id" value="<?= htmlentities($currentComment->getId()); ?>">
+      <input type="hidden" name="codesid" value="<?= htmlentities($currentCode->getId()); ?>">
+      <input type="submit" class="button" value="Submit">
+    </form>
+    </br>           <!--must be removed after some css-->
+    <form action="deleteCommentForm" method="post">
+      <input type="hidden" name="id" value="<?= htmlentities($currentComment->getId()); ?>">
+      <input type="submit" class="button" value="Delete Comment">
+    </form>
+  </div>
     <a href="codes">Show all codes</a>
   </p>
   <?php endif;?>

@@ -101,7 +101,7 @@ body {
   font-family: Arial,Arial Black;
 }
 
-#hiddenForm{
+#hiddenForm, #hiddenCommentForm{
   visibility: hidden;
 }
 
