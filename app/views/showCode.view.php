@@ -43,19 +43,6 @@
     <a href="codes">Show all codes</a>
   </p>
   <?php endif;?>
-  <div id="hiddenForm">
-    <form action="updateForm" method="post">
-      <p>This form allow you to edit the code</p>
-      <textarea name="content" required><?= htmlentities($currentCode->getContent()); ?></textarea>
-      <input type="hidden"  name="id" value="<?= htmlentities($currentCode->getId()); ?>">
-      <input type="submit" class="button" value="Submit">
-    </form>
-    </br>           <!--must be removed after some css-->
-    <form action="deleteForm" method="post">
-      <input type="hidden" name="id" value="<?= htmlentities($currentCode->getId()); ?>">
-      <input type="submit" class="button" value="Delete Code">
-    </form>
-  </div>
 </main>
 </div>
 

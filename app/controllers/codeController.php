@@ -39,7 +39,19 @@ class CodeController
                 'comments' => $comments
             ]);
     }
-
+    public function showEdit(){
+        if(isset($_GET["id"]) && ctype_digit($_GET["id"])){
+            $code = Codes::fetchSomething($_GET["id"],"id");
+            $comments = Comments::fetchAllComments("date","DESC",$code->getId());
+        } else 
+            throw new Exception("CODE NOT FOUND.", 1);
+        if($code == null)
+            throw new Exception("CODE NOT FOUND.", 1);
+        return Helper::view("showCodeEdit",[
+                'currentCode' => $code,
+                'user' => $_SESSION['userid']
+            ]);
+    }
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['id']) && isset($_POST['content']) && ctype_digit($_POST['id'])) {

@@ -32,7 +32,7 @@ class Codes extends Model
 	public function getAuthor(){
 		return $this->author;
 	}
-
+	
 	public function setAuthor($value){
 		$this->author = $value;
 	}
@@ -59,9 +59,13 @@ class Codes extends Model
     }
 
   	public function asHTMLTableRowWithEdit($user){
+		$str = "<div>";
+		//$str .= "<a href=\"code?id=".urlencode($this->id)."\">".htmlentities($this->id) ." </a><br><br>";
+		$str .= "<textarea><code><pre>".htmlentities($this->content)."</pre></code><br><br></textarea>";
+		$str .= date("j F Y H:i:s",strtotime($this->date))."<br>";
 		$str = $this->strWithoutAuthor();
 		if($this->author===$user)
-			$str .= '</div><button id="buttonEdit" type="button" onclick="showForm()">edit Code</button>';
+			$str .= "<a href=\"codeUpdate?id=".urlencode($this->id)."\"> Edit Code </a>";
 		else
 			$str.=$this->strAuthor();
         return $str;

@@ -16,5 +16,6 @@ $router->define([
   'parseFormSort' => 'CodeController@parseSort',
   'addComment' => 'CommentController@parseAdd',
   'updateComment' => 'CommentController@parseUpdate',
-  'deleteComment' => 'CommentController@parseDelete'
+  'deleteComment' => 'CommentController@parseDelete',
+  'codeUpdate' => 'CodeController@showEdit'
 ]);
