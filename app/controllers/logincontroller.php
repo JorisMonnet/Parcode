@@ -9,7 +9,7 @@ class LoginController
     Logger::addLogEvent($_SESSION['user'].' disconnected.');
     $_SESSION=array();
     session_destroy();
-    Helper::redirectCurrentPage();
+    Helper::redirectLogin();
   }
   public function loginPage(){
     return require('app/views/login.view.php');
@@ -23,7 +23,7 @@ class LoginController
 				$_SESSION['userid'] = $connection['id'];
 
 				Logger::addLogEvent($_SESSION['user'].' logged in');
-				Helper::redirectCurrentPage();
+				Helper::redirectLogin();
 			} else {
 				Logger::addLogEvent('connection attempt: failed');
 				return require('app/views/login.view.php');

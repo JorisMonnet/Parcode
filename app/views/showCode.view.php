@@ -1,7 +1,7 @@
 <?php
-    $title = "Code ".$currentCode->getId();
+    $title = "Code page";
     require('partials/header.php');
-    $_SESSION['currentPage'] ="code?id=".$currentCode->getId();
+    $_SESSION['currentPage'] ="codes?id=".$currentCode->getId();  //if we login here, we want the user to return to the codes page, if he want to add some
 ?>
 
 <div class="main">
@@ -11,34 +11,51 @@
   <div class="flex-container">
     <?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
   </div>
-  <a href="codes">Show all codes</a>
   <div class="commentContainer">
-      <?php foreach ($comments as $comment)
-    	        echo $comment->asHTMLTableRowWithEdit($user); ?>
+      <?php 
+          foreach ($comments as $comment)
+    	        echo $comment->asHTMLTableRowWithEdit($user);
+      ?>
   </div>
   <br>        <!--must be removed after some css-->
   <?php if(isset($_SESSION['userid'])):?>
-    <span>Leave a comment :</span>
-    <form class ="addComment" action = "addComment" method="post">
+      <span>Add Comment</span>
+  <p>
+    <form action = "addComment" method="post">
       <textarea type="text" name="content" required></textarea>
       <input type="hidden" name="codesid" value="<?= htmlentities($currentCode->getId()); ?>">
       <input type="submit" class="button" value="Submit">
     </form>
-    <?php if(isset($currentComment)):?>
-      <form action="updateComment" method="post">
-        <p>Edit the comment : </p>
-        <textarea name="content" required><?= htmlentities($currentComment->getContent()); ?></textarea>
-        <input type="hidden"  name="id" value="<?= htmlentities($currentComment->getId()); ?>">
-        <input type="hidden" name="codesid" value="<?= htmlentities($currentCode->getId()); ?>">
-        <input type="submit" class="button" value="Submit">
-      </form>
-      </br>           <!--must be removed after some css-->
-      <form action="deleteComment" method="post">
-        <input type="hidden" name="id" value="<?= htmlentities($currentComment->getId()); ?>">
-        <input type="submit" class="button" value="Delete Comment">
-      </form>
-    <?php endif;?>
+    <div id="hiddenCommentForm">
+    <form action="updateComment" method="post">
+      <p>This form allow you to edit the comment</p>
+      <textarea name="content" required><?= htmlentities($currentComment->getContent()); ?></textarea>
+      <input type="hidden"  name="id" value="<?= htmlentities($currentComment->getId()); ?>">
+      <input type="hidden" name="codesid" value="<?= htmlentities($currentCode->getId()); ?>">
+      <input type="submit" class="button" value="Submit">
+    </form>
+    </br>           <!--must be removed after some css-->
+    <form action="deleteCommentForm" method="post">
+      <input type="hidden" name="id" value="<?= htmlentities($currentComment->getId()); ?>">
+      <input type="submit" class="button" value="Delete Comment">
+    </form>
+  </div>
+    <a href="codes">Show all codes</a>
+  </p>
   <?php endif;?>
+  <div id="hiddenForm">
+    <form action="updateForm" method="post">
+      <p>This form allow you to edit the code</p>
+      <textarea name="content" required><?= htmlentities($currentCode->getContent()); ?></textarea>
+      <input type="hidden"  name="id" value="<?= htmlentities($currentCode->getId()); ?>">
+      <input type="submit" class="button" value="Submit">
+    </form>
+    </br>           <!--must be removed after some css-->
+    <form action="deleteForm" method="post">
+      <input type="hidden" name="id" value="<?= htmlentities($currentCode->getId()); ?>">
+      <input type="submit" class="button" value="Delete Code">
+    </form>
+  </div>
 </main>
 </div>
 
