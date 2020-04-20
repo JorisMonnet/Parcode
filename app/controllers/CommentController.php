@@ -1,44 +1,7 @@
 <?php
-
-require "app/models/Comments.php";
-require "core/Logger.php";
-
-class CommentController
+require_once("codeCommentController.php");
+class CommentController extends CodeCommentController
 {
-    /*public function index(){
-        $comments = Comments::fetchAll($_SESSION['commentSort']??"date",$_SESSION['commentOrder']??"DESC");
-
-        $commentAddSuccess = "0"; 
-        $commentAddFailure = "";
-        if (isset($_SESSION['commentUpdated']) &&  ctype_digit($_SESSION['commentUpdated'])){
-               $commentAddSuccess = $_SESSION['commentUpdated'];
-               $_SESSION['commentUpdated']="0";
-        }
-        else if ($_SERVER['REQUEST_METHOD'] === 'GET'&& isset($_GET['delay_failed'])) 
-            $commentAddFailure = "submission too fast";
-
-        return Helper::view("showCodes",[
-                'codes' => $codes,
-                'commentAddSuccess' => $commentAddSuccess,
-                'commentAddFailure' => $commentAddFailure,
-            ]);
-    }*/
-
-    /*public function show(){
-        if(isset($_GET["id"]) && ctype_digit($_GET["id"])) {
-            $comment = Comments::fetchSomething($_GET["id"],"id");
-            if($comment == null)
-                throw new Exception("COMMENT NOT FOUND.", 1);
-        }
-        else 
-            throw new Exception("COMMENT NOT FOUND.", 1);
-
-        return Helper::view("showComment",[
-                'currentComment' => $comment,
-                'user' => $_SESSION['userid']
-            ]);
-    }*/
-
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['id']) && isset($_POST['content']) 
@@ -110,11 +73,5 @@ class CommentController
         if(isset($_POST['order']))
             $_SESSION['commentOrder']=$_POST['order'];
         Helper::redirect(true);
-    }
-    public function authorIsConnected(){
-        if(isset($_SESSION['userid']))
-            return true;
-        require("app/views/login.view.php");
-        return false;
     }
 }

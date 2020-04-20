@@ -1,10 +1,6 @@
 <?php
-
-require "app/models/Codes.php";
-require "app/models/Comments.php";
-require "core/Logger.php";
-
-class CodeController
+require_once("codeCommentController.php");
+class CodeController extends CodeCommentController
 {
     public function index(){
         $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codeOrder']??"DESC");
@@ -120,12 +116,7 @@ class CodeController
                 Helper::redirect(false);
         }
     }
-    public function authorIsConnected(){
-        if(isset($_SESSION['userid']))
-            return true;
-        require("app/views/login.view.php");
-        return false;
-    }
+
     public function parseSort(){
         if(isset($_POST['sort']))
             $_SESSION['codeSort']=$_POST['sort'];
