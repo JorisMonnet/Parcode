@@ -1,7 +1,7 @@
 <?php
     $title = "Code page";
     require('partials/header.php');
-    $_SESSION['currentPage'] ="code?id=".$currentCode->getId(); //never go to this page directly
+    $_SESSION['currentPage'] ="code?id=".$currentCode->getId(); //never go to this page directly, only frome the code page
 ?>
 
 <div class="main">

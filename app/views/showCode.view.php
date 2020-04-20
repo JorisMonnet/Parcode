@@ -1,7 +1,7 @@
 <?php
     $title = "Code page";
     require('partials/header.php');
-    $_SESSION['currentPage'] ="code?id=".$currentCode->getId();  //if we login here, we want the user to return to the codes page, if he want to add some
+    $_SESSION['currentPage'] ="code?id=".$currentCode->getId();
 ?>
 
 <div class="main">
@@ -18,7 +18,7 @@
   </div>
   <br>        <!--must be removed after some css-->
   <?php if(isset($_SESSION['userid'])):?>
-    <span>Add Comment</span>
+    <span>Leave a comment :</span>
     <form class ="addComment" action = "addComment" method="post">
       <textarea type="text" name="content" required></textarea>
       <input type="hidden" name="codesid" value="<?= htmlentities($currentCode->getId()); ?>">
@@ -26,7 +26,7 @@
     </form>
     <div id="hiddenCommentForm">
       <form action="updateComment" method="post">
-        <p>This form allow you to edit the comment</p>
+        <p>Edit the comment : </p>
         <textarea name="content" required><?= htmlentities($currentComment->getContent()); ?></textarea>
         <input type="hidden"  name="id" value="<?= htmlentities($currentComment->getId()); ?>">
         <input type="hidden" name="codesid" value="<?= htmlentities($currentCode->getId()); ?>">
