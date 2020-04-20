@@ -57,16 +57,7 @@ class CommentController extends CodeCommentController
         }
     }
 
-    public function parseDelete(){
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            if(isset($_POST['id'])&&ctype_digit($_POST['id'])
-                &&Comments::delete($_POST['id']))
-                Logger::addLogEvent($_SESSION['user'].' deleted comment number'.$_POST['id'] );
-            else
-                throw new Exception("Comment don't exist", 1);
-            Helper::redirect(false);
-        }
-    }
+    
     public function parseSort(){
         if(isset($_POST['sort']))
             $_SESSION['commentSort']=$_POST['sort'];
