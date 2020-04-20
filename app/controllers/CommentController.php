@@ -84,11 +84,10 @@ class CommentController
                     $comment->save();
                     $_SESSION['commentUpdated']="1";
                     Logger::addLogEvent($_SESSION['user'].' added comment number"'.$_POST['id']);
-                    Helper::redirect(true);
-                    //$path = App::get('config')['install_prefix'] . '/codes?id='.$_POST['codesid']; to add to the redirect
+                    Helper::redirectCurrentPage();
                 }
                 else 
-                   Helper::redirect(true,true);
+                   Helper::redirectCurrentPage();
             }
             else
             	throw new Exception("Content can't be empty.", 1);
