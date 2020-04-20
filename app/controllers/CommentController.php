@@ -21,7 +21,7 @@ class CommentController extends CodeCommentController
                 throw new Exception("Some data are missing...", 1);
             Logger::addLogEvent($_SESSION['user'].' updated: commment number: '. $_POST['id']);
             $_SESSION['commentUpdated']="2";
-            Helper::redirect(true);
+            Helper::redirectCurrentPage();
         }
     }
 
@@ -64,7 +64,7 @@ class CommentController extends CodeCommentController
                 Logger::addLogEvent($_SESSION['user'].' deleted comment number'.$_POST['id'] );
             else
                 throw new Exception("Comment don't exist", 1);
-            Helper::redirect(false);
+            Helper::redirectCurrentPage();
         }
     }
     public function parseSort(){

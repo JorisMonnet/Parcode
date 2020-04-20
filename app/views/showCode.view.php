@@ -33,7 +33,7 @@
         <input type="submit" class="button" value="Submit">
       </form>
       </br>           <!--must be removed after some css-->
-      <form action="deleteCommentForm" method="post">
+      <form action="deleteComment" method="post">
         <input type="hidden" name="id" value="<?= htmlentities($currentComment->getId()); ?>">
         <input type="submit" class="button" value="Delete Comment">
       </form>
