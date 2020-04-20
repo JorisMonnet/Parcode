@@ -75,10 +75,6 @@ class CodeController extends CodeCommentController
         return Helper::view('addCode');
     }
 
-    public function showUpdateView(){
-        return Helper::view('update_view');
-    }
-
     public function parseAdd(){
         if ($this->authorIsConnected()&&$_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['content'])) {
