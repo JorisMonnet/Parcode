@@ -19,7 +19,7 @@
   <br>        <!--must be removed after some css-->
   <?php if(isset($_SESSION['userid'])):?>
     <span>Add Comment</span>
-    <form action = "addComment" method="post">
+    <form class ="addComment" action = "addComment" method="post">
       <textarea type="text" name="content" required></textarea>
       <input type="hidden" name="codesid" value="<?= htmlentities($currentCode->getId()); ?>">
       <input type="submit" class="button" value="Submit">
