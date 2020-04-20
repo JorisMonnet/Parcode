@@ -40,8 +40,10 @@ abstract class CodeCommentModel extends Model
 		$str = $this->strWithoutAuthor();
 		if($this->getAuthor()===$user)
             if(get_class($this)=="Comments"){
-                $str .= '<input type="hidden"  name="commentId" value="'.htmlentities($this->getId()).'"> ';
-                $str .= '</div><button class="button" type="button" onclick="showCommentForm()">Edit Comment</button>';
+				$str.='</div><form action='.$_SESSION['currentPage'].' method="post">
+                			<input type="hidden" name="idComment" value="'.$this->getId().'"">
+                			<input type="submit" class="button" value="Edit Comment">
+            			</form>';
             } else
                 $str .= "<br><a href=\"codeUpdate?id=".urlencode($this->getId())."\"> Edit Code </a>";
 		else

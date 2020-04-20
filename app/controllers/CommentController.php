@@ -7,7 +7,7 @@ class CommentController extends CodeCommentController
             if(isset($_POST['id']) && isset($_POST['content']) 
                 && isset($_SESSION['userid']) && ctype_digit($_SESSION['userid'])
                 && ctype_digit($_POST['id']) && isset($_POST['codesid'])
-                &&ctype_digit($_POST['codesid'])) {
+                && ctype_digit($_POST['codesid'])) {
                 $entry = [
                   'content' => $_POST['content'],
                   'date' => date('Y-m-d-H-i-s'),

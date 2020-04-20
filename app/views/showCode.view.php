@@ -1,5 +1,5 @@
 <?php
-    $title = "Code page";
+    $title = "Code ".$currentCode->getId();
     require('partials/header.php');
     $_SESSION['currentPage'] ="code?id=".$currentCode->getId();
 ?>
@@ -24,7 +24,7 @@
       <input type="hidden" name="codesid" value="<?= htmlentities($currentCode->getId()); ?>">
       <input type="submit" class="button" value="Submit">
     </form>
-    <div id="hiddenCommentForm">
+    <?php if(isset($currentComment)):?>
       <form action="updateComment" method="post">
         <p>Edit the comment : </p>
         <textarea name="content" required><?= htmlentities($currentComment->getContent()); ?></textarea>
@@ -37,7 +37,7 @@
         <input type="hidden" name="id" value="<?= htmlentities($currentComment->getId()); ?>">
         <input type="submit" class="button" value="Delete Comment">
       </form>
-    </div>
+    <?php endif;?>
   <?php endif;?>
 </main>
 </div>

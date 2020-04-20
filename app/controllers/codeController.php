@@ -22,6 +22,8 @@ class CodeController extends CodeCommentController
     }
 
     public function show(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST'&&ctype_digit($_POST['idComment'])&&isset($_POST['idComment']))
+            $currentComment = Comments::fetchSomething($_POST['idComment'],"id");
         if(isset($_GET["id"]) && ctype_digit($_GET["id"])){
             $code = Codes::fetchSomething($_GET["id"],"id");
             $comments = Comments::fetchAllComments("date","DESC",$code->getId());
@@ -32,7 +34,8 @@ class CodeController extends CodeCommentController
         return Helper::view("showCode",[
                 'currentCode' => $code,
                 'user' => $_SESSION['userid'],
-                'comments' => $comments
+                'comments' => $comments,
+                'currentComment' => $currentComment
             ]);
     }
     public function showEdit(){
