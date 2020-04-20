@@ -1,10 +1,6 @@
 <?php
-
-require "app/models/Codes.php";
-require "app/models/Comments.php";
-require "core/Logger.php";
-
-class CodeController
+require_once("codeCommentController.php");
+class CodeController extends CodeCommentController
 {
     public function index(){
         $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codeOrder']??"DESC");
@@ -26,6 +22,8 @@ class CodeController
     }
 
     public function show(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST'&&ctype_digit($_POST['idComment'])&&isset($_POST['idComment']))
+            $currentComment = Comments::fetchSomething($_POST['idComment'],"id");
         if(isset($_GET["id"]) && ctype_digit($_GET["id"])){
             $code = Codes::fetchSomething($_GET["id"],"id");
             $comments = Comments::fetchAllComments("date","DESC",$code->getId());
@@ -36,10 +34,23 @@ class CodeController
         return Helper::view("showCode",[
                 'currentCode' => $code,
                 'user' => $_SESSION['userid'],
-                'comments' => $comments
+                'comments' => $comments,
+                'currentComment' => $currentComment
             ]);
     }
-
+    public function showEdit(){
+        if(isset($_GET["id"]) && ctype_digit($_GET["id"])){
+            $code = Codes::fetchSomething($_GET["id"],"id");
+            $comments = Comments::fetchAllComments("date","DESC",$code->getId());
+        } else 
+            throw new Exception("CODE NOT FOUND.", 1);
+        if($code == null)
+            throw new Exception("CODE NOT FOUND.", 1);
+        return Helper::view("showCodeEdit",[
+                'currentCode' => $code,
+                'user' => $_SESSION['userid']
+            ]);
+    }
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['id']) && isset($_POST['content']) && ctype_digit($_POST['id'])) {
@@ -62,10 +73,6 @@ class CodeController
 
     public function showAddView(){
         return Helper::view('addCode');
-    }
-
-    public function showUpdateView(){
-        return Helper::view('update_view');
     }
 
     public function parseAdd(){
@@ -108,12 +115,7 @@ class CodeController
                 Helper::redirect(false);
         }
     }
-    public function authorIsConnected(){
-        if(isset($_SESSION['userid']))
-            return true;
-        require("app/views/login.view.php");
-        return false;
-    }
+
     public function parseSort(){
         if(isset($_POST['sort']))
             $_SESSION['codeSort']=$_POST['sort'];

@@ -132,3 +132,9 @@ a {
   text-decoration-color: lightgrey;
   color :black;
 }
+textarea {
+  width: max-content;
+  width: -webkit-max-content;
+  height: max-content;
+  height: -webkit-max-content;
+}

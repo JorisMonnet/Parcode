@@ -26,7 +26,7 @@ class Helper
       header("Location: /{$path}");
       exit();
   }
-  public static function redirectLogin(){
+  public static function redirectCurrentPage(){
       $path = App::get('config')['install_prefix'];
 			header("Location: /{$path}/".$_SESSION['currentPage']);
 			exit();

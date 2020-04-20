@@ -303,21 +303,6 @@
 [Mon, 30 Mar 2020 20:23:10] : admin added code number"
 [Mon, 30 Mar 2020 20:23:17] : admin added code number"
 [Mon, 30 Mar 2020 20:25:10] : admin added code number"
-<<<<<<< HEAD
-[Mon, 06 Apr 2020 13:34:10] : admin added code number"
-[Mon, 06 Apr 2020 13:34:26] : admin updated: code number: 4
-[Mon, 06 Apr 2020 13:34:44] : admin disconnected.
-[Mon, 06 Apr 2020 13:34:47] : admin logged in
-[Mon, 06 Apr 2020 13:34:49] : admin disconnected.
-[Mon, 06 Apr 2020 13:34:58] : admin logged in
-=======
-[Fri, 03 Apr 2020 14:09:12] : admin logged in
-[Fri, 03 Apr 2020 18:02:51] : admin logged in
-[Fri, 03 Apr 2020 18:02:54] : admin added code number"
-[Fri, 03 Apr 2020 18:04:35] : admin added code number"
-[Mon, 06 Apr 2020 12:24:54] : admin logged in
-[Mon, 06 Apr 2020 12:25:02] : admin added code number"
->>>>>>> comments
 [Mon, 06 Apr 2020 15:00:20] : connection attempt: failed
 [Mon, 06 Apr 2020 15:01:43] : connection attempt: failed
 [Mon, 06 Apr 2020 15:01:45] : connection attempt: failed
@@ -356,3 +341,41 @@
 [Mon, 06 Apr 2020 18:09:46] : admin added comment number"
 [Mon, 06 Apr 2020 18:09:57] : admin added comment number"
 [Mon, 06 Apr 2020 18:15:32] : admin updated: commment number: 3
+[Fri, 10 Apr 2020 00:05:23] : admin logged in
+[Fri, 10 Apr 2020 00:35:15] : admin deleted code number3
+[Fri, 10 Apr 2020 00:36:35] : admin updated: code number: 2
+[Fri, 10 Apr 2020 00:52:42] : admin logged in
+[Fri, 10 Apr 2020 01:03:34] : admin added comment number"
+[Fri, 10 Apr 2020 01:12:25] : admin updated: code number: 2
+[Fri, 10 Apr 2020 01:12:37] : admin updated: code number: 2
+[Mon, 20 Apr 2020 12:48:35] : admin logged in
+[Mon, 20 Apr 2020 12:48:52] : admin added comment number"
+[Mon, 20 Apr 2020 12:50:59] : admin disconnected.
+[Mon, 20 Apr 2020 12:51:12] : admin logged in
+[Mon, 20 Apr 2020 12:51:23] : admin updated: code number: 2
+[Mon, 20 Apr 2020 12:53:57] : admin added comment number"
+[Mon, 20 Apr 2020 13:35:57] : admin added comment number"
+[Mon, 20 Apr 2020 13:36:37] : admin added comment number"
+[Mon, 20 Apr 2020 13:36:44] : admin added comment number"
+[Mon, 20 Apr 2020 13:37:21] : admin added comment number"
+[Mon, 20 Apr 2020 13:37:44] : admin added comment number"
+[Mon, 20 Apr 2020 13:45:52] : admin added comment number"
+[Mon, 20 Apr 2020 13:45:58] : admin disconnected.
+[Mon, 20 Apr 2020 13:48:45] : admin logged in
+[Mon, 20 Apr 2020 13:48:52] : admin added comment number"
+[Mon, 20 Apr 2020 14:12:45] : admin updated: code number: 4
+[Mon, 20 Apr 2020 14:18:39] : admin added comment number"
+[Mon, 20 Apr 2020 14:19:14] : admin updated: code number: 2
+[Mon, 20 Apr 2020 14:30:25] : admin updated: code number: 2
+[Mon, 20 Apr 2020 14:31:03] : admin added comment number"
+[Mon, 20 Apr 2020 14:47:02] : admin disconnected.
+[Mon, 20 Apr 2020 15:13:37] : admin logged in
+[Mon, 20 Apr 2020 15:13:43] : admin deleted code number1
+[Mon, 20 Apr 2020 15:42:11] : admin deleted code number4
+[Mon, 20 Apr 2020 15:58:20] : admin added code number"
+[Mon, 20 Apr 2020 15:58:30] : admin added comment number"
+[Mon, 20 Apr 2020 16:40:38] : admin updated: commment number: 7
+[Mon, 20 Apr 2020 16:43:41] : admin updated: commment number: 18
+[Mon, 20 Apr 2020 16:46:27] : admin updated: commment number: 18
+[Mon, 20 Apr 2020 16:47:34] : admin updated: commment number: 18
+[Mon, 20 Apr 2020 16:48:37] : admin deleted comment number18
