@@ -1,4 +1,4 @@
-.upperpage {
+.upperpage{
   background-color: #b3b3b9;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -14,6 +14,19 @@
 .upperpage > a {
   float: right;
   margin-right: 15px;
+}
+
+.footer{
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  
+  background-color: #b3b3b9;
+
+  padding-top: 1%;
+  padding-bottom: 1%;
+  height:1%;
 }
 
 .login_elem{
