@@ -47,7 +47,7 @@ abstract class CodeCommentModel extends Model
             } else
                 $str .= "<br><a href=\"codeUpdate?id=".urlencode($this->getId())."\"> Edit Code </a>";
 		else
-			$str.=$this->strAuthor();
+			$str.="Authored by : ".$this->strAuthor();
         return $str;
 	}
 	private function strWithoutAuthor(){
