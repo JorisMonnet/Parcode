@@ -11,10 +11,13 @@
   <div class="flex-container">
     <?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
   </div>
+  <br>
   <a href="codes">Show all codes</a>
   <div class="commentContainer">
-      <?php foreach ($comments as $comment)
-    	        echo $comment->asHTMLTableRowWithEdit($user); ?>
+      <?php foreach ($comments as $comment){
+    	        echo $comment->asHTMLTableRowWithEdit($user); 
+              echo "<br>";
+              }?>
   </div>
   <br>        <!--must be removed after some css-->
   <?php if(isset($_SESSION['userid'])):?>

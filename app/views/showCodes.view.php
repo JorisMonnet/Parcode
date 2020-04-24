@@ -28,15 +28,19 @@
       </select>
       <input type="submit" class="button" value="Submit">
     </form>
-
-    <div class="flex-container">
-      <?php foreach ($codes as $code)
-    	        echo $code->asHTMLTableRow();
-      ?>
+    <br>
     </div class="setCentral">
     <?php if(isset($_SESSION['userid'])):?>
         <a href="addCode" class="setCentral">Add Code</a>
     <?php endif; ?>
+    <br>
+    <div class="flex-container">
+      <?php foreach ($codes as $code){
+    	        echo $code->asHTMLTableRow();
+              echo "<br>";
+              }
+      ?>
+    
     </form>
 </main>
 </div>

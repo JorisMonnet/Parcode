@@ -54,7 +54,7 @@ abstract class CodeCommentModel extends Model
         $str = "<div>";
         if(get_class($this)=="Codes")
 		    $str .= "<a href=\"code?id=".urlencode($this->getId())."\">".htmlentities($this->getId()) ." </a><br><br>";
-		$str .= "<code><pre>".htmlentities($this->getContent())."</pre></code><br><br>";
+		$str .= "<code><pre>".htmlentities($this->getContent())."</pre></code><hr>";
 		$str .= date("j F Y H:i:s",strtotime($this->getDate()))."<br>";
 		return $str;
 	}
