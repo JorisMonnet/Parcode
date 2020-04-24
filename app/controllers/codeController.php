@@ -82,6 +82,7 @@ class CodeController extends CodeCommentController
                 $code->setContent($_POST['content']);
                 $code->setAuthor($_SESSION['userid']);
                 $code->setDate(date('Y-m-d-H-i-s'));
+                $code->setGroups("grp");
 
                 $allowInsert = true;
                 if (isset($_COOKIE['code_per_min_counter']))

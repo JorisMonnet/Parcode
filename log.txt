@@ -379,3 +379,13 @@
 [Mon, 20 Apr 2020 16:46:27] : admin updated: commment number: 18
 [Mon, 20 Apr 2020 16:47:34] : admin updated: commment number: 18
 [Mon, 20 Apr 2020 16:48:37] : admin deleted comment number18
+[Fri, 24 Apr 2020 17:53:14] : connection attempt: failed
+[Fri, 24 Apr 2020 17:53:18] : admin logged in
+[Fri, 24 Apr 2020 18:10:43] : admin disconnected.
+[Fri, 24 Apr 2020 18:10:48] : connection attempt: failed
+[Fri, 24 Apr 2020 18:10:51] : admin logged in
+[Fri, 24 Apr 2020 18:11:07] : admin added code number"
+[Fri, 24 Apr 2020 18:11:38] : admin deleted comment number1
+[Fri, 24 Apr 2020 18:11:47] : admin added comment number"
+[Fri, 24 Apr 2020 18:13:04] : admin disconnected.
+[Fri, 24 Apr 2020 18:13:25] : admin logged in

@@ -78,6 +78,7 @@ abstract class Model{
 		// prepared statement with name placeholders 
 		$statement->execute();
 	}
+	
 	private static function saveForeach($isAfterValues,$param){
 		$i=0;
 		$req="";
