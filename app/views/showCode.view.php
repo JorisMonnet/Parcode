@@ -7,12 +7,12 @@
 <div class="main">
 <main>
   <h1>Selected Code</h1>
-
+  
   <div class="flex-container">
     <?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
   </div>
   <br>
-  <a href="codes">Show all codes</a>
+  <a href="codes">Show all codes</a> <br><br>
   <div class="commentContainer">
       <?php foreach ($comments as $comment){
     	        echo $comment->asHTMLTableRowWithEdit($user); 

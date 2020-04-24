@@ -12,7 +12,7 @@
   <input type="password" name="pass" id="password" class="input_text"><br>
   <input type="submit" class="button" value="submit">
   <p class="login_elem">
-    Fresh with us ?<br>
+  Fresh with us ?
   </p>
 </form>
 <?php if(Logger::lastLogEventisFalseLog()):?>

@@ -17,6 +17,7 @@
 }
 
 .footer{
+  border-radius: 10px;
   display: block;
   text-align: center;
   margin-left: auto;
@@ -179,19 +180,17 @@ a:hover, .button:hover /* Apparence au survol des liens et boutons */
 
 .addComment, textarea {
   display: grid;
-  margin-right: auto;
+  margin-right: 1%;
   margin-left: auto;
-  width: 100%;
+  width: 99%;
   min-height: 5em;
-  min-width: 100%;
+  min-width: 99%;
   resize: vertical;
 
   color : darkgrey;
   background-color: #2E4053;
   text-align: left;
   border-radius: 10px; 
-  min-height: 10em;
-  min-width: 100%;
 }
 
 hr{
