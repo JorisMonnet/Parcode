@@ -30,10 +30,6 @@
   margin: auto;
 
 }
-.flex-container{
-    display: flex;
-    flex-direction: column;
-}
 
 .button{
   border-radius: 20px;
@@ -77,14 +73,35 @@
       background-color:lightgrey;}
     to {visibility:hidden;}
 }
+/*
+.setFlexHorizon{
+  display: flex;
+  flex-direction: line;
+  margin-left: auto;
+  margin-right: auto;
+}*/
+
+
+pre{
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+}
+
+.flex-container{
+  display: flex;
+  flex-direction: column;
+}
 
 .flex-container > div {
-  margin: 10px;
+ 
+  display: flex;
+  flex-direction: column;
   background-color: #b3d9ff;
-  padding: 10px;
-  margin-right: 60%;
-  border-radius: 10px;
   text-align: left;
+  margin:5px;
+  border-radius: 10px; 
 }
 
 .main{
@@ -95,9 +112,15 @@
   color: #ff0000;
 }
 
+.setCentral{
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
 
 body {
-  min-width: 900px;
+  min-width: 50%;
   font-family: Arial,Arial Black;
 }
 
@@ -111,8 +134,14 @@ body {
   margin-right : 95%;
 }
 .successMessage {
+  width: 250px;
+  margin: auto;
+  border-radius: 200px;
+  border-style: solid;
+  font-size:1em;
+  text-align: center;
   animation-name: anim_success;
-  animation-duration: 4s;
+  animation-duration: 3s;
   visibility:hidden;
 }
 
@@ -120,7 +149,7 @@ body {
     from {visibility:visible;
       color:green;}
     to {visibility:hidden;
-      color:lightgreen;}
+      color:white;}
 }
 
 
@@ -131,7 +160,15 @@ a {
   background-color: lightgrey;
   text-decoration-color: lightgrey;
   color :black;
+  text-align: center;
 }
+
+a:hover /* Apparence au survol des liens */
+{
+   text-decoration: underline;
+   color: red;
+}
+
 textarea {
   width: max-content;
   width: -webkit-max-content;

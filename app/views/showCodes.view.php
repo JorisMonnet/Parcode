@@ -15,26 +15,27 @@
     ?>
     <label for="sort">Trier Par</label>
     <form action="parseFormSort" method="post" name="formSort" id="formSort">
-      <select id="sortSelect" name="sort">
+      <select id="sortSelect" name="sort" class="button">
         <option value="date">Date</option>
         <option value="id">Id</option>
         <option value="author">Author</option>
       </select>
       
       <label for="order">Par Ordre</label>
-      <select id="orderSelect" name="order">
+      <select id="orderSelect" name="order" class="button">
         <option value="desc">Décroissant</option>
         <option value="asc">Croissant</option>
       </select>
       <input type="submit" class="button" value="Submit">
     </form>
+
     <div class="flex-container">
       <?php foreach ($codes as $code)
     	        echo $code->asHTMLTableRow();
       ?>
-    </div>
+    </div class="setCentral">
     <?php if(isset($_SESSION['userid'])):?>
-        <a href="addCode">Add Code</a>
+        <a href="addCode" class="setCentral">Add Code</a>
     <?php endif; ?>
     </form>
 </main>
