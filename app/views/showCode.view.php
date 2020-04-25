@@ -12,7 +12,7 @@
     <?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
   </div>
   <br>
-  <a href="codes">Show all codes</a> <br><br>
+  <a href="codes" class="showRef">Show all codes</a> <br><br>
   <div class="commentContainer">
       <?php foreach ($comments as $comment){
     	        echo $comment->asHTMLTableRowWithEdit($user); 
