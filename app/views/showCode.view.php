@@ -6,18 +6,19 @@
 
 <div class="main">
 <main>
-  <h1>Selected Code</h1>
+  <h1 class="buttonEditCode">Selected Code</h1>
   
   <div class="flex-container">
     <?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
   </div>
   <br>
-  <a href="codes" class="showRef">Show all codes</a> <br><br>
+  <div class="buttonEditCode">
+  <a href="codes" class="showRef">Show all codes</a>
+  </div> <br><br>
   <div class="commentContainer">
-      <?php foreach ($comments as $comment){
+      <?php foreach ($comments as $comment)
     	        echo $comment->asHTMLTableRowWithEdit($user); 
-              echo "<br>";
-              }?>
+              ?>
   </div>
   <br>        <!--must be removed after some css-->
   <?php if(isset($_SESSION['userid'])):?>
@@ -28,7 +29,7 @@
       <input type="submit" class="button" value="Submit">
     </form>
     <?php if(isset($currentComment)):?>
-      <form action="updateComment" method="post">
+      <form action="updateComment" method="post" class="flex-container">
         <p>Edit the comment : </p>
         <textarea name="content" required><?= htmlentities($currentComment->getContent()); ?></textarea>
         <input type="hidden"  name="id" value="<?= htmlentities($currentComment->getId()); ?>">
@@ -36,7 +37,7 @@
         <input type="submit" class="button" value="Submit">
       </form>
       </br>           <!--must be removed after some css-->
-      <form action="deleteComment" method="post">
+      <form action="deleteComment" method="post" class="buttonEditCode">
         <input type="hidden" name="id" value="<?= htmlentities($currentComment->getId()); ?>">
         <input type="submit" class="button" value="Delete Comment">
       </form>

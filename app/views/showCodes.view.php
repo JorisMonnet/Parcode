@@ -31,7 +31,7 @@
     <br>
     </div class="setCentral">
     <?php if(isset($_SESSION['userid'])):?>
-        <a href="addCode" class="setCentral">Add Code</a>
+        <a href="addCode" class="buttonEditCode">Add Code</a>
     <?php endif; ?>
     <br>
     <div class="flex-container">

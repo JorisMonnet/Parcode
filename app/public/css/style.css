@@ -98,7 +98,7 @@ pre, textarea{
   flex-direction: column;
 }
 
-.flex-container > div {
+.flex-container > div,.commentContainer {
  
   display: flex;
   flex-direction: column;
@@ -119,12 +119,6 @@ pre, textarea{
 
 .success{
   color: #ff0000;
-}
-
-.setCentral{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 
