@@ -14,8 +14,11 @@
 			<?php if(isset($_SESSION['userid'])):?>
 				Welcome <?= htmlentities($_SESSION['user']);?>
 				<a href="logout">logout</a>
+				<a href="addCode">Add Code</a>
 			<?php else: ?>
 				<a href="loginPage">login</a>
 			<?php endif;?>
+			<a href="index">HOME</a>
+			<a href="codes">Codes</a>
 		</div>
 	<?php endif;?>
