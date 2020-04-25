@@ -72,6 +72,6 @@ class CommentController extends CodeCommentController
             $_SESSION['commentSort']=$_POST['sort'];
         if(isset($_POST['order']))
             $_SESSION['commentOrder']=$_POST['order'];
-        Helper::redirect(true);
+        Helper::redirectToCodes();
     }
 }

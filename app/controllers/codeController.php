@@ -31,7 +31,7 @@ class CodeController extends CodeCommentController
             throw new Exception("CODE NOT FOUND.", 1);
         if($code == null)
             throw new Exception("CODE NOT FOUND.", 1);
-            
+
         $entry=array('currentCode' => $code,'comments' => $comments);
         $entry+= array('user' =>$_SESSION['userid']??"");
         $entry+= array('currentComment' =>$currentComment??"");
@@ -68,7 +68,7 @@ class CodeController extends CodeCommentController
             $code = Codes::fetchSomething($_POST["id"],"id");
             Logger::addLogEvent($_SESSION['user'].' updated: code number: '. $code->getId());
             $_SESSION['codeUpdated']="2";
-            Helper::redirect(true);
+            Helper::redirectToCodes();
         }
     }
 
@@ -78,12 +78,12 @@ class CodeController extends CodeCommentController
 
     public function parseAdd(){
         if ($this->authorIsConnected()&&$_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(isset($_POST['content'])) {
+            if(isset($_POST['content'])&&isset($_POST['groups'])) {
                 $code = new Codes;
                 $code->setContent($_POST['content']);
                 $code->setAuthor($_SESSION['userid']);
                 $code->setDate(date('Y-m-d-H-i-s'));
-                $code->setGroups("grp");
+                $code->setGroups($_POST['groups']);
 
                 $allowInsert = true;
                 if (isset($_COOKIE['code_per_min_counter']))
@@ -97,10 +97,10 @@ class CodeController extends CodeCommentController
                     $code->save();
                     $_SESSION['codeUpdated']="1";
                     Logger::addLogEvent($_SESSION['user'].' added code number"'.$_POST['id']);
-                    Helper::redirect(true);
+                    Helper::redirectToCodes();
                 }
                 else 
-                   Helper::redirect(true,true);
+                   Helper::redirectToCodes(true);
             }
             else
             	throw new Exception("Content can't be empty.", 1);
@@ -114,7 +114,7 @@ class CodeController extends CodeCommentController
                 Logger::addLogEvent($_SESSION['user'].' deleted code number'.$_POST['id'] );
             else
                 throw new Exception("Code don't exist", 1);
-                Helper::redirect(false);
+                Helper::redirectToCodes();
         }
     }
 
@@ -123,6 +123,6 @@ class CodeController extends CodeCommentController
             $_SESSION['codeSort']=$_POST['sort'];
         if(isset($_POST['order']))
             $_SESSION['codeOrder']=$_POST['order'];
-        Helper::redirect(true);
+        Helper::redirectToCodes();
     }
 }
