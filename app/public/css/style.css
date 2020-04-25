@@ -3,7 +3,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 20px;
-  position:fixed;
+  position:sticky;
   top:0;
   left:0;
   right:0;
@@ -17,44 +17,44 @@
 }
 
 .footer{
-  border-radius: 10px;
-  display: block;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  
   background-color: #b3b3b9;
 
-  padding-top: 1%;
-  padding-bottom: 1%;
-  height:1%;
+  height:2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  bottom: 0; 
+  left: 0; 
+  right: 0
+  
+  display:flex;
+  text-align:center;
+  width: 100%;
 }
 
-.login_elem{
-  text-align: center;
-}
-
-.log {
-  background : #ECF0F1;
+#log {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  margin: auto;
-
+  text-align: center;
+  max-width: 70%;
+  margin:auto;
+  justify-content: all;
 }
-
-
 
 .input_text{
   border-radius: 20px; 
   border-style: groove; 
   border-color: lightgrey;
   color:black;
+  text-align: center;
+  align:center;
+
 }
 
 #logo_parcode{
+  display:block;
+  margin-right: auto;
+  margin-left: auto;
   width: 6em;
   border-radius: 20px; 
   border-style: outset; 
@@ -63,6 +63,7 @@
   border-bottom-color:grey;
   border-right-color: grey;
 }
+
 
 
 #falseLog{
@@ -154,7 +155,7 @@ body {
     from {visibility:visible;
       color:green;}
     to {visibility:hidden;
-      color:white;}
+      color:#ECF0F1;}
 }
 
 
@@ -169,7 +170,7 @@ a , .button{
   text-align: center;
 }
 
-a:hover, .button:hover /* Apparence au survol des liens et boutons */
+a:hover, .button:hover
 {
   text-decoration: underline;
   color: darkgrey;

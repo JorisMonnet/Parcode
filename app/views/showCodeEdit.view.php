@@ -26,5 +26,5 @@
         <a href="codes">Show all codes</a>
     </main>
 </div>
-
+<br>
 <?php require('partials/footer.php'); ?>

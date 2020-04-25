@@ -44,5 +44,5 @@
   <?php endif;?>
 </main>
 </div>
-
+<br>
 <?php require('partials/footer.php'); ?>
