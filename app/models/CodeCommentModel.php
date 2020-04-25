@@ -30,7 +30,7 @@ abstract class CodeCommentModel extends Model
 		$this->author = $value;
 	}
     public function asHTMLTableRow(){
-        return $this->strWithoutAuthor().$this->strAuthor();
+        return $this->strWithoutAuthor()."Authored by ".$this->strAuthor();
     }
     private function strAuthor(){
         $authorName = User::fetchSomething($this->getAuthor(),"id");
@@ -47,7 +47,7 @@ abstract class CodeCommentModel extends Model
             } else
                 $str .="<a href=\"codeUpdate?id=".urlencode($this->getId())."\" class='editRef'> Edit Code </a>";
 		else
-			$str.="Authored by : ".$this->strAuthor();
+			$str.=$this->strAuthor();
         return $str;
 	}
 	private function strWithoutAuthor(){
