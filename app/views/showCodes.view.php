@@ -29,7 +29,6 @@
       <input type="submit" class="button" value="Submit">
     </form>
     <br>
-    </div class="setCentral">
     <?php if(isset($_SESSION['userid'])):?>
         <a href="addCode" class="buttonEditCode">Add Code</a>
     <?php endif; ?>
