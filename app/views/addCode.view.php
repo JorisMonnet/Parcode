@@ -10,7 +10,11 @@
         The following form allow you to add a new code
     </p>
     <form action = "addForm" method="post" class="buttonEditCode">
+        <p>Code :</p>
       <textarea type="text" name="content" required></textarea>
+      <p>Groups :</p>
+      <input type="text" name="groups" required>
+      <br>
       <input type="submit" class="button" value="Submit">
     </form>
     <p class="buttonEditCode">

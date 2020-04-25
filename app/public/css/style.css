@@ -25,7 +25,7 @@
 
   bottom: 0; 
   left: 0; 
-  right: 0
+  right: 0;
   
   display:flex;
   text-align:center;
@@ -127,10 +127,6 @@ body {
   min-width: 50%;
   font-family: Arial,Arial Black;
   background-color: #ECF0F1;
-}
-
-#hiddenForm, #hiddenCommentForm{
-  visibility: hidden;
 }
 
 #buttonEdit{

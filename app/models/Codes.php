@@ -23,7 +23,7 @@ class Codes extends CodeCommentModel
 
 
 	public function setGroups($value){
-		$this->groups=value;
+		$this->groups=$value;
 	}
 	public function getGroups(){
 		return $this->groups;

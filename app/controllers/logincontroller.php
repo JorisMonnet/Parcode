@@ -6,9 +6,11 @@ require "core/Logger.php";
 class LoginController
 {
   public function logout(){
-    Logger::addLogEvent($_SESSION['user'].' disconnected.');
+	Logger::addLogEvent($_SESSION['user'].' disconnected.');
+	$currentPage = $_SESSION['currentPage']; //we keep the varoable before erasing the session to redirect to the good page
     $_SESSION=array();
-    session_destroy();
+	session_destroy();
+	$_SESSION['currentPage']=$currentPage;
     Helper::redirectCurrentPage();
   }
   public function loginPage(){

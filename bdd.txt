@@ -15,6 +15,7 @@ CREATE TABLE Codes (
   date DATETIME NOT NULL,
   author int REFERENCES User,
   content TEXT NOT NULL,
+  groups TEXT NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

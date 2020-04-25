@@ -13,6 +13,7 @@
                     <p>This form allow you to edit the code</p>
                     <textarea name="content" required><?= htmlentities($currentCode->getContent()); ?>  </textarea>
                     <input type="hidden"  name="id" value="<?= htmlentities($currentCode->getId()); ?>">
+                    <input type="text" name="codes" value="<?= htmlentities($currentCode->getCodes()); ?>">
                     <input type="submit" class="button" value="Submit">
                 </form>
                 </br>           <!--must be removed after some css-->

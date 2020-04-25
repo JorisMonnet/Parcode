@@ -31,12 +31,11 @@ class CodeController extends CodeCommentController
             throw new Exception("CODE NOT FOUND.", 1);
         if($code == null)
             throw new Exception("CODE NOT FOUND.", 1);
-        return Helper::view("showCode",[
-                'currentCode' => $code,
-                'user' => $_SESSION['userid'],
-                'comments' => $comments,
-                'currentComment' => $currentComment
-            ]);
+            
+        $entry=array('currentCode' => $code,'comments' => $comments);
+        $entry+= array('user' =>$_SESSION['userid']??"");
+        $entry+= array('currentComment' =>$currentComment??"");
+        return Helper::view("showCode",$entry);
     }
     public function showEdit(){
         if(isset($_GET["id"]) && ctype_digit($_GET["id"])){
@@ -53,12 +52,14 @@ class CodeController extends CodeCommentController
     }
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(isset($_POST['id']) && isset($_POST['content']) && ctype_digit($_POST['id'])) {
+            if(isset($_POST['id']) && isset($_POST['content']) 
+            && ctype_digit($_POST['id']) && isset($_POST['groups'])){
                 $entry = [
                   'content' => $_POST['content'],
                   'date' => date('Y-m-d-H-i-s'),
                   'author' => $_SESSION['userid'],
-                  'id' => $_POST['id']
+                  'id' => $_POST['id'],
+                  'groups' =>$_POST['groups']
                 ];
                 Codes::update($entry);
             }

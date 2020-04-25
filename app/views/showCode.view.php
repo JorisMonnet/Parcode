@@ -6,7 +6,7 @@
 
 <div class="main">
 <main>
-  <h1 class="buttonEditCode">Selected Code</h1>
+  <h1 class="buttonEditCode">Code <?= htmlentities($currentCode->getId()); ?></h1>
   
   <div class="flex-container">
     <?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
@@ -28,7 +28,7 @@
       <input type="hidden" name="codesid" value="<?= htmlentities($currentCode->getId()); ?>">
       <input type="submit" class="button" value="Submit">
     </form>
-    <?php if(isset($currentComment)):?>
+    <?php if(isset($currentComment)&&$currentComment!==""):?>
       <form action="updateComment" method="post" class="flex-container">
         <p>Edit the comment : </p>
         <textarea name="content" required><?= htmlentities($currentComment->getContent()); ?></textarea>
