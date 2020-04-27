@@ -28,7 +28,7 @@
   text-align:center;
 }
 
-#log {
+.logForm{
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -36,7 +36,12 @@
   margin:auto;
   justify-content: all;
 }
-
+.logCancel,#signUpButton{
+  display: flex;
+  flex-direction: column;
+  margin:auto;
+  max-width: 10%;
+}
 .input_text{
   border-radius: 20px; 
   border-style: groove; 

@@ -18,5 +18,8 @@ $router->define([
   'updateComment' => 'CommentController@parseUpdate',
   'deleteComment' => 'CommentController@parseDelete',
   'codeUpdate' => 'CodeController@showEdit',
-  'loginCancel' => 'LoginController@cancel'
+  'loginCancel' => 'LoginController@cancel',
+  'showSignUp' => 'LoginController@showSignUp',
+  'signUpCancel' => 'LoginController@loginPage',
+  'signUp' => 'LoginController@signUp'
 ]);
