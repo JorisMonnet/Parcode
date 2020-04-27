@@ -35,4 +35,8 @@ class LoginController
     else 
       	throw new Exception('Bad server method', 1);
   }
+  public function Cancel(){
+    if($_SERVER['REQUEST_METHOD'] === 'POST')
+	  return Helper::redirectCurrentPage();
+  }
 }

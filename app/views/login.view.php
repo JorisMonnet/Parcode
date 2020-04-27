@@ -15,6 +15,9 @@
   Fresh with us ?
   </p>
 </form>
+<form id="logCancel" action="loginCancel" method="post">
+  <input type="submit" class="button" value="Cancel">
+</form>
 <?php if(Logger::lastLogEventisFalseLog()):?>
   <div id = "falseLog">
     user not found <br>
