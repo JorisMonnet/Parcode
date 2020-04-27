@@ -47,19 +47,36 @@ class LoginController
 		if(isset($_POST['user']) && isset($_POST['pass'])&&isset($_POST['confirmedPassword']))
 			if($_POST['confirmedPassword']===$_POST['pass']){
 				$connection = User::fetchSomething($_POST['user'],"name",PDO::PARAM_STR,PDO::FETCH_ASSOC);
-				if(isset($connection))
-					if(password_verify($_POST['pass'],$connection['pass'])){
-						$_SESSION['badSignUp']="User already registered !";
-						return require('app/views/signUp.view.php');
+				//allow two user to have the same name but not the same pass and username
+				if(isset($connection)&&password_verify($_POST['pass'],$connection['pass'])){
+					$_SESSION['badSignUp']="User already registered !";
+					return require('app/views/signUp.view.php');
+				} else {
+					$user = new User();
+					$user->setName($_POST['user']);
+					$user->setPass(password_hash($_POST['pass'],PASSWORD_DEFAULT));
+
+					$allowInsert = true;
+					if (isset($_COOKIE['user_per_min_counter']))
+						if ($_COOKIE['user_per_min_counter'] > 90)
+							$allowInsert = false;
+						else
+							setcookie("user_per_min_counter",$_COOKIE['user_per_min_counter'] + 1);
+					else
+						setcookie("user_per_min_counter", 1, time() + 60);
+					if ($allowInsert){
+						$user->save();
+						Logger::addLogEvent('New User Registered :'.$_POST['user']);
+						return require('app/views/login.view.php');
 					} else {
-						/*Logger::addLogEvent('connection attempt: failed');
-						return require('app/views/login.view.php');*/
+						$_SESSION['badSignUp']="Too fast attempts";
+						return require('app/views/signUp.view.php');
 					}
+				}
 			}else{
 				$_SESSION['badSignUp']="Bad Password Confirmation";
 				return require('app/views/signUp.view.php');
 			}
-
 		else 
 			throw new Exception('user or password or confirmed Password not set', 1);
 	else 
