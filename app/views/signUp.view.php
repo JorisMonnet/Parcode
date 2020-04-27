@@ -17,4 +17,10 @@
 <form class="logCancel" action="signUpCancel" method="post">
   <input type="submit" class="button" value="Cancel">
 </form><br>
-<?php require("partials/footer.php");?>
+
+<?php if(isset($_SESSION['badSignUp'])):?>
+<div id = "falseLog">
+  <?php echo $_SESSION['badSignUp'];unset($_SESSION['badSignUp']);?><br>
+  Please try again <br>
+</div>
+<?php  endif; require("partials/footer.php");?>
