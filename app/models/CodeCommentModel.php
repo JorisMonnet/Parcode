@@ -45,7 +45,7 @@ abstract class CodeCommentModel extends Model
                 			<input type="submit" class="button" value="Edit Comment">
                             </form>';
             } else
-                $str .="<a href=\"codeUpdate?id=".urlencode($this->getId())."\" class='editRef'> Edit Code </a>";
+                $str .='<a href="codeUpdate?id='.urlencode($this->getId()).'" class="editRef"> Edit Code </a>';
 		else
 			$str.=$this->strAuthor();
         return $str;
@@ -53,7 +53,7 @@ abstract class CodeCommentModel extends Model
 	private function strWithoutAuthor(){
         $str = "<div>";
         if(get_class($this)=="Codes")
-		    $str .= "<a href=\"code?id=".urlencode($this->getId())."\">".htmlentities($this->getId()) ." </a><br><br>";
+		    $str .= '<a href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId()) ." </a><br><br>";
 		$str .= "<code><pre>".htmlentities($this->getContent())."</pre></code><hr>";
 		$str .= date("j F Y H:i:s",strtotime($this->getDate()))."<br>";
 		return $str;
