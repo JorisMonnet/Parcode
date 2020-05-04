@@ -108,13 +108,20 @@ class CodeController extends CodeCommentController
     }
 
     public function parseDelete(){
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            if(isset($_POST['id'])&&ctype_digit($_POST['id'])
-                &&Codes::delete($_POST['id']))
-                Logger::addLogEvent($_SESSION['user'].' deleted code number : '.$_POST['id'] );
-            else
+        if($_SERVER['REQUEST_METHOD'] === 'GET'){
+            if(isset($_GET['id'])&&ctype_digit($_GET['id'])){
+                $code = Codes::fetchSomething($_GET['id'],"id");
+                if(!isset($_SESSION['userid'])||$_SESSION['userid']!==$code->getAuthor()){
+                    Helper::view("login");
+                    exit();
+                }
+                else if(Codes::delete($_GET['id']))
+                    Logger::addLogEvent($_SESSION['userid'].' deleted code number : '.$_GET['id'] );
+                else
+                throw new Exception("Code don't exist", 1);                  
+            } else
                 throw new Exception("Code don't exist", 1);
-                Helper::redirectToCodes();
+            Helper::redirectToCodes();
         }
     }
 

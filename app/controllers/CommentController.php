@@ -25,7 +25,7 @@ class CommentController extends CodeCommentController
     }
 
     public function parseAdd(){
-        if ($this->authorIsConnected()&&$_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['content'])&&isset($_POST['codesid'])&&ctype_digit($_POST['codesid'])) {
                 $comment = new Comments();
                 $comment->setContent($_POST['content']);

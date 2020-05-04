@@ -15,10 +15,7 @@ $_SESSION['currentPage'] ="code?id=".$currentCode->getId(); //never go to this p
             <input type="submit" class="button" value="Submit">
         </form>
         </br>           <!--must be removed after some css-->
-        <form action="deleteForm" method="post" class="buttonEditCode">
-            <input type="hidden" name="id" value="<?=htmlentities($currentCode->getId()); ?>">
-            <input type="submit" class="button" value="Delete Code">
-        </form>
+        <a href="deleteCode?id=<?= htmlentities($currentCode->getId()); ?>">Delete Code</a>
         <br>
         <?php echo "<a href=code?id=".$currentCode->getId()."   class='discard'>Discard all changes</a>";
     endif;?>
