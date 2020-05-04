@@ -66,7 +66,7 @@ class CodeController extends CodeCommentController
             else
                 throw new Exception("Some data are missing...", 1);
             $code = Codes::fetchSomething($_POST["id"],"id");
-            Logger::addLogEvent($_SESSION['user'].' updated: code number: '. $code->getId());
+            Logger::addLogEvent($_SESSION['user'].' updated code number : '. $code->getId());
             $_SESSION['codeUpdated']="2";
             Helper::redirectToCodes();
         }
@@ -96,7 +96,7 @@ class CodeController extends CodeCommentController
                 if ($allowInsert) {
                     $code->save();
                     $_SESSION['codeUpdated']="1";
-                    Logger::addLogEvent($_SESSION['user'].' added code number"'.$_POST['id']);
+                    Logger::addLogEvent($_SESSION['user'].' added code number '.$code->getId());
                     Helper::redirectToCodes();
                 }
                 else 
@@ -111,7 +111,7 @@ class CodeController extends CodeCommentController
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(isset($_POST['id'])&&ctype_digit($_POST['id'])
                 &&Codes::delete($_POST['id']))
-                Logger::addLogEvent($_SESSION['user'].' deleted code number'.$_POST['id'] );
+                Logger::addLogEvent($_SESSION['user'].' deleted code number : '.$_POST['id'] );
             else
                 throw new Exception("Code don't exist", 1);
                 Helper::redirectToCodes();

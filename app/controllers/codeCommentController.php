@@ -12,7 +12,7 @@ abstract class CodeCommentController
     public function authorIsConnected(){
         if(isset($_SESSION['userid']))
             return true;
-        require("app/views/login.view.php");
-        return false;
+        Helper::view("login");
+        exit();
     }
 }

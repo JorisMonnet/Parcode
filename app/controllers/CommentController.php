@@ -19,8 +19,7 @@ class CommentController extends CodeCommentController
             }
             else
                 throw new Exception("Some data are missing...", 1);
-            Logger::addLogEvent($_SESSION['user'].' updated: commment number: '. $_POST['id']);
-            $_SESSION['commentUpdated']="2";
+            Logger::addLogEvent($_SESSION['user'].' updated commment number: '. $_POST['id']);
             Helper::redirectCurrentPage();
         }
     }
@@ -28,7 +27,7 @@ class CommentController extends CodeCommentController
     public function parseAdd(){
         if ($this->authorIsConnected()&&$_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['content'])&&isset($_POST['codesid'])&&ctype_digit($_POST['codesid'])) {
-                $comment = new Comments;
+                $comment = new Comments();
                 $comment->setContent($_POST['content']);
                 $comment->setAuthor($_SESSION['userid']);
                 $comment->setDate(date('Y-m-d-H-i-s'));
@@ -45,8 +44,7 @@ class CommentController extends CodeCommentController
                    setcookie("comment_per_min_counter", 1, time() + 60);
                 if ($allowInsert) {
                     $comment->save();
-                    $_SESSION['commentUpdated']="1";
-                    Logger::addLogEvent($_SESSION['user'].' added comment number"'.$_POST['id']);
+                    Logger::addLogEvent($_SESSION['user'].' added comment number '.$comment->getId());
                     Helper::redirectCurrentPage();
                 }
                 else 
@@ -61,7 +59,7 @@ class CommentController extends CodeCommentController
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(isset($_POST['id'])&&ctype_digit($_POST['id'])
                 &&Comments::delete($_POST['id']))
-                Logger::addLogEvent($_SESSION['user'].' deleted comment number'.$_POST['id'] );
+                Logger::addLogEvent($_SESSION['user'].' deleted comment number '.$_POST['id'] );
             else
                 throw new Exception("Comment don't exist", 1);
             Helper::redirectCurrentPage();

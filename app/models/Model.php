@@ -69,23 +69,15 @@ abstract class Model{
 		$values = $this->getAttributes();
 		$param = get_called_class()::getParam();
 		unset($param['id']);
-		$req = "INSERT INTO ". get_called_class() ."(";		
-		$req.=Model::saveParam(false,$param).") VALUES (";
-		$req.=Model::saveParam(true,$param).")";
+		$req = "INSERT INTO ". get_called_class() ."(";
+		$req.=join(",",array_map(null,array_keys($param))).") VALUES (";
+		$req.=join(",",array_map(function($key){return ":".$key;},array_keys($param))).")";
 		$statement = $dbh->prepare($req);
 		foreach ($param as $key => $value)
 			$statement->bindParam($key, $values[$key], $value);
 		// prepared statement with name placeholders 
 		$statement->execute();
 	}
-	
-	private static function saveParam($isAfterValues,$param){
-		$func=function($value){
-			global $isAfterValues;
-			return ($isAfterValues?":":"").$value;};
-		return join(",",array_map($func,array_keys($param)));
-	}
-
 	public static function delete($id){
 		$dbh = App::get('dbh');
 		$req = "DELETE FROM ". get_called_class(). " WHERE id = ?";
