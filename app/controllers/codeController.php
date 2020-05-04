@@ -38,7 +38,7 @@ class CodeController extends CodeCommentController
         return Helper::view("showCode",$entry);
     }
     public function showEdit(){
-        if(isset($_GET["id"]) && ctype_digit($_GET["id"])){
+        if(isset($_GET["id"]) && ctype_digit($_GET["id"])&&$this->authorIsConnected()){
             $code = Codes::fetchSomething($_GET["id"],"id");
             $comments = Comments::fetchAllComments("date","DESC",$code->getId());
         } else 
