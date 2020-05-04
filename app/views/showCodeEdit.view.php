@@ -24,7 +24,6 @@ $_SESSION['currentPage'] ="code?id=".$currentCode->getId(); //never go to this p
     endif;?>
     <br><br>  <!--must be removed after some css-->
     <a href="codes" class="showRef">Show all codes</a>
-    </div>
 </main>
 <br>
 <?php require('partials/footer.php'); ?>
