@@ -55,11 +55,8 @@ abstract class Model{
 		$entry['id'] = $id;
 
 		$statement = $dbh->prepare($req);
-		foreach ($param as $row => $binding) {
-			//echo "<br>bindParam(".$i.", ".$entry[$row].", ".$binding.")";
+		foreach ($param as $row => $binding)
 			$statement->bindParam($row, $entry[$row], $binding);
-			echo "<br>bindParam(".$row.", ".$entry[$row].", ".$binding.")";
-		} //assign param with the correct bindings
 		$statement->execute();
 	}
 

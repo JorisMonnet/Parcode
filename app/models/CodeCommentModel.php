@@ -30,32 +30,32 @@ abstract class CodeCommentModel extends Model
 		$this->author = $value;
 	}
     public function asHTMLTableRow(){
-        return $this->strWithoutAuthor()."Authored by ".$this->strAuthor();
+        return $this->strWithoutAuthor(false).$this->strAuthor();
     }
     private function strAuthor(){
         $authorName = User::fetchSomething($this->getAuthor(),"id");
-        return htmlentities($authorName->getName())."</div>";
+        return " Authored by ".htmlentities($authorName->getName())."</div>";
     }
     public function asHTMLTableRowWithEdit($user){
-		$str = $this->strWithoutAuthor();
+		$str = $this->strWithoutAuthor(true);
 		if($this->getAuthor()===$user)
             if(get_class($this)=="Comments"){
-				$str.='</div><form action='.$_SESSION['currentPage'].' method="post" class="buttonEditCode">
-                			<input type="hidden" name="idComment" value="'.$this->getId().'""><br>
+				$str.='</div></div><form action='.$_SESSION['currentPage'].' method="post" class="buttonEditCode">
+                			<input type="hidden" name="idComment" value="'.$this->getId().'"">
                 			<input type="submit" class="button" value="Edit Comment">
                             </form>';
             } else
-                $str .='<a href="codeUpdate?id='.urlencode($this->getId()).'" class="editRef"> Edit Code </a>';
+                $str .='</div><a href="codeUpdate?id='.urlencode($this->getId()).'" class="editRef"> Edit Code </a>';
 		else
 			$str.=$this->strAuthor();
         return $str;
 	}
-	private function strWithoutAuthor(){
-        $str = "<div>";
-        if(get_class($this)=="Codes")
-		    $str .= '<a href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId()) ." </a><br><br>";
+	private function strWithoutAuthor($onlyOne){
+        $str = "<div class='flex-container'>";
+        if(get_class($this)=="Codes"&&!$onlyOne)
+		    $str .= '<a href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId()) ." </a><hr>";
 		$str .= "<code><pre>".htmlentities($this->getContent())."</pre></code><hr>";
-		$str .= date("j F Y H:i:s",strtotime($this->getDate()))."<br>";
+		$str .= date("j F Y H:i:s",strtotime($this->getDate()));
 		return $str;
 	}
 }

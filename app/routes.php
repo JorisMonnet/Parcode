@@ -9,7 +9,7 @@ $router->define([
   'addCode' => 'CodeController@showAddView',
   'addForm' => 'CodeController@parseAdd',
   'updateForm' => 'CodeController@parseUpdate',
-  'deleteCode' => 'CodeController@parseDelete',
+  'deleteForm' => 'CodeController@parseDelete',
   'login' => 'LoginController@login',
   'logout' => 'LoginController@logout',
   'loginPage' => 'LoginController@loginPage',

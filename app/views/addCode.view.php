@@ -3,9 +3,8 @@
     require('partials/header.php');
     $_SESSION['currentPage'] ="addCode";
 ?>
-<div class="main">
-<h1>Add New Code</h1>
 <main>
+    <h1>Add New Code</h1>
     <p>
         The following form allow you to add a new code
     </p>
@@ -13,13 +12,8 @@
         <p>Code :</p>
       <textarea type="text" name="content" required></textarea>
       <p>Groups :</p>
-      <input type="text" name="groups" required>
-      <br>
+      <input type="text" name="groups" class="inputText" style="text-align:left" required>
       <input type="submit" class="button" value="Submit">
     </form>
-    <p class="buttonEditCode">
-        <a href="codes" class="showRef">Show all codes</a>
-    </p>
 </main>
-</div>
 <?php require('partials/footer.php') ?>

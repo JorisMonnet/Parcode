@@ -3,9 +3,7 @@
     require('partials/header.php');
     $_SESSION['currentPage'] ="codes";
 ?>
-<div class="main">
 <main>
-
     <h1>My codes</h1>
     <?php
         if (isset($codeAddSuccess)&&$codeAddSuccess!="0")
@@ -13,8 +11,8 @@
         else
           echo "<p class='successMessage'>".$codeAddFailure."</p>";
     ?>
-    <label for="sort">Trier Par</label>
     <form action="parseFormSort" method="post" name="formSort" id="formSort">
+      <label for="sort">Trier Par</label>
       <select id="sortSelect" name="sort" class="button">
         <option value="date">Date</option>
         <option value="id">Id</option>
@@ -29,19 +27,12 @@
       <input type="submit" class="button" value="Submit">
     </form>
     <br>
-    <?php if(isset($_SESSION['userid'])):?>
-        <a href="addCode" class="buttonEditCode">Add Code</a>
-    <?php endif; ?>
-    <br>
-    <div class="flex-container">
       <?php foreach ($codes as $code){
     	        echo $code->asHTMLTableRow();
               echo "<br>";
-              }
+            }
       ?>
-    
     </form>
 </main>
-</div>
 <br>
 <?php require('partials/footer.php'); ?>

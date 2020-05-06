@@ -10,14 +10,14 @@
 
 <body>
 	<?php 
-	if ($title!="Login page"):?>
+	if ($title!="Login page"&&$title!="SignUp page"):?>
 		<div class="upperpage">
 			<?php if(isset($_SESSION['userid'])):?>
-				Welcome <?= htmlentities($_SESSION['user']);?>
-				<a href="logout">logout</a>
+				<span>Welcome <?= htmlentities($_SESSION['user']);?></span>
+				<a href="logout">Logout</a>
 				<a href="addCode">Add Code</a>
 			<?php else: ?>
-				<a href="loginPage">login</a>
+				<a href="loginPage"style="float:left">Login</a>
 			<?php endif;?>
 			<a href="index">HOME</a>
 			<a href="codes">Codes</a>

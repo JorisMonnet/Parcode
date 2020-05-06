@@ -7,11 +7,11 @@
     <div id="logo_parcode">PARCODE</div>
     <br/>Sign up</h1>
   <label for="username">Username :</label>
-  <input type="text" name="user" id="username" class="input_text" required><br>
+  <input type="text" name="user" id="username" class="inputText" required><br>
   <label for="password">Password :</label>
-  <input type="password" name="pass" id="password" class="input_text" required><br>
+  <input type="password" name="pass" id="password" class="inputText" required><br>
   <label for="confirmedPassword">Confirm password :</label>
-  <input type="password" name="confirmedPassword" id="confirmedPassword" class="input_text" required><br>
+  <input type="password" name="confirmedPassword" id="confirmedPassword" class="inputText" required><br>
   <input type="submit" class="button" value="submit">
 </form><br>
 <form class="logCancel" action="signUpCancel" method="post">
