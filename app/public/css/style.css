@@ -57,6 +57,7 @@ textarea.flex-container{
   flex-direction: column;
   margin:auto;
   max-width: 250px;
+  margin-bottom:20px
 }
 .inputText{
   border-radius: 20px; 
@@ -242,4 +243,29 @@ a:hover, .button:hover
 hr{
   color : white;
   width: 100%;
+}
+
+#idComment{
+  display:none;
+}
+.bigTextarea{
+  height:40em;
+}
+form >label{
+  margin-bottom:10px;
+}
+#inputTextGroups{
+  text-align:left;
+}
+.bigHR{
+  border-width: 3px;
+  margin-left:1%;
+  width:98%
+}
+.hiddenForm{
+  visibility:hidden
+}
+.codeIdRef{
+  max-width:50px;
+  min-width:20px
 }

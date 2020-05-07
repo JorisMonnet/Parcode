@@ -12,7 +12,7 @@
   <input type="password" name="pass" id="password" class="inputText" required><br>
   <label for="confirmedPassword">Confirm password :</label>
   <input type="password" name="confirmedPassword" id="confirmedPassword" class="inputText" required><br>
-  <input type="submit" class="button" value="submit">
+  <input type="submit" class="button" value="Submit">
 </form><br>
 <form class="logCancel" action="signUpCancel" method="post">
   <input type="submit" class="button" value="Cancel">

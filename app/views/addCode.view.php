@@ -10,9 +10,9 @@
     </p>
     <form action = "addForm" method="post" class="buttonEditCode">
         <p>Code :</p>
-      <textarea name="content" style="height:40em" required></textarea>
+      <textarea name="content" class="bigTextarea" required></textarea>
       <p>Groups :</p>
-      <input type="text" name="groups" class="inputText" style="text-align:left" required>
+      <input type="text" name="groups" class="inputText" id="inputTextGroups" required>
       <input type="submit" class="button" value="Submit">
     </form>
 </main>
