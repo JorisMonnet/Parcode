@@ -1,6 +1,6 @@
 <?php
 require_once("codeCommentController.php");
-class CommentController extends CodeCommentController
+class commentController extends CodeCommentController
 {
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -52,17 +52,6 @@ class CommentController extends CodeCommentController
             }
             else
             	throw new Exception("Content can't be empty.", 1);
-        }
-    }
-
-    public function parseDelete(){
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            if(isset($_POST['id'])&&ctype_digit($_POST['id'])
-                &&Comments::delete($_POST['id']))
-                Logger::addLogEvent($_SESSION['user'].' deleted comment number '.$_POST['id'] );
-            else
-                throw new Exception("Comment don't exist", 1);
-            Helper::redirectCurrentPage();
         }
     }
 }

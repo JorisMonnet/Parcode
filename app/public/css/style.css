@@ -175,7 +175,7 @@ label{
   margin-left: 10px;
   margin-right: 10px;
 }
-a, .button{
+a, .button, button{
   border-radius: 20px;
   border-style: outset;
   border-color: lightgrey;
@@ -246,4 +246,14 @@ form >label{
 
 .flex-container>a{
   text-align: center;
+}
+
+.deleteComment{
+  margin-left: 10px;
+  min-width: 200px;
+  width: max-content;
+}
+
+.editComment{
+  margin-right: 10px;
 }

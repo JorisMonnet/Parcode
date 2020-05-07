@@ -22,34 +22,32 @@ class CodeController extends CodeCommentController
     }
 
     public function show(){
-        if ($_SERVER['REQUEST_METHOD'] === 'POST'&&ctype_digit($_POST['idComment'])&&isset($_POST['idComment']))
-            $currentComment = Comments::fetchSomething($_POST['idComment'],"id");
         if(isset($_GET["id"]) && ctype_digit($_GET["id"])){
             $code = Codes::fetchSomething($_GET["id"],"id");
+            if($code == null)
+                throw new Exception("CODE NOT FOUND.", 1);
             $comments = Comments::fetchAllComments("date","DESC",$code->getId());
         } else 
             throw new Exception("CODE NOT FOUND.", 1);
-        if($code == null)
-            throw new Exception("CODE NOT FOUND.", 1);
-
         $entry=array('currentCode' => $code,'comments' => $comments);
         $entry+= array('user' =>$_SESSION['userid']??"");
-        $entry+= array('currentComment' =>$currentComment??"");
         return Helper::view("showCode",$entry);
     }
+
     public function showEdit(){
         if(isset($_GET["id"]) && ctype_digit($_GET["id"])&&$this->authorIsConnected()){
             $code = Codes::fetchSomething($_GET["id"],"id");
+            if($code == null)
+                throw new Exception("CODE NOT FOUND.", 1);
             $comments = Comments::fetchAllComments("date","DESC",$code->getId());
         } else 
-            throw new Exception("CODE NOT FOUND.", 1);
-        if($code == null)
             throw new Exception("CODE NOT FOUND.", 1);
         return Helper::view("showCodeEdit",[
                 'currentCode' => $code,
                 'user' => $_SESSION['userid']
             ]);
     }
+
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['id']) && isset($_POST['content']) 
@@ -104,17 +102,6 @@ class CodeController extends CodeCommentController
             }
             else
             	throw new Exception("Content can't be empty.", 1);
-        }
-    }
-
-    public function parseDelete(){
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            if(isset($_POST['id'])&&ctype_digit($_POST['id'])
-                &&Codes::delete($_POST['id']))
-                Logger::addLogEvent($_SESSION['user'].' deleted code number : '.$_POST['id'] );
-            else
-                throw new Exception("Code don't exist", 1);
-                Helper::redirectToCodes();
         }
     }
 

@@ -40,22 +40,19 @@ abstract class CodeCommentModel extends Model
 		$str = $this->strWithoutAuthor(true);
 		if($this->getAuthor()===$user)
             if(get_class($this)=="Comments"){
-				$str.='</div><button class="button" onclick=showEditComment('.$i.')>Edit Comment</button>';
+				$str.='</div><button class="editComment" onclick=showEditComment('.$i.')>Edit Comment</button>';
+				$str.='<a class="deleteComment" href="deleteComment?id='.htmlentities($this->getId()).'">Delete Comment</a>';
 				$str.='<form class="hiddenForm" action="updateComment" method="post">
-					<label for="contentComment">Edit the comment : </label>
-					<textarea class="flex-container" id="contentComment" name="content" required>'.htmlentities($this->getContent()).'</textarea>
-					<input id="idCommentForm" type="hidden"  name="id" value="'. htmlentities($this->getId()).'">
-					<input type="hidden" name="codesid" value="'. htmlentities($this->getCodes()).'">
-					<input type="submit" class="button" value="Submit">
-				</form>
-				<form class="hiddenForm" action="deleteComment" method="post" class="buttonEditCode">
-					<input type="hidden" name="id" value="'. htmlentities($this->getId()).'">
-					<input type="submit" class="button" value="Delete Comment">
-				</form>';
+							<label for="contentComment">Edit the comment : </label>
+							<textarea class="flex-container" id="contentComment" name="content" required>'.htmlentities($this->getContent()).'</textarea>
+							<input id="idCommentForm" type="hidden"  name="id" value="'. htmlentities($this->getId()).'">
+							<input type="hidden" name="codesid" value="'. htmlentities($this->getCodes()).'">
+							<input type="submit" class="button" value="Submit">
+						</form>';
             } else
                 $str .='<a href="codeUpdate?id='.urlencode($this->getId()).'" class="editRef"> Edit Code </a></div>';
 		else
-			$str.=$this->strAuthor();
+			$str.=$this->strAuthor().'<span class="hiddenForm"></span>';
         return $str;
 	}
 	private function strWithoutAuthor($onlyOne){
