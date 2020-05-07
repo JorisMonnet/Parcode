@@ -1,22 +1,25 @@
 .upperpage{
+  
   background-color: #b3b3b9;
   padding-top: 10px;
   padding-bottom: 10px;
-  text-align: left;
+  text-align: center;
   padding-left: 20px;
   position:sticky;
   top:0;
   left:0;
   right:0;
-  height:30px;
   border: 1px;
+  height:5%;
 }
 
-.upperpage > a {
-  float: right;
-  margin: 15px;
-  margin-right:10px;
-  margin-top: 0px;
+.upperpageA {
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  align-content: space-between;
+  flex-wrap: wrap;
+  margin: 10px;
 }
 
 #footer{
@@ -26,7 +29,7 @@
   bottom: 0;
   left: 0; 
   right: 0;
-  margin-top: 20px;
+  margin-top: 30px;
   border-radius: 10px;
   text-align:center;
 
@@ -201,7 +204,7 @@ a, .button{
   text-align: center;
   cursor: pointer;
   max-width: 250px;
-  min-width: 10%;
+  min-width: 5%;
   padding: 0.2em;
   margin-top: 0px;
   margin-right: auto;

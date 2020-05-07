@@ -14,12 +14,15 @@
 		<div class="upperpage">
 			<?php if(isset($_SESSION['userid'])):?>
 				<span>Welcome <?= htmlentities($_SESSION['user']);?></span>
+				<div class="upperpageA">
 				<a href="logout">Logout</a>
 				<a href="addCode">Add Code</a>
 			<?php else: ?>
-				<a href="loginPage"style="float:left">Login</a>
+				<div class="upperpageA">
+				<a href="loginPage">Login</a>
 			<?php endif;?>
 			<a href="index">HOME</a>
 			<a href="codes">Codes</a>
+			</div>
 		</div>
 	<?php endif;?>
