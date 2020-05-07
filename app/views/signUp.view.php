@@ -3,9 +3,9 @@
     require('partials/header.php');
 ?>
 <form id="signUp" class="logForm" action="signUp" method="post">
-  <h1>
-    <div id="logo_parcode">PARCODE</div>
-    <br/>Sign up</h1>
+  
+  <span class="logo_parcode">PARCODE</span>
+  <h1>Sign up</h1>
   <label for="username">Username :</label>
   <input type="text" name="user" id="username" class="inputText" required><br>
   <label for="password">Password :</label>

@@ -2,22 +2,18 @@
   background-color: #b3b3b9;
   padding-top: 10px;
   padding-bottom: 10px;
-  text-align: center;
   padding-left: 20px;
   position:sticky;
   top:0;
   left:0;
   right:0;
-  border: 1px;
   border-radius: 10px;
   height:5%;
 }
-
 .upperpageA{
   display: flex;
   flex-direction:row;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
 }
 .upperpageA > a{
@@ -29,37 +25,33 @@
 
 footer{
   background-color: #b3b3b9;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   bottom: 0;
   left: 0; 
   right: 0;
-  margin-top: auto;
-  border-radius: 10px;
-  text-align:center;
-
 }
+
 .logForm{
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+  max-width: 350px;
   margin-left:auto;
   margin-right:auto;
 }
+
 textarea.flex-container{
   max-width:60%;
   min-width:60%;
   margin-left:auto;
   margin-right:auto;
-  margin-top: 10px;
 }
+
 .logCancel,#signUpButton{
-  display: flex;
-  flex-direction: column;
-  margin:auto;
-  max-width: 250px;
   margin-bottom:20px
 }
+
 .inputText{
   border-radius: 20px; 
   padding:0.2em;
@@ -67,13 +59,13 @@ textarea.flex-container{
   border-color: lightgrey;
   color:black;
   text-align: center;
-  align-content: center;
 }
 
-#logo_parcode{
+.logo_parcode{
   display:block;
   margin-right: auto;
   margin-left: auto;
+  font-size: xx-large;
   width: 6em;
   border-radius: 20px; 
   border-style: outset; 
@@ -131,10 +123,6 @@ pre, textarea{
   margin:auto;
 }
 
-main{
-  padding-top:30px;
-}
-
 .success{
   color: #ff0000;
 }
@@ -142,18 +130,12 @@ main{
 html, main,body{
   background-color: #F5B041;
 }
+
 body {
-  margin: 6px;
-  min-width: 50%;
   font-family: Arial,Arial Black;
   text-align: center;
 }
 
-#buttonEdit{
-  border-radius: 10px;
-  text-align: center;
-  margin-right : 95%;
-}
 .successMessage {
   width: 250px;
   margin: auto;
@@ -177,21 +159,16 @@ body {
   background-color: #F5B041;
   text-decoration-color: #F5B041;
   color:white;
-  margin-top: 10px;
 }
 
 .button[value*="Edit"],.editRef{
   background-color: #5DADE2;
   color:white;
-  margin-bottom: 20px;
-  margin-top: 20px;
 }
 
 .button[value="Submit"]{
   background-color: #52BE80;
   color:white;
-  margin-bottom: 20px;
-  margin-top: 20px;
 }
 
 label{
@@ -205,12 +182,12 @@ a, .button{
   background-color: lightgrey;
   text-decoration-color: lightgrey;
   color :black;
-  text-align: center;
   cursor: pointer;
   max-width: 250px;
   min-width: 5%;
   padding: 0.2em;
-  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   margin-right: auto;
   margin-left: auto;
   width: 100%;
@@ -227,11 +204,8 @@ a:hover, .button:hover
 
 
 .addComment, textarea {
-  display: grid;
   margin-right: 1%;
-  margin-left: auto;
   width: 99%;
-  min-width: 99%;
   resize: vertical;
   white-space: pre-wrap;
   color : darkgrey;
@@ -263,9 +237,13 @@ form >label{
   width:98%
 }
 .hiddenForm{
-  visibility:hidden
+  display:none
 }
 .codeIdRef{
   max-width:50px;
   min-width:20px
+}
+
+.flex-container>a{
+  text-align: center;
 }
