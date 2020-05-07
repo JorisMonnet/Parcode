@@ -65,11 +65,4 @@ class CommentController extends CodeCommentController
             Helper::redirectCurrentPage();
         }
     }
-    public function parseSort(){
-        if(isset($_POST['sort']))
-            $_SESSION['commentSort']=$_POST['sort'];
-        if(isset($_POST['order']))
-            $_SESSION['commentOrder']=$_POST['order'];
-        Helper::redirectToCodes();
-    }
 }
