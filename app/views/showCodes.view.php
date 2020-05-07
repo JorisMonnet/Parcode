@@ -12,14 +12,14 @@
           echo "<p class='successMessage'>".$codeAddFailure."</p>";
     ?>
     <form action="parseFormSort" method="post" name="formSort" id="formSort">
-      <label for="sort">Trier Par</label>
+      <label for="sortSelect">Trier Par</label>
       <select id="sortSelect" name="sort" class="button">
         <option value="date">Date</option>
         <option value="id">Id</option>
         <option value="author">Author</option>
       </select>
       
-      <label for="order">Par Ordre</label>
+      <label for="orderSelect">Par Ordre</label>
       <select id="orderSelect" name="order" class="button">
         <option value="desc">Décroissant</option>
         <option value="asc">Croissant</option>
@@ -32,7 +32,6 @@
               echo "<br>";
             }
       ?>
-    </form>
 </main>
 <br>
 <?php require('partials/footer.php'); ?>

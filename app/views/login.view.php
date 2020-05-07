@@ -9,16 +9,16 @@
   <label for="username">Username:</label>
   <input type="text" name="user" id="username" class="inputText" required><br>
   <label for="password">Password:</label>
-  <input type="password" name="pass" id="password" class="inputText"required><br>
+  <input type="password" name="pass" id="password" class="inputText" required><br>
   <input type="submit" class="button" value="Submit">
-  <label for="signUpBut"style="margin-bottom:10px">Fresh with us ? If not please sign Up :</label>
+  <label for="signUpBut" style="margin-bottom:10px">Fresh with us ? If not please sign Up :</label>
 </form>
 
 <form id="signUpButton" action="showSignUp" method="post">
-  <input id="signUpBut"type="submit" class="button" value="Sign up" style="margin-bottom:20px">
+  <input id="signUpBut" type="submit" class="button" value="Sign up" style="margin-bottom:20px">
 </form>
 
-<form class="logCancel" action="loginCancel" method="post"style="margin-bottom:20px">
+<form class="logCancel" action="loginCancel" method="post" style="margin-bottom:20px">
   <input type="submit" class="button" value="Cancel">
 </form>
 
