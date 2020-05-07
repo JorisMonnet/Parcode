@@ -40,12 +40,12 @@ abstract class CodeCommentModel extends Model
 		$str = $this->strWithoutAuthor(true);
 		if($this->getAuthor()===$user)
             if(get_class($this)=="Comments"){
-				$str.='</div></div><form action='.$_SESSION['currentPage'].' method="post" class="buttonEditCode">
+				$str.='</div><form action='.$_SESSION['currentPage'].' method="post" class="buttonEditCode">
                 			<input type="hidden" name="idComment" value="'.$this->getId().'"">
-                			<input type="submit" class="button" value="Edit Comment">
+                			<input type="submit" style="margin:0px" class="button" value="Edit Comment">
                             </form>';
             } else
-                $str .='</div><a href="codeUpdate?id='.urlencode($this->getId()).'" class="editRef"> Edit Code </a>';
+                $str .='<a href="codeUpdate?id='.urlencode($this->getId()).'" class="editRef"> Edit Code </a></div>';
 		else
 			$str.=$this->strAuthor();
         return $str;
@@ -53,7 +53,7 @@ abstract class CodeCommentModel extends Model
 	private function strWithoutAuthor($onlyOne){
         $str = "<div class='flex-container'>";
         if(get_class($this)=="Codes"&&!$onlyOne)
-		    $str .= '<a href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId()) ." </a><hr>";
+		    $str .= '<a style="max-width:50px;min-width:20px" href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId()) ." </a><hr>";
 		$str .= "<code><pre>".htmlentities($this->getContent())."</pre></code><hr>";
 		$str .= date("j F Y H:i:s",strtotime($this->getDate()));
 		return $str;

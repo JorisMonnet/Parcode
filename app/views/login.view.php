@@ -15,10 +15,10 @@
 </form>
 
 <form id="signUpButton" action="showSignUp" method="post">
-  <input id="signUpBut"type="submit" class="button" value="Sign up">
+  <input id="signUpBut"type="submit" class="button" value="Sign up" style="margin-bottom:20px">
 </form>
 
-<form class="logCancel" action="loginCancel" method="post">
+<form class="logCancel" action="loginCancel" method="post"style="margin-bottom:20px">
   <input type="submit" class="button" value="Cancel">
 </form>
 
