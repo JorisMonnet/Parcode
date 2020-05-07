@@ -36,13 +36,22 @@ abstract class CodeCommentModel extends Model
         $authorName = User::fetchSomething($this->getAuthor(),"id");
         return " Authored by ".htmlentities($authorName->getName())."</div>";
     }
-    public function asHTMLTableRowWithEdit($user){
+    public function asHTMLTableRowWithEdit($user,$i=0){
 		$str = $this->strWithoutAuthor(true);
 		if($this->getAuthor()===$user)
             if(get_class($this)=="Comments"){
-				$str.='</div><p id="idComment">'.$this->getId().'</p>';
-				$str.='<button class="button" onclick=showEditComment()>Edit Comment</button>';
-
+				$str.='</div><button class="button" onclick=showEditComment('.$i.')>Edit Comment</button>';
+				$str.='<form class="hiddenForm" action="updateComment" method="post">
+					<label for="contentComment">Edit the comment : </label>
+					<textarea class="flex-container" id="contentComment" name="content" required>'.htmlentities($this->getContent()).'</textarea>
+					<input id="idCommentForm" type="hidden"  name="id" value="'. htmlentities($this->getId()).'">
+					<input type="hidden" name="codesid" value="'. htmlentities($this->getCodes()).'">
+					<input type="submit" class="button" value="Submit">
+				</form>
+				<form class="hiddenForm" action="deleteComment" method="post" class="buttonEditCode">
+					<input type="hidden" name="id" value="'. htmlentities($this->getId()).'">
+					<input type="submit" class="button" value="Delete Comment">
+				</form>';
             } else
                 $str .='<a href="codeUpdate?id='.urlencode($this->getId()).'" class="editRef"> Edit Code </a></div>';
 		else

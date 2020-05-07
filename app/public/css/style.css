@@ -219,7 +219,7 @@ hr{
   width: 100%;
 }
 
-#idComment{
+.idComment{
   display:none;
 }
 .bigTextarea{
