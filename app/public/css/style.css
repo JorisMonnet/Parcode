@@ -156,12 +156,11 @@ body {
 }
 
 #discard{
-  background-color: #F5B041;
-  text-decoration-color: #F5B041;
+  background-color: rgb(68, 65, 245);
   color:white;
 }
 
-.button[value*="Edit"],.editRef{
+.edit{
   background-color: #5DADE2;
   color:white;
 }
@@ -180,7 +179,6 @@ a, .button, button{
   border-style: outset;
   border-color: lightgrey;
   background-color: lightgrey;
-  text-decoration-color: lightgrey;
   color :black;
   cursor: pointer;
   max-width: 250px;
@@ -191,15 +189,14 @@ a, .button, button{
   margin-right: auto;
   margin-left: auto;
   width: 100%;
+  text-decoration: none;
 }
 
 a:hover, .button:hover
 {
-  text-decoration: underline;
   color: darkgrey;
   border-color: #2E4053;
   background-color: white;
-  text-decoration-color: white;
 }
 
 
@@ -247,13 +244,22 @@ form >label{
 .flex-container>a{
   text-align: center;
 }
-
-.deleteComment{
-  margin-left: 10px;
-  min-width: 200px;
-  width: max-content;
+.editDeleteCode, .editDeleteComment{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
 }
-
-.editComment{
-  margin-right: 10px;
+.editDeleteCode:first-child, .editDeleteComment:first-child{
+  margin-left: auto;
+  width: 100%;
+  background-color: #5DADE2;
+  color:white;
+}
+.editDeleteCode:last-child,.editDeleteComment:last-child{
+  margin-right: auto;
+  width: 100%;
+}
+.delete{
+  background-color: rgb(156, 0, 0);
+  color:white;
 }

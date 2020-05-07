@@ -40,8 +40,8 @@ abstract class CodeCommentModel extends Model
 		$str = $this->strWithoutAuthor(true);
 		if($this->getAuthor()===$user)
             if(get_class($this)=="Comments"){
-				$str.='</div><button class="editComment" onclick=showEditComment('.$i.')>Edit Comment</button>';
-				$str.='<a class="deleteComment" href="deleteComment?id='.htmlentities($this->getId()).'">Delete Comment</a>';
+				$str.='</div><span class="editDeleteComment"><button class="edit" onclick=showEditComment('.$i.')>Edit Comment</button>';
+				$str.='<a class="delete" href="deleteComment?id='.htmlentities($this->getId()).'">Delete Comment</a></span>';
 				$str.='<form class="hiddenForm" action="updateComment" method="post">
 							<label for="contentComment">Edit the comment : </label>
 							<textarea class="flex-container" id="contentComment" name="content" required>'.htmlentities($this->getContent()).'</textarea>
@@ -49,8 +49,10 @@ abstract class CodeCommentModel extends Model
 							<input type="hidden" name="codesid" value="'. htmlentities($this->getCodes()).'">
 							<input type="submit" class="button" value="Submit">
 						</form>';
-            } else
-                $str .='<a href="codeUpdate?id='.urlencode($this->getId()).'" class="editRef"> Edit Code </a></div>';
+            } else{
+				$str.='<span class="editDeleteCode"><a class="edit" href="codeUpdate?id='.urlencode($this->getId()).'"> Edit Code </a>';
+				$str.='<a class ="delete" href="deleteCode?id='.$this->getId().'">Delete Code</a></span></div>';
+			}
 		else
 			$str.=$this->strAuthor().'<span class="hiddenForm"></span>';
         return $str;

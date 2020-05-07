@@ -13,7 +13,6 @@ $_SESSION['currentPage'] ="code?id=".$currentCode->getId(); //never go to this p
             <input type="hidden"  name="id" value="<?= htmlentities($currentCode->getId()); ?>"><br>
             <input class="inputText" type="text" name="groups" value="<?= htmlentities($currentCode->getGroups()); ?>" required><br>
             <input type="submit" class="button" value="Submit">
-            <a href="deleteCode?id=<?= htmlentities($currentCode->getId()); ?>">Delete Code</a>
             <?php echo "<a href=code?id=".$currentCode->getId()."   id='discard'>Discard all changes</a>";?>
         </form>
     <?php endif;?>
