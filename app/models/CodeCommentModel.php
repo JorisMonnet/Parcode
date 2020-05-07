@@ -29,13 +29,16 @@ abstract class CodeCommentModel extends Model
 	public function setAuthor($value){
 		$this->author = $value;
 	}
+
     public function asHTMLTableRow(){
         return $this->strWithoutAuthor(false).$this->strAuthor();
-    }
+	}
+	
     private function strAuthor(){
         $authorName = User::fetchSomething($this->getAuthor(),"id");
         return " Authored by ".htmlentities($authorName->getName())."</div>";
-    }
+	}
+	
     public function asHTMLTableRowWithEdit($user,$i=0){
 		$str = $this->strWithoutAuthor(true);
 		if($this->getAuthor()===$user)
@@ -57,6 +60,7 @@ abstract class CodeCommentModel extends Model
 			$str.=$this->strAuthor().'<span class="hiddenForm"></span>';
         return $str;
 	}
+	
 	private function strWithoutAuthor($onlyOne){
         $str = "<div class='flex-container'>";
         if(get_class($this)=="Codes"&&!$onlyOne)
