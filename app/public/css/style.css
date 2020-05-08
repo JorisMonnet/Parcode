@@ -268,8 +268,8 @@ form >label{
 }
 
 .glyphicon_up,.glyphicon_down, .voteLabel {
-  margin-left: auto;
-  margin-right: 8em;
+  float: right;
+  margin-right: 20px;
   max-width: 30px;
   opacity: 1;
   transition: opacity .25s ease-in-out;

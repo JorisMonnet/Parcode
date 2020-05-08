@@ -55,5 +55,8 @@ class Comments extends CodeCommentModel
 		$statement->execute();
 	return $statement->fetchAll(PDO::FETCH_CLASS, get_called_class());
 	}
-  	
+
+  	public function updateVotes($votes){
+		
+	}
 }

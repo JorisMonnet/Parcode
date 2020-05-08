@@ -28,14 +28,13 @@ class commentController extends CodeCommentController
 
     public function parseAdd(){
         if ($this->authorIsConnected()&&$_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(isset($_POST['content'])&&isset($_POST['codesid'])&&ctype_digit($_POST['codesid'])
-            &&isset($_POST['votes'])&&ctype_digit($_POST['votes'])) {
+            if(isset($_POST['content'])&&isset($_POST['codesid'])&&ctype_digit($_POST['codesid'])) {
                 $comment = new Comments();
                 $comment->setContent($_POST['content']);
                 $comment->setAuthor($_SESSION['userid']);
                 $comment->setDate(date('Y-m-d-H-i-s'));
                 $comment->setCodes($_POST['codesid']);
-                $comment->setVotes($_POST['votes']);
+                $comment->setVotes(0);
                 $allowInsert = true;
                 if (isset($_COOKIE['comment_per_min_counter'])){
                   if ($_COOKIE['comment_per_min_counter'] > 90){

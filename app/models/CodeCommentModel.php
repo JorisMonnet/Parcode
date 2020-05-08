@@ -35,8 +35,13 @@ abstract class CodeCommentModel extends Model
 	}
 	
     private function strAuthor(){
-        $authorName = User::fetchSomething($this->getAuthor(),"id");
-        return " Authored by ".htmlentities($authorName->getName())."</div>";
+		$authorName = User::fetchSomething($this->getAuthor(),"id");
+		$str= '<span> Authored by '.htmlentities($authorName->getName());
+		if(get_class($this)=="Comments"&&isset($_SESSION['userid'])&&$this->getAuthor()!==$_SESSION['userid'])
+			$str.='<img class="glyphicon_up" src="app/views/partials/chevron_up.png" alt="upvote" onclick="upvote()"></img>
+					<span class="voteLabel">'.$this->getVotes().'</span>
+					<img class="glyphicon_down" src="app/views/partials/chevron_down.png" alt="downvote" onclick="downvote()"></img>';
+        return $str.'</span></div>';
 	}
 	
     public function asHTMLTableRowWithEdit($user,$i=0){
@@ -50,26 +55,23 @@ abstract class CodeCommentModel extends Model
 							<textarea class="flex-container" id="contentComment" name="content" required>'.htmlentities($this->getContent()).'</textarea>
 							<input id="idCommentForm" type="hidden"  name="id" value="'. htmlentities($this->getId()).'">
 							<input type="hidden" name="codesid" value="'. htmlentities($this->getCodes()).'">
+							<input type="hidden" name="votes" value="'. htmlentities($this->getVotes()).'">
 							<input type="submit" class="button" value="Submit">
 						</form>';
             } else{
 				$str.='<span class="editDeleteCode"><a class="edit" href="codeUpdate?id='.urlencode($this->getId()).'"> Edit Code </a>';
 				$str.='<a class ="delete" href="deleteCode?id='.$this->getId().'">Delete Code</a></span></div>';
 			}
-		else
-			$str.=$this->strAuthor().'<span class="hiddenForm"></span>';
-        return $str;
+		else if(get_class($this)=="Comments")
+			$str.='<span class="hiddenForm"></span>';
+        return $str.$this->strAuthor();
 	}
 	
 	private function strWithoutAuthor($onlyOne){
-        $str = "<div class='flex-container'>";
+        $str = '<div class="flex-container">';
         if(get_class($this)=="Codes"&&!$onlyOne)
-			$str .= '<a class="codeIdRef" href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId()) ." </a><hr>";
-		else if(get_class($this)=="Comments")
-			$str.='<img class="glyphicon_up" src="app/views/partials/chevron_up.png" alt="upvote" onclick="upvote()"></img>
-					<span class="voteLabel">1000'/*.$this->getVotes()*/.'</span>
-					<img class="glyphicon_down" src="app/views/partials/chevron_down.png" alt="downvote" onclick="downvote()"></img>';
-		$str .= "<code><pre>".htmlentities($this->getContent())."</pre></code><hr>";
+			$str .= '<a class="codeIdRef" href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId()) .' </a><hr>';
+		$str .= '<code><pre>'.htmlentities($this->getContent()).'</pre></code><hr>';
 		$str .= date("j F Y H:i:s",strtotime($this->getDate()));
 		return $str;
 	}

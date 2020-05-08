@@ -18,7 +18,7 @@
     </form>
     <hr class="bigHR">
   <?php endif;
-    $i=0;
+    $i=0;   
     foreach ($comments as $comment)
         echo $comment->asHTMLTableRowWithEdit($user,$i++);
     ?>
