@@ -31,23 +31,26 @@ abstract class CodeCommentModel extends Model
 	}
 
     public function asHTMLTableRow(){
-        return $this->strWithoutAuthor(false).$this->strAuthor();
+        return $this->strWithoutAuthor(false).$this->strAuthor(0);
 	}
 	
-    private function strAuthor($i=0){
+    private function strAuthor($i){
 		$authorName = User::fetchSomething($this->getAuthor(),"id");
-		$str= '<span> Authored by '.htmlentities($authorName->getName());
-		if(get_class($this)=="Comments"&&isset($_SESSION['userid'])&&$this->getAuthor()!==$_SESSION['userid'])
+		$str = '<span> Authored by '.htmlentities($authorName->getName());
+		if(get_class($this)=="Comments"){
+			$str.='<span class="hiddenForm"></span>';
 			$str.='<img class="glyphicon_up" src="app/views/partials/chevron_up.png" alt="upvote" onclick="upvote('.$i.')"></img>
 					<span class="voteLabel">'.$this->getVotes().'</span>
 					<img class="glyphicon_down" src="app/views/partials/chevron_down.png" alt="downvote" onclick="downvote('.$i.')"></img>';
+		}
         return $str.'</span></div>';
 	}
-	
+
     public function asHTMLTableRowWithEdit($user,$i=0){
 		$str = $this->strWithoutAuthor(true);
 		if($this->getAuthor()===$user)
             if(get_class($this)=="Comments"){
+				$str.='<span class="glyphicon_up"><span class="glyphicon_down"><span class="voteLabel"></span></span></span>';
 				$str.='</div></div><span class="editDeleteComment"><button class="edit" onclick=showEditComment('.$i.')>Edit Comment</button>';
 				$str.='<a class="delete" href="deleteComment?id='.htmlentities($this->getId()).'">Delete Comment</a></span>';
 				$str.='<form class="hiddenForm" action="updateComment" method="post">
@@ -62,11 +65,8 @@ abstract class CodeCommentModel extends Model
 				$str.='<span class="editDeleteCode"><a class="edit" href="codeUpdate?id='.urlencode($this->getId()).'"> Edit Code </a>';
 				$str.='<a class ="delete" href="deleteCode?id='.$this->getId().'">Delete Code</a></span></div>';
 			}
-		else{
-			$str.=$this->strAuthor($i);
-			if(get_class($this)=="Comments")
-				$str.='<span class="hiddenForm"></span>';
-		}
+		else
+			$str.=$this->strAuthor($i);				
         return $str;
 	}
 	

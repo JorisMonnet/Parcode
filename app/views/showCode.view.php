@@ -8,6 +8,7 @@
   <h1>Code <?= htmlentities($currentCode->getId()); ?></h1>
   
   <?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
+  <h2>Commentaires</h2>
   <hr class="bigHR">
   <?php if(isset($_SESSION['userid'])):?>
     <form action = "addComment" method="post">

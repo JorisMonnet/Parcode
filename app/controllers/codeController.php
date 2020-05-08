@@ -26,7 +26,7 @@ class CodeController extends CodeCommentController
             $code = Codes::fetchSomething($_GET["id"],"id");
             if($code == null)
                 throw new Exception("CODE NOT FOUND.", 1);
-            $comments = Comments::fetchAllComments("date","DESC",$code->getId());
+            $comments = Comments::fetchAllComments($code->getId());
         } else 
             throw new Exception("CODE NOT FOUND.", 1);
         $entry=array('currentCode' => $code,'comments' => $comments);
@@ -39,7 +39,6 @@ class CodeController extends CodeCommentController
             $code = Codes::fetchSomething($_GET["id"],"id");
             if($code == null)
                 throw new Exception("CODE NOT FOUND.", 1);
-            $comments = Comments::fetchAllComments("date","DESC",$code->getId());
         } else 
             throw new Exception("CODE NOT FOUND.", 1);
         return Helper::view("showCodeEdit",[

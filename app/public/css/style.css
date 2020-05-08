@@ -228,9 +228,11 @@ form >label{
   text-align:left;
 }
 .bigHR{
-  border-width: 3px;
+  border-width: 2px;
   margin-left:1%;
-  width:98%
+  width:98%;
+  color: black;
+  border-style: solid;
 }
 .hiddenForm{
   display:none
