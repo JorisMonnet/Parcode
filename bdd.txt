@@ -22,6 +22,7 @@ CREATE TABLE Codes (
 DROP TABLE IF EXISTS Comments;
 CREATE TABLE Comments (
   id int(11) NOT NULL AUTO_INCREMENT,
+  votes int,
   date DATETIME NOT NULL,
   author int REFERENCES User,
   content TEXT NOT NULL,
@@ -29,5 +30,5 @@ CREATE TABLE Comments (
   PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO Comments(date,author, content, codes) VALUES 
-("1900-1-12 23:00:21",1,"yo premier commentaire",1);
+INSERT INTO Comments(date,author, votes, content, codes) VALUES 
+("1900-1-12 23:00:21",1,1500,"yo premier commentaire",1);

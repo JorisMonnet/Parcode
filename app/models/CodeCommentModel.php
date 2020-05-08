@@ -67,7 +67,7 @@ abstract class CodeCommentModel extends Model
 			$str .= '<a class="codeIdRef" href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId()) ." </a><hr>";
 		else if(get_class($this)=="Comments")
 			$str.='<img class="glyphicon_up" src="app/views/partials/chevron_up.png" alt="upvote" onclick="upvote()"></img>
-					<span class="voteLabel">YO'/*.$this->getVotes()*/.'</span>
+					<span class="voteLabel">1000'/*.$this->getVotes()*/.'</span>
 					<img class="glyphicon_down" src="app/views/partials/chevron_down.png" alt="downvote" onclick="downvote()"></img>';
 		$str .= "<code><pre>".htmlentities($this->getContent())."</pre></code><hr>";
 		$str .= date("j F Y H:i:s",strtotime($this->getDate()));

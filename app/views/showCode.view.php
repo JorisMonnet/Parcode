@@ -19,8 +19,8 @@
     <hr class="bigHR">
   <?php endif;
     $i=0;
-    foreach ($comments as $comment){
+    foreach ($comments as $comment)
         echo $comment->asHTMLTableRowWithEdit($user,$i++);
-    }?>
+    ?>
 </main>
 <?php require('partials/footer.php'); ?>

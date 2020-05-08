@@ -192,8 +192,7 @@ a, .button, button{
   text-decoration: none;
 }
 
-a:hover, .button:hover
-{
+a:hover, .button:hover, button:hover {
   color: darkgrey;
   border-color: #2E4053;
   background-color: white;
@@ -268,7 +267,7 @@ form >label{
   color: red
 }
 
-.glyphicon_up,.glyphicon_down {
+.glyphicon_up,.glyphicon_down, .voteLabel {
   margin-left: auto;
   margin-right: 8em;
   max-width: 30px;

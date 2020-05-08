@@ -8,13 +8,23 @@ class Comments extends CodeCommentModel
 {
     // Attribute
     private $codes;
+	private $votes;
 
   	// Getter and Setter
     public function getCodes(){
         return $this->codes;
-    }
+	}
+	
     public function setCodes($value){
         $this->codes = $value;
+	}
+
+	public function getVotes(){
+		return $this->votes;
+	}
+
+	public function setVotes($value){
+		$this->votes=$value;
 	}
 
 	public static function getParam(){
@@ -23,7 +33,8 @@ class Comments extends CodeCommentModel
 			"date" => PDO::PARAM_STR,
             "author" => PDO::PARAM_INT,
             "codes" => PDO::PARAM_INT,
-			"id" => PDO::PARAM_INT
+			"id" => PDO::PARAM_INT,
+			"votes" => PDO::PARAM_INT
 		];
 	}
 
@@ -32,7 +43,8 @@ class Comments extends CodeCommentModel
 			'content' => $this->getcontent(),
 			'date' => $this->getDate(),
             'author' => $this->getAuthor(),
-            'codes' => $this->getCodes()
+			'codes' => $this->getCodes(),
+			'votes' => $this->getVotes()
 		];
 	}
   	
