@@ -37,7 +37,7 @@ abstract class CodeCommentModel extends Model
     private function strAuthor($i){
 		$authorName = User::fetchSomething($this->getAuthor(),"id");
 		$str = '<span> Authored by '.htmlentities($authorName->getName());
-		if(get_class($this)=="Comments"){
+		if(get_class($this)=="Comments"&& isset($_SESSION['userid'])){
 			$str.='<span class="idComment hiddenForm" hidden>'.htmlentities($this->getId()).'</span>';
 			$str.='<img class="glyphicon_up" src="app/views/partials/chevron_up.png" alt="upvote" onload="addVote('.$i.')" onclick="listVotes['.$i.'].upvote()"></img>
 					<span class="voteLabel">'.$this->getVotes().'</span>
