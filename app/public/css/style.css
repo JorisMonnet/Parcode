@@ -263,3 +263,22 @@ form >label{
   background-color: rgb(156, 0, 0);
   color:white;
 }
+
+.disabled {
+  color: red
+}
+
+.glyphicon_up,.glyphicon_down {
+  margin-left: auto;
+  margin-right: 8em;
+  max-width: 30px;
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.glyphicon_up:hover,.glyphicon_down:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

@@ -43,7 +43,7 @@ abstract class CodeCommentModel extends Model
 		$str = $this->strWithoutAuthor(true);
 		if($this->getAuthor()===$user)
             if(get_class($this)=="Comments"){
-				$str.='</div><span class="editDeleteComment"><button class="edit" onclick=showEditComment('.$i.')>Edit Comment</button>';
+				$str.='</div></div><span class="editDeleteComment"><button class="edit" onclick=showEditComment('.$i.')>Edit Comment</button>';
 				$str.='<a class="delete" href="deleteComment?id='.htmlentities($this->getId()).'">Delete Comment</a></span>';
 				$str.='<form class="hiddenForm" action="updateComment" method="post">
 							<label for="contentComment">Edit the comment : </label>
@@ -64,7 +64,11 @@ abstract class CodeCommentModel extends Model
 	private function strWithoutAuthor($onlyOne){
         $str = "<div class='flex-container'>";
         if(get_class($this)=="Codes"&&!$onlyOne)
-		    $str .= '<a class="codeIdRef" href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId()) ." </a><hr>";
+			$str .= '<a class="codeIdRef" href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId()) ." </a><hr>";
+		else if(get_class($this)=="Comments")
+			$str.='<img class="glyphicon_up" src="app/views/partials/chevron_up.png" alt="upvote" onclick="upvote()"></img>
+					<span class="voteLabel">YO'/*.$this->getVotes()*/.'</span>
+					<img class="glyphicon_down" src="app/views/partials/chevron_down.png" alt="downvote" onclick="downvote()"></img>';
 		$str .= "<code><pre>".htmlentities($this->getContent())."</pre></code><hr>";
 		$str .= date("j F Y H:i:s",strtotime($this->getDate()));
 		return $str;
