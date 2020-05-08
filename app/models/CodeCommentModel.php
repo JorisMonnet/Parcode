@@ -2,25 +2,25 @@
 require_once('User.php');
 abstract class CodeCommentModel extends Model
 {
-    protected $content;
+	protected $content;
 	protected $date;
-    protected $author;
+	protected $author;
 
-    public function getContent(){
+	public function getContent(){
 		return $this->content;
 	}
 
-  	public function setContent($value){
-        $this->content = $value;
-    }
+	public function setContent($value){
+		$this->content = $value;
+	}
 
   	public function getDate(){
 		return $this->date;
 	}
 
-  	public function setDate($value){
-        $this->date = $value;
-    }
+	public function setDate($value){
+		$this->date = $value;
+	}
 
 	public function getAuthor(){
 		return $this->author;
@@ -30,11 +30,11 @@ abstract class CodeCommentModel extends Model
 		$this->author = $value;
 	}
 
-    public function asHTMLTableRow(){
-        return $this->strWithoutAuthor(false).$this->strAuthor(0);
+	public function asHTMLTableRow(){
+		return $this->strWithoutAuthor(false).$this->strAuthor(0);
 	}
 	
-    private function strAuthor($i){
+	private function strAuthor($i){
 		$authorName = User::fetchSomething($this->getAuthor(),"id");
 		$str = '<span> Authored by '.htmlentities($authorName->getName());
 		if(get_class($this)=="Comments"&& isset($_SESSION['userid'])){
@@ -43,13 +43,13 @@ abstract class CodeCommentModel extends Model
 					<span class="voteLabel">'.$this->getVotes().'</span>
 					<img class="glyphicon_down" src="app/views/partials/chevron_down.png" alt="downvote" onclick="listVotes['.$i.'].downvote()"></img>';
 		}
-        return $str.'</span></div>';
+		return $str.'</span></div>';
 	}
 
-    public function asHTMLTableRowWithEdit($user,$i=0){
+	public function asHTMLTableRowWithEdit($user,$i=0){
 		$str = $this->strWithoutAuthor(true);
 		if($this->getAuthor()===$user)
-            if(get_class($this)=="Comments"){
+			if(get_class($this)=="Comments"){
 				$str.='<span class="glyphicon_up glyphicon_down voteLabel"></span>';
 				$str.='</div></div><span class="editDeleteComment"><button class="edit" onclick=showEditComment('.$i.')>Edit Comment</button>';
 				$str.='<a class="delete" href="deleteComment?id='.htmlentities($this->getId()).'">Delete Comment</a></span>';
@@ -61,18 +61,18 @@ abstract class CodeCommentModel extends Model
 							<input type="hidden" name="votes" value="'. htmlentities($this->getVotes()).'">
 							<input type="submit" class="button" value="Submit">
 						</form>';
-            } else{
+			} else{
 				$str.='<span class="editDeleteCode"><a class="edit" href="codeUpdate?id='.urlencode($this->getId()).'"> Edit Code </a>';
 				$str.='<a class ="delete" href="deleteCode?id='.$this->getId().'">Delete Code</a></span></div>';
 			}
 		else
 			$str.=$this->strAuthor($i);				
-        return $str;
+		return $str;
 	}
 	
 	private function strWithoutAuthor($onlyOne){
-        $str = '<div class="flex-container">';
-        if(get_class($this)=="Codes"&&!$onlyOne)
+		$str = '<div class="flex-container">';
+		if(get_class($this)=="Codes"&&!$onlyOne)
 			$str .= '<a class="codeIdRef" href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId()) .' </a><hr>';
 		$str .= '<code><pre>'.htmlentities($this->getContent()).'</pre></code><hr>';
 		$str .= date("j F Y H:i:s",strtotime($this->getDate()));

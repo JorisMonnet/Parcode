@@ -15,10 +15,9 @@ class Helper
 		Helper::display($data);
 		die();
 	}
-    // Dynamically require a view
+
   public static function view($name, $data = []){
       extract($data); // La function extract importe les variables
-                        // dans la table des symboles
       return require "app/views/{$name}.view.php";
   }
   public static function redirectToCodes($isDelayFailed=false){

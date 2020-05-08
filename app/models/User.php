@@ -11,7 +11,7 @@ class User extends Model
     public function getName(){
       return $this->name;
     }
-    // the password will be hash in the final project, we have begun the research on the password_hash and password_verify functions
+    
     public function getPass(){
       return $this->pass;
     }

@@ -19,8 +19,10 @@ function sendVotes(votes,commentIndex) {
     request.open('POST', 'updateVotes',true);
     
     request.send(data);
+
+    window.location.reload()    //resort comments 
 }
-var listVotes=[];
+let listVotes=[];
 
 function addVote(commentIndex){
     if(listVotes[commentIndex]==null)
