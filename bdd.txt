@@ -30,5 +30,10 @@ CREATE TABLE Comments (
   PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO Comments(date,author, votes, content, codes) VALUES 
-("1900-1-12 23:00:21",1,1500,"yo premier commentaire",1);
+DROP TABLE IF EXISTS Votes;
+CREATE TABLE Votes(
+  id int(11) NOT NULL AUTO_INCREMENT,
+  author int REFERENCES User,
+  comments int(11) REFERENCES Comments,
+  PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

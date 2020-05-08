@@ -39,9 +39,9 @@ abstract class CodeCommentModel extends Model
 		$str = '<span> Authored by '.htmlentities($authorName->getName());
 		if(get_class($this)=="Comments"&& isset($_SESSION['userid'])){
 			$str.='<span class="idComment hiddenForm" hidden>'.htmlentities($this->getId()).'</span>';
-			$str.='<img class="glyphicon_up" src="app/views/partials/chevron_up.png" alt="upvote" onload="addVote('.$i.')" onclick="listVotes['.$i.'].upvote()"></img>
+			$str.='<img class="glyphicon_up" src="app/views/partials/images/chevron_up.png" alt="upvote" onload="addVote('.$i.')" onclick="listVotes['.$i.'].upvote()"></img>
 					<span class="voteLabel">'.$this->getVotes().'</span>
-					<img class="glyphicon_down" src="app/views/partials/chevron_down.png" alt="downvote" onclick="listVotes['.$i.'].downvote()"></img>';
+					<img class="glyphicon_down" src="app/views/partials/images/chevron_down.png" alt="downvote" onclick="listVotes['.$i.'].downvote()"></img>';
 		}
 		return $str.'</span></div>';
 	}
