@@ -8,36 +8,6 @@ function showEditComment(commentIndex){
     }else
         hiddenForm[commentIndex].style.display = "none";
 }
-function upvote(commentIndex){
-    let votes = document.getElementsByClassName('voteLabel');
-    let glyphicon_up = document.getElementsByClassName('glyphicon_up');
-    let glyphicon_down = document.getElementsByClassName('glyphicon_down');
-    if(parseInt(votes[commentIndex].innerHTML)>-1)
-        glyphicon_up[commentIndex].style.visibility = "hidden";
-    else
-        glyphicon_up[commentIndex].style.visibility = "visible"
-    if(glyphicon_down[commentIndex].style.visibility == "hidden")
-        glyphicon_down[commentIndex].style.visibility = "visible"
-
-    votes[commentIndex].innerHTML= parseInt(votes[commentIndex].innerHTML)+1;
-    sendVotes(parseInt(votes[commentIndex].innerHTML),commentIndex);
-}
-function downvote(commentIndex){
-    let votes = document.getElementsByClassName('voteLabel');
-    let glyphicon_up = document.getElementsByClassName('glyphicon_up');
-    let glyphicon_down = document.getElementsByClassName('glyphicon_down');
-    
-    if(parseInt(votes[commentIndex].innerHTML)<1)
-        glyphicon_down[commentIndex].style.visibility = "hidden";
-    else
-        glyphicon_down[commentIndex].style.visibility = "visible"
-    
-    if(glyphicon_up[commentIndex].style.visibility == "hidden")
-        glyphicon_up[commentIndex].style.visibility = "visible"
-
-    votes[commentIndex].innerHTML= parseInt(votes[commentIndex].innerHTML)-1;
-    sendVotes(parseInt(votes[commentIndex].innerHTML),commentIndex);
-}
 
 function sendVotes(votes,commentIndex) {
     let ids = document.getElementsByClassName('idComment');
@@ -45,15 +15,54 @@ function sendVotes(votes,commentIndex) {
     let data = new FormData();
     data.append('votes', votes);
     data.append('id',ids[commentIndex].innerHTML);
-
-  
-    //en cas d'erreur
-    request.addEventListener('error', function(event) {
-      alert('whoops unable to vote currently');
-    });
   
     request.open('POST', 'updateVotes',true);
-    //request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  
+    
     request.send(data);
+}
+var listVotes=[];
+
+function addVote(commentIndex){
+    if(listVotes[commentIndex]==null)
+        listVotes[commentIndex] = new Vote(commentIndex);
+}
+
+class Vote{
+    constructor(commentIndex){
+        this.upvoted = false;
+        this.downvoted = false;
+        this.glyphicon_down = document.getElementsByClassName('glyphicon_down')[commentIndex];
+        this.glyphicon_up = document.getElementsByClassName('glyphicon_up')[commentIndex];
+        this.votes = document.getElementsByClassName('voteLabel');
+        this.value = parseInt(this.votes[commentIndex].innerHTML);
+        this.commentIndex = commentIndex
+    }
+
+    upvote(){
+        this.upvoted= !this.upvoted;
+        this.glyphicon_up.style.visibility = this.upvoted? "hidden": "visible";
+        
+        if(this.downvoted)
+            this.showTwoGlyph();
+        this.value+=1;
+        this.votes[this.commentIndex].innerHTML=this.value;
+        sendVotes(this.value,this.commentIndex);
+    }
+
+    downvote(){
+        this.downvoted= !this.downvoted;
+        this.glyphicon_down.style.visibility = this.downvoted? "hidden": "visible";
+        
+        if(this.upvoted)
+            this.showTwoGlyph();
+        this.value-=1;
+        this.votes[this.commentIndex].innerHTML=this.value;
+        sendVotes(this.value,this.commentIndex);
+    }
+    showTwoGlyph(){
+        this.glyphicon_up.style.visibility = "visible";
+        this.glyphicon_down.style.visibility = "visible";
+        this.upvoted = !this.upvoted
+        this.downvoted = !this.downvoted
+    }
 }

@@ -59,7 +59,7 @@ class commentController extends CodeCommentController
     }
     public function updateVotes(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST'
-          &&isset($_POST['votes'])&&ctype_digit($_POST['votes'])
+          &&isset($_POST['votes'])
           &&isset($_POST['id'])&&ctype_digit($_POST['id'])){
             $comment = Comments::fetchSomething($_POST['id'],"id");
             if($comment==null)
