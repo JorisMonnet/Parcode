@@ -38,7 +38,7 @@ abstract class CodeCommentModel extends Model
 		$authorName = User::fetchSomething($this->getAuthor(),"id");
 		$str = '<span> Authored by '.htmlentities($authorName->getName());
 		if(get_class($this)=="Comments"){
-			$str.='<span class="hiddenForm"></span>';
+			$str.='<span class="idComment hiddenForm" hidden>'.htmlentities($this->getId()).'</span>';
 			$str.='<img class="glyphicon_up" src="app/views/partials/chevron_up.png" alt="upvote" onclick="upvote('.$i.')"></img>
 					<span class="voteLabel">'.$this->getVotes().'</span>
 					<img class="glyphicon_down" src="app/views/partials/chevron_down.png" alt="downvote" onclick="downvote('.$i.')"></img>';
@@ -50,13 +50,13 @@ abstract class CodeCommentModel extends Model
 		$str = $this->strWithoutAuthor(true);
 		if($this->getAuthor()===$user)
             if(get_class($this)=="Comments"){
-				$str.='<span class="glyphicon_up"><span class="glyphicon_down"><span class="voteLabel"></span></span></span>';
+				$str.='<span class="glyphicon_up glyphicon_down voteLabel"></span>';
 				$str.='</div></div><span class="editDeleteComment"><button class="edit" onclick=showEditComment('.$i.')>Edit Comment</button>';
 				$str.='<a class="delete" href="deleteComment?id='.htmlentities($this->getId()).'">Delete Comment</a></span>';
 				$str.='<form class="hiddenForm" action="updateComment" method="post">
 							<label for="contentComment">Edit the comment : </label>
 							<textarea class="flex-container" id="contentComment" name="content" required>'.htmlentities($this->getContent()).'</textarea>
-							<input id="idCommentForm" type="hidden"  name="id" value="'. htmlentities($this->getId()).'">
+							<input class="idComment" type="hidden"  name="id" value="'. htmlentities($this->getId()).'">
 							<input type="hidden" name="codesid" value="'. htmlentities($this->getCodes()).'">
 							<input type="hidden" name="votes" value="'. htmlentities($this->getVotes()).'">
 							<input type="submit" class="button" value="Submit">

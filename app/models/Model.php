@@ -57,6 +57,7 @@ abstract class Model{
 		$statement = $dbh->prepare($req);
 		foreach ($param as $row => $binding)
 			$statement->bindParam($row, $entry[$row], $binding);
+		
 		$statement->execute();
 	}
 

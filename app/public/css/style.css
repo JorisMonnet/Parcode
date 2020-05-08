@@ -215,9 +215,6 @@ hr{
   width: 100%;
 }
 
-.idComment{
-  display:none;
-}
 .bigTextarea{
   height:40em;
 }
@@ -271,7 +268,7 @@ form >label{
 
 .glyphicon_up,.glyphicon_down, .voteLabel {
   float: right;
-  margin-right: 20px;
+  margin-right: 2vw;
   max-width: 30px;
   opacity: 1;
   transition: opacity .25s ease-in-out;

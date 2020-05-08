@@ -61,15 +61,14 @@ class commentController extends CodeCommentController
         if ($_SERVER['REQUEST_METHOD'] === 'POST'
           &&isset($_POST['votes'])&&ctype_digit($_POST['votes'])
           &&isset($_POST['id'])&&ctype_digit($_POST['id'])){
-                
             $comment = Comments::fetchSomething($_POST['id'],"id");
             if($comment==null)
                 throw new Exception("Comment not found", 1);
-            $comment->setVotes($_POST['votes']);
-            $entry = $comment->getAttributes();
-            $entry.push(['id' => $_POST['id']]);
-            Comments::update($entry);
+            Comments::updateVotes($_POST['votes'],$_POST['id']);
+            Logger::addLogEvent($_SESSION['user'].' voted commment number: '. $_POST['id']);
+            Helper::redirectCurrentPage();
         }
-                
+        else
+            throw new Exception("Problem to vote", 1);
     }
 }

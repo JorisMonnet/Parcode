@@ -16,9 +16,11 @@ function upvote(commentIndex){
         glyphicon_up[commentIndex].style.visibility = "hidden";
     else
         glyphicon_up[commentIndex].style.visibility = "visible"
-    votes[commentIndex].innerHTML= parseInt(votes[commentIndex].innerHTML)+1;
     if(glyphicon_down[commentIndex].style.visibility == "hidden")
         glyphicon_down[commentIndex].style.visibility = "visible"
+
+    votes[commentIndex].innerHTML= parseInt(votes[commentIndex].innerHTML)+1;
+    sendVotes(parseInt(votes[commentIndex].innerHTML),commentIndex);
 }
 function downvote(commentIndex){
     let votes = document.getElementsByClassName('voteLabel');
@@ -34,37 +36,24 @@ function downvote(commentIndex){
         glyphicon_up[commentIndex].style.visibility = "visible"
 
     votes[commentIndex].innerHTML= parseInt(votes[commentIndex].innerHTML)-1;
-    sendVotes(parseInt(votes[commentIndex].innerHTML))
-    
+    sendVotes(parseInt(votes[commentIndex].innerHTML),commentIndex);
 }
-function sendVotes(value) {
-    var XHR = new XMLHttpRequest();
-    var urlEncodedData = "";
+
+function sendVotes(votes,commentIndex) {
+    let ids = document.getElementsByClassName('idComment');
+    let request = new XMLHttpRequest();
+    let data = new FormData();
+    data.append('votes', votes);
+    data.append('id',ids[commentIndex].innerHTML);
+
   
-    // Transformez l'objet data en un tableau de paires clé/valeur codées URL.
-    let urlEncodedDataPairs=encodeURIComponent(votes) + '=' + encodeURIComponent(value);
-  
-    // remplacez tous
-    // les espaces codés en % par le caractère'+' ; cela correspond au comportement
-    // des soumissions de formulaires de navigateur.
-    urlEncodedData = urlEncodedDataPairs.replace(/%20/g, '+');
-  
-    // Définissez ce qui se passe en cas de succès de soumission de données
-    XHR.addEventListener('load', function(event) {
-      alert('Ouais ! Données envoyées et réponse chargée.');
+    //en cas d'erreur
+    request.addEventListener('error', function(event) {
+      alert('whoops unable to vote currently');
     });
   
-    // Définissez ce qui arrive en cas d'erreur
-    XHR.addEventListener('error', function(event) {
-      alert('Oups! Quelque chose s\'est mal passé.');
-    });
+    request.open('POST', 'updateVotes',true);
+    //request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   
-    // Configurez la requête
-    XHR.open('POST', 'updateVotes');
-  
-    // Ajoutez l'en-tête HTTP requise pour requêtes POST de données de formulaire 
-    XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  
-    // Finalement, envoyez les données.
-    XHR.send(urlEncodedData);
-  }
+    request.send(data);
+}

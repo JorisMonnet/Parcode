@@ -50,9 +50,18 @@ class Comments extends CodeCommentModel
   	
 	public static function fetchAllComments($id){
 		$dbh = App::get('dbh');
-		$statement = $dbh->prepare("SELECT * FROM Comments WHERE codes = ? ORDER BY votes,id DESC");
+		$statement = $dbh->prepare("SELECT * FROM Comments WHERE codes = ? ORDER BY votes DESC,id DESC");
 		$statement->bindParam(1,$id,PDO::PARAM_INT);
 		$statement->execute();
 		return $statement->fetchAll(PDO::FETCH_CLASS, get_called_class());
+	}
+	public static function updateVotes($votes,$id){
+		$dbh = App::get('dbh');
+		$req = "UPDATE Comments SET votes=:votes WHERE id=:id";
+
+		$statement = $dbh->prepare($req);
+		$statement->bindParam(":votes", $votes, PDO::PARAM_INT);
+		$statement->bindParam(":id", $id, PDO::PARAM_INT);
+		$statement->execute();
 	}
 }
