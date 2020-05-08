@@ -21,5 +21,6 @@ $router->define([
   'loginCancel' => 'LoginController@cancel',
   'showSignUp' => 'LoginController@showSignUp',
   'signUpCancel' => 'LoginController@loginPage',
-  'signUp' => 'LoginController@signUp'
+  'signUp' => 'LoginController@signUp',
+  'updateVotes' => 'commentController@updateVotes'
 ]);

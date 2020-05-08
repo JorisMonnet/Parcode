@@ -57,4 +57,19 @@ class commentController extends CodeCommentController
             	throw new Exception("Content can't be empty.", 1);
         }
     }
+    public function updateVotes(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST'
+          &&isset($_POST['votes'])&&ctype_digit($_POST['votes'])
+          &&isset($_POST['id'])&&ctype_digit($_POST['id'])){
+                
+            $comment = Comments::fetchSomething($_POST['id'],"id");
+            if($comment==null)
+                throw new Exception("Comment not found", 1);
+            $comment->setVotes($_POST['votes']);
+            $entry = $comment->getAttributes();
+            $entry.push(['id' => $_POST['id']]);
+            Comments::update($entry);
+        }
+                
+    }
 }
