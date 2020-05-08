@@ -34,13 +34,13 @@ abstract class CodeCommentModel extends Model
         return $this->strWithoutAuthor(false).$this->strAuthor();
 	}
 	
-    private function strAuthor(){
+    private function strAuthor($i=0){
 		$authorName = User::fetchSomething($this->getAuthor(),"id");
 		$str= '<span> Authored by '.htmlentities($authorName->getName());
 		if(get_class($this)=="Comments"&&isset($_SESSION['userid'])&&$this->getAuthor()!==$_SESSION['userid'])
-			$str.='<img class="glyphicon_up" src="app/views/partials/chevron_up.png" alt="upvote" onclick="upvote()"></img>
+			$str.='<img class="glyphicon_up" src="app/views/partials/chevron_up.png" alt="upvote" onclick="upvote('.$i.')"></img>
 					<span class="voteLabel">'.$this->getVotes().'</span>
-					<img class="glyphicon_down" src="app/views/partials/chevron_down.png" alt="downvote" onclick="downvote()"></img>';
+					<img class="glyphicon_down" src="app/views/partials/chevron_down.png" alt="downvote" onclick="downvote('.$i.')"></img>';
         return $str.'</span></div>';
 	}
 	
@@ -62,9 +62,12 @@ abstract class CodeCommentModel extends Model
 				$str.='<span class="editDeleteCode"><a class="edit" href="codeUpdate?id='.urlencode($this->getId()).'"> Edit Code </a>';
 				$str.='<a class ="delete" href="deleteCode?id='.$this->getId().'">Delete Code</a></span></div>';
 			}
-		else if(get_class($this)=="Comments")
-			$str.='<span class="hiddenForm"></span>';
-        return $str.$this->strAuthor();
+		else{
+			$str.=$this->strAuthor($i);
+			if(get_class($this)=="Comments")
+				$str.='<span class="hiddenForm"></span>';
+		}
+        return $str;
 	}
 	
 	private function strWithoutAuthor($onlyOne){
