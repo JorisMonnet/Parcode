@@ -51,6 +51,8 @@ abstract class CodeCommentModel extends Model
 					<span class="voteLabel">'.$this->getVotes().'</span>
 					<img class="glyphicon_down" src="app/views/partials/images/chevron_down.png" alt="downvote" onclick="listVotes['.$i.'].downvote()"></img>';
 		}
+		else if(get_class($this)=="Comments")
+			$str.='<span class="voteLabel">Votes: '.$this->getVotes().'</span>';
 		return $str.'</span></div>';
 	}
 
