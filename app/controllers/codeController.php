@@ -29,8 +29,8 @@ class CodeController extends CodeCommentController
             $comments = Comments::fetchAllComments($code->getId());
         } else 
             throw new Exception("CODE NOT FOUND.", 1);
-        $entry=array('currentCode' => $code,'comments' => $comments);
-        $entry+= array('user' =>$_SESSION['userid']??"");
+        $entry = array('currentCode' => $code,'comments' => $comments);
+        $entry += array('user' =>$_SESSION['userid']??"");
         return Helper::view("showCode",$entry);
     }
 

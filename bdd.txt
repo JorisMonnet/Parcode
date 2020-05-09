@@ -35,5 +35,6 @@ CREATE TABLE Votes(
   id int(11) NOT NULL AUTO_INCREMENT,
   author int REFERENCES User,
   comments int(11) REFERENCES Comments,
+  value smallint NOT NULL,
   PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
