@@ -1,16 +1,26 @@
 <?php
 
 $router->define([
-  //'' => 'controllers/index.php',  // by conventions all controllers are in 'controllers' folder
-  '' => 'indexController',
-  'index' => 'indexController',
-  'index.php' => 'indexController',
+  '' => 'IndexController',
+  'index' => 'IndexController',
+  'index.php' => 'IndexController',
   'codes' => 'codeController',
   'code' => 'codeController@show',
-  'addCodes' => 'codeController@showAddView',
-  'parse_add_form' => 'codeController@parseInput',
-  'parse_update_form' => 'codeController@parseUpdate',
-  'delete_form' => 'codeController@parseDelete',
-  'login' => 'loginController@login',
-  'logout' => 'loginController@logout'
+  'addCode' => 'codeController@showAddView',
+  'addForm' => 'codeController@parseAdd',
+  'updateForm' => 'codeController@parseUpdate',
+  'deleteCode' => 'codeController@parseDelete',
+  'login' => 'LoginController@login',
+  'logout' => 'LoginController@logout',
+  'loginPage' => 'LoginController@loginPage',
+  'parseFormSort' => 'codeController@parseSort',
+  'addComment' => 'commentController@parseAdd',
+  'updateComment' => 'commentController@parseUpdate',
+  'deleteComment' => 'commentController@parseDelete',
+  'codeUpdate' => 'codeController@showEdit',
+  'loginCancel' => 'LoginController@cancel',
+  'showSignUp' => 'LoginController@showSignUp',
+  'signUpCancel' => 'LoginController@loginPage',
+  'signUp' => 'LoginController@signUp',
+  'updateVotes' => 'commentController@updateVotes'
 ]);

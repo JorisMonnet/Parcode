@@ -1,33 +1,27 @@
 <?php
-    $title = "Code page";
+    $title = "Code ".$currentCode->getId();
     require('partials/header.php');
+    $_SESSION['currentPage'] ="code?id=".$currentCode->getId();
 ?>
 
-<div class="main">
 <main>
-  <h1>Selected Code</h1>
-
-  <div class="flex-container">
-    <?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
-  </div>
-
-  <p>
-    <a href="codes">Show all codes</a>
-  </p>
-  <div id="hiddenForm">
-    <form action="parse_update_form" method="post">
-      <p>This form allow you to edit the code</p>
-      <textarea name="content" required><?= htmlentities($currentCode->getContent()); ?></textarea>
-      <input type="hidden" name="id" value="<?= htmlentities($currentCode->getId()); ?>">
-      <input type="submit" value="Submit">
+  <h1>Code <?= htmlentities($currentCode->getId()); ?></h1>
+  
+  <?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
+  <h2>Commentaires</h2>
+  <hr class="bigHR">
+  <?php if(isset($_SESSION['userid'])):?>
+    <form action = "addComment" method="post">
+      <label for="contentAddComment">Leave a comment : </label>
+      <textarea class ="flex-container" id="contentAddComment" name="content" required></textarea>
+      <input type="hidden" name="codesid" value="<?= htmlentities($currentCode->getId()); ?>">
+      <input type="submit" class="button" value="Submit">
     </form>
-    </br>
-    <form action="delete_form" method="post">
-      <input type="hidden" name="id" value="<?= htmlentities($currentCode->getId()); ?>">
-      <input type="submit" value="Delete Code">
-    </form>
-  </div>
+    <hr class="bigHR">
+  <?php endif;
+    $i=0;   
+    foreach ($comments as $comment)
+        echo $comment->asHTMLTableRowWithEdit($user,$i++);
+    ?>
 </main>
-</div>
-
 <?php require('partials/footer.php'); ?>

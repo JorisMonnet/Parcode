@@ -9,11 +9,9 @@ class Router
   }
 
   public function direct($uri){
-    // example.com/about/us
-    // Remove the parameters
-    $uri = parse_url($uri)["path"]; // more info: http://php.net/manual/en/function.parse-url.php
 
-    // remove installation prefix
+    $uri = parse_url($uri)["path"];
+
     if (isset(App::get('config')['install_prefix']))
       if (strncmp($uri,App::get('config')['install_prefix'],
                     strlen(App::get('config')['install_prefix'])) == 0)
@@ -21,14 +19,8 @@ class Router
           $uri = "";
 
     if(array_key_exists ($uri, $this->routes)){
-        // En PHP 5.6 et suivants, la liste des arguments peut inclure
-        // le mot clé ... pour indiquer que cette fonction accepte un nombre
-        // variable d'arguments. Les arguments seront passés dans la variable
-        // fournie sous forme d'un tableau
         return $this->callAction(
-            ...explode('@', $this->routes[$uri]) // ... splat operator, voir http://php.net/manual/fr/migration56.new-features.php
-                                                 // (fonctions variadiques http://php.net/manual/fr/functions.arguments.php#functions.variable-arg-list)
-                                                 // explode (split a string by a string): http://php.net/manual/en/function.explode.php
+            ...explode('@', $this->routes[$uri]) 
         );
     }
     throw new Exception("Not routes defined for this URI.", 1);

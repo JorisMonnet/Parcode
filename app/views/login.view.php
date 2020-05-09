@@ -2,18 +2,28 @@
     $title = "Login page";
     require('partials/header.php');
 ?>
-<form class="log" action="login" method="post">
-  <h1>Login</h1>
+<form id="log" class="logForm" action="login" method="post">
+  <span class="logo_parcode">PARCODE</span>
+    <h1>Login</h1>
   <label for="username">Username:</label>
-  <input type="text" name="user" id="username"><br>
+  <input type="text" name="user" id="username" class="inputText" required><br>
   <label for="password">Password:</label>
-  <input type="password" name="pass" id="password"><br>
-  <input type="submit" value="submit">
+  <input type="password" name="pass" id="password" class="inputText" required><br>
+  <input type="submit" class="button" value="Submit">
+  <label for="signUpBut">Fresh with us ? If not please sign Up :</label>
 </form>
-<?php if(Logger::lastLogEventisFalseLog()){
-  echo '<div id = "falseLog">';
-    echo '<br> user not found <br>';
-    echo 'please try again <br>';
-  echo '</div>';
-} ?>
-<?php require('partials/footer.php'); ?>
+
+<form id="signUpButton" action="showSignUp" method="post">
+  <input id="signUpBut" type="submit" class="button" value="Sign up">
+</form>
+
+<form class="logCancel" action="loginCancel" method="post">
+  <input type="submit" class="button" value="Cancel">
+</form>
+
+<?php if(Logger::lastLogEventisFalseLog()):?>
+  <div id = "falseLog">
+    user not found <br>
+    please try again
+  </div>
+<?php endif; require("partials/footer.php");?>

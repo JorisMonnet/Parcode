@@ -1,69 +1,282 @@
-.upperpage {
+.upperpage{
   background-color: #b3b3b9;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 20px;
-  position:fixed;
+  position:sticky;
   top:0;
   left:0;
   right:0;
-  height:30px;
-  border: 1px;
+  border-radius: 10px;
+  height:5%;
+}
+.upperpageA{
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.upperpageA > a{
+  margin: 10px;
+}
+#formSort > select{
+  margin: 10px;
 }
 
-.upperpage > a {
-  float: right;
-  margin-right: 15px;
+footer{
+  background-color: #b3b3b9;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  bottom: 0;
+  left: 0; 
+  right: 0;
 }
 
-.log {
-  background: #e7ffff;
+.logForm{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  margin: auto;
-  border-radius: 10px;
-  border-style: ridge;
-  box-shadow: 0px 2px 40px black;
+  max-width: 350px;
+  margin-left:auto;
+  margin-right:auto;
 }
-.flex-container{
-    display: flex;
-    flex-direction: column;
+
+textarea.flex-container{
+  max-width:60%;
+  min-width:60%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.logCancel,#signUpButton{
+  margin-bottom:20px
+}
+
+.inputText{
+  border-radius: 20px; 
+  padding:0.2em;
+  border-style: groove; 
+  border-color: lightgrey;
+  color:black;
+  text-align: center;
+}
+
+.logo_parcode{
+  display:block;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: xx-large;
+  width: 6em;
+  border-radius: 20px; 
+  border-style: outset; 
+  border-top-color: red; 
+  border-left-color: red;
+  border-bottom-color:grey;
+  border-right-color: grey;
 }
 
 #falseLog{
-  text-align: center;
-}
-.flex-container > div {
-  margin: 10px;
-  background-color: #b3d9ff;
-  padding: 10px;
-  margin-right: 60%;
-  border-radius: 10px;
-  text-align: left;
+  width: 250px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 200px;
+  border-style: solid;
+  box-shadow: 0px 0px 1000px grey;
+  font-size:1em;
+  color:red;
+  text-align:center;
+    animation-name: anim_log;
+    animation-duration: 3s;
+   visibility:hidden;
 }
 
-.main{
-  padding-top:30px;
+@keyframes anim_log {
+    from {visibility:visible;
+      background-color:lightgrey;}
+    to {visibility:hidden;}
+}
+
+pre, textarea{
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    margin:0;
+}
+
+.flex-container{
+  display: flex;
+  flex-direction: column;
+  color : darkgrey;
+  background-color: #2E4053;
+  text-align: left;
+  border-radius: 10px; 
+  margin :10px;
+  padding: 1em;
+}
+
+.buttonEditCode{
+  display : flex;
+  flex-direction: column;
+  margin:auto;
 }
 
 .success{
   color: #ff0000;
 }
 
+html, main,body{
+  background-color: #F5B041;
+}
+
 body {
-  min-width: 900px;
   font-family: Arial,Arial Black;
-}
-
-#hiddenForm{
-  visibility: hidden;
-}
-
-#buttonEdit{
-  border-radius: 10px;
   text-align: center;
-  margin-right : 95%;
+}
+
+.successMessage {
+  width: 250px;
+  margin: auto;
+  border-radius: 200px;
+  border-style: solid;
+  font-size:1em;
+  text-align: center;
+  animation-name: anim_success;
+  animation-duration: 3s;
+  visibility:hidden;
+}
+
+@keyframes anim_success {
+    from {visibility:visible;
+      color:green;}
+    to {visibility:hidden;
+      color:#ECF0F1;}
+}
+
+#discard{
+  background-color: rgb(68, 65, 245);
+  color:white;
+}
+
+.edit{
+  background-color: #5DADE2;
+  color:white;
+}
+
+.button[value="Submit"]{
+  background-color: #52BE80;
+  color:white;
+}
+
+label{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+a, .button, button{
+  border-radius: 20px;
+  border-style: outset;
+  border-color: lightgrey;
+  background-color: lightgrey;
+  color :black;
+  cursor: pointer;
+  max-width: 250px;
+  min-width: 5%;
+  padding: 0.2em;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  text-decoration: none;
+}
+
+a:hover, .button:hover, button:hover {
+  color: darkgrey;
+  border-color: #2E4053;
+  background-color: white;
+}
+
+
+.addComment, textarea {
+  margin-right: 1%;
+  width: 99%;
+  resize: vertical;
+  white-space: pre-wrap;
+  color : darkgrey;
+  background-color: #2E4053;
+  text-align: left;
+  border-radius: 10px; 
+}
+
+hr{
+  color : white;
+  width: 100%;
+}
+
+.bigTextarea{
+  height:40em;
+}
+form >label{
+  margin-bottom:10px;
+}
+#inputTextGroups{
+  text-align:left;
+}
+.bigHR{
+  border-width: 2px;
+  margin-left:1%;
+  width:98%;
+  color: black;
+  border-style: solid;
+}
+.hiddenForm{
+  display:none
+}
+.codeIdRef{
+  max-width:50px;
+  min-width:20px
+}
+
+.flex-container>a{
+  text-align: center;
+}
+.editDeleteCode, .editDeleteComment{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+.editDeleteCode:first-child, .editDeleteComment:first-child{
+  margin-left: auto;
+  width: 100%;
+  background-color: #5DADE2;
+  color:white;
+}
+.editDeleteCode:last-child,.editDeleteComment:last-child{
+  margin-right: auto;
+  width: 100%;
+}
+.delete{
+  background-color: rgb(156, 0, 0);
+  color:white;
+}
+
+.disabled {
+  color: red
+}
+
+.glyphicon_up,.glyphicon_down, .voteLabel {
+  float: right;
+  margin-right: 2vw;
+  max-width: 30px;
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.glyphicon_up:hover,.glyphicon_down:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }

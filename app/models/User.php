@@ -7,17 +7,22 @@ class User extends Model
     private $name;
     private $pass;
 
-    //as we don't create any users for the moment, we don't need setters
 
     public function getName(){
       return $this->name;
     }
-
-    // the password will be hash in the final project, we have begun the research on the password_hash and password_verify functions
+    
     public function getPass(){
       return $this->pass;
     }
+    
+    public function setName($value){
+      $this->name = $value;
+    }
 
+    public function setPass($value){
+      $this->pass=$value;
+    }
     public static function getParam(){
       return [
         "name" => PDO::PARAM_STR,

@@ -1,30 +1,37 @@
 <?php
     $title = "Codes page";
     require('partials/header.php');
+    $_SESSION['currentPage'] ="codes";
 ?>
-<div class="main">
 <main>
-   <?php
-        if (isset($code_added_success) && $code_added_success === true) {
-    ?>
-          <p class="success">
-            <?php  "SUCCESS - code added"; ?>
-          </p>
-        <?php
-        }
-        ?>
-
     <h1>My codes</h1>
-        
-    <div class="flex-container">
-      <?php foreach ($codes as $code)
-    	        echo $code->asHTMLTableRow();
-      ?>
-    </div>
-
-    <a href="addCodes">Add Code</a>
+    <?php
+        if (isset($codeAddSuccess)&&$codeAddSuccess!="0")
+          echo "<p class='successMessage'> SUCCESS - code ". ($codeAddSuccess=="1"? "added":"updated" )."</p>";
+        else
+          echo "<p class='successMessage'>".$codeAddFailure."</p>";
+    ?>
+    <form action="parseFormSort" method="post" name="formSort" id="formSort">
+      <label for="sortSelect">Trier Par</label>
+      <select id="sortSelect" name="sort" class="button">
+        <option value="date">Date</option>
+        <option value="id">Id</option>
+        <option value="author">Author</option>
+      </select>
+      
+      <label for="orderSelect">Par Ordre</label>
+      <select id="orderSelect" name="order" class="button">
+        <option value="desc">Décroissant</option>
+        <option value="asc">Croissant</option>
+      </select>
+      <input type="submit" class="button" value="Submit">
     </form>
+    <br>
+      <?php foreach ($codes as $code){
+    	        echo $code->asHTMLTableRow();
+              echo "<br>";
+            }
+      ?>
 </main>
-<br />
-</div>
+<br>
 <?php require('partials/footer.php'); ?>

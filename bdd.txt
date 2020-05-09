@@ -2,29 +2,39 @@ DROP TABLE IF EXISTS User;
 CREATE TABLE User (
   id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(20) NOT NULL UNIQUE,
-  pass varchar(20) NOT NULL,
+  pass varchar(255) NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO User (id,name,pass) VALUES
-(1, 'admin','admin');
-
+(1, 'admin','$2y$10$TdYLPIr8FRGM7qrOpG9/BeNXx4V2ssuHqNPcYzIvixrQRlRCBcJKq');
 
 DROP TABLE IF EXISTS Codes;
 CREATE TABLE Codes (
   id int(11) NOT NULL AUTO_INCREMENT,
   date DATETIME NOT NULL,
   author int REFERENCES User,
-  content TEXT,
+  content TEXT NOT NULL,
+  groups TEXT NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Comments;
 CREATE TABLE Comments (
   id int(11) NOT NULL AUTO_INCREMENT,
+  votes int,
   date DATETIME NOT NULL,
   author int REFERENCES User,
-  content TEXT,
+  content TEXT NOT NULL,
   codes int(11) REFERENCES Codes,
   PRIMARY KEY(id)
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS Votes;
+CREATE TABLE Votes(
+  id int(11) NOT NULL AUTO_INCREMENT,
+  author int REFERENCES User,
+  comments int(11) REFERENCES Comments,
+  value smallint NOT NULL,
+  PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
