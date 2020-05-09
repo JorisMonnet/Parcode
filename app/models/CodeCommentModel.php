@@ -61,8 +61,8 @@ abstract class CodeCommentModel extends Model
 		if($this->getAuthor()===$user)
 			if(get_class($this)=="Comments"){
 				$str.='<span class="glyphicon_up glyphicon_down voteLabel"></span>';
-				$str.='</div></div><span class="editDeleteComment"><button class="edit" onclick=showEditComment('.$i.')>Edit Comment</button>';
-				$str.='<a class="delete" href="deleteComment?id='.htmlentities($this->getId()).'">Delete Comment</a></span>';
+				$str.='<span class="editDeleteComment"><button class="edit" onclick=showEditComment('.$i.')>Edit Comment</button>';
+				$str.='<a class="delete" href="deleteComment?id='.htmlentities($this->getId()).'">Delete Comment</a></span></div>';
 				$str.='<form class="hiddenForm" action="updateComment" method="post">
 							<label for="contentComment">Edit the comment : </label>
 							<textarea class="flex-container" id="contentComment" name="content" required>'.htmlentities($this->getContent()).'</textarea>
