@@ -1,5 +1,7 @@
 <?php
 require_once("codeCommentController.php");
+require_once('VotesController.php');
+
 class commentController extends CodeCommentController
 {
     public function parseUpdate(){
@@ -59,14 +61,24 @@ class commentController extends CodeCommentController
     }
     public function updateVotes(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST'
-          &&isset($_POST['votes'])
-          &&isset($_POST['id'])&&ctype_digit($_POST['id'])){
-            $comment = Comments::fetchSomething($_POST['id'],"id");
+          &&isset($_POST['votes'])&&isset($_POST['value'])
+          &&isset($_POST['idComments'])&&ctype_digit($_POST['idComments'])
+          &&isset($_SESSION['userid'])){
+            $comment = Comments::fetchSomething($_POST['idComments'],"id");
             if($comment==null)
                 throw new Exception("Comment not found", 1);
-            Comments::updateVotes($_POST['votes'],$_POST['id']);
-            Logger::addLogEvent($_SESSION['user'].' voted commment number: '. $_POST['id']);
-            Helper::redirectCurrentPage();
+            Comments::updateVotes($_POST['votes'],$_POST['idComments']);
+            Logger::addLogEvent($_SESSION['user'].' voted commment number: '. $_POST['idComments']);
+            if(isset($_POST['idVote'])&&ctype_digit($_POST['idVote'])){
+                $entry = [
+                    'comments' => $_POST['idComments'],
+                    'author' => $_SESSION['userid'],
+                    'id' => $_POST['idVote'],
+                    'value' =>$_POST['value']
+                  ];
+                  VotesController::parseUpdate($entry);
+            } else
+                VotesController::parseAdd($_POST['value'],$_POST['idComments']);
         }
         else
             throw new Exception("Problem to vote", 1);

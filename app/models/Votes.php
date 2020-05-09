@@ -47,12 +47,13 @@ class Votes extends Model
         "value" => $this->getValue()
       ];
     }
-    public static function fetchAllAuthors($idComments){
-		$dbh = App::get('dbh');
-        $statement = $dbh->prepare("select author from Votes WHERE comments=?");
-        $statement->bindparam(1,$idComments,PDO::PARAM_INT);
-		$statement->execute();
-		return $statement->fetch();
-	}
-
+    public static function fetchComments($idComments,$user){
+      $dbh = App::get('dbh');
+      $req = "SELECT id,value FROM Votes WHERE comments = ? AND author = ?";
+      $statement = $dbh->prepare($req);
+      $statement->bindParam(1, $idComments, PDO::PARAM_INT);
+      $statement->bindParam(2, $user, PDO::PARAM_INT);
+      $statement->execute();
+      return $statement->fetch(PDO::FETCH_ASSOC);
+    }
 }
