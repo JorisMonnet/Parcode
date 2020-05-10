@@ -48,7 +48,7 @@ class LoginController
 			if($_POST['confirmedPassword']===$_POST['pass']){
 				$connection = User::fetchSomething($_POST['user'],"name",PDO::PARAM_STR,PDO::FETCH_ASSOC);
 				//allow two user to have the same name but not the same pass and username
-				if(isset($connection)&&password_verify($_POST['pass'],$connection['pass'])){
+				if(isset($connection)){
 					$_SESSION['badSignUp']="User already registered !";
 					return require('app/views/signUp.view.php');
 				} else {
