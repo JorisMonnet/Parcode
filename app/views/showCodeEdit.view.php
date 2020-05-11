@@ -1,7 +1,7 @@
 <?php
-$title = "Code page";
-require('partials/header.php');
-$_SESSION['currentPage'] ="code?id=".$currentCode->getId(); //never go to this page directly, only frome the code page
+    $title = "Code page";
+    require('partials/header.php');
+    $_SESSION['currentPage'] ="code?id=".$currentCode->getId(); //never go to this page directly, only frome the code page
 ?>
 
 <main>
@@ -18,4 +18,5 @@ $_SESSION['currentPage'] ="code?id=".$currentCode->getId(); //never go to this p
     <?php endif;?>
 </main>
 <br>
+
 <?php require('partials/footer.php'); ?>

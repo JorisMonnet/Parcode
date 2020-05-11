@@ -12,26 +12,25 @@
           echo "<p class='successMessage'>".$codeAddFailure."</p>";
     ?>
     <form action="parseFormSort" method="post" name="formSort" id="formSort">
-      <label for="sortSelect">Trier Par</label>
-      <select id="sortSelect" name="sort" class="button">
-        <option value="date">Date</option>
-        <option value="id">Id</option>
-        <option value="author">Author</option>
-      </select>
+      	<label for="sortSelect">Trier Par</label>
+      	<select id="sortSelect" name="sort" class="button">
+        	<option value="date">Date</option>
+        	<option value="id">Id</option>
+        	<option value="author">Author</option>
+      	</select>
       
-      <label for="orderSelect">Par Ordre</label>
-      <select id="orderSelect" name="order" class="button">
-        <option value="desc">Décroissant</option>
-        <option value="asc">Croissant</option>
-      </select>
-      <input type="submit" class="button" value="Submit">
+      	<label for="orderSelect">Par Ordre</label>
+      	<select id="orderSelect" name="order" class="button">
+        	<option value="desc">Décroissant</option>
+        	<option value="asc">Croissant</option>
+      	</select>
+      	<input type="submit" class="button" value="Submit">
     </form>
     <br>
-      <?php foreach ($codes as $code){
-    	        echo $code->asHTMLTableRow();
-              echo "<br>";
-            }
-      ?>
+    <?php foreach ($codes as $code)
+    	    echo $code->asHTMLTableRow()."<br>";
+    ?>
 </main>
 <br>
+
 <?php require('partials/footer.php'); ?>
