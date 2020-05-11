@@ -29,10 +29,6 @@ class Codes extends CodeCommentModel
 		$this->groups = $value;
 	}
 
-	public function addGroups($value){
-		$this->groups.= ".".$value;
-	}
-
 	public function getGroupsArray(){
 		return explode(".",$this->getGroups());
 	}

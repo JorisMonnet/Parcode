@@ -8,10 +8,11 @@
     <h1>Add New Code</h1>
     <p>The following form allow you to add a new code </p>
     <form action = "addForm" method="post" class="buttonEditCode">
-        <p>Code :</p>
+        <h2>Code :</h2>
         <textarea name="content" class="bigTextarea" required></textarea>
-        <p>Groups(only characters and numbers) :</p>
-        <input type="text" name="groups" class="inputText" id="inputTextGroups" pattern="\w{1,}" required>
+        <h2>Groups(only characters and numbers) :</h2>
+        <p>You can add a group by putting a "." between the two groups</p>
+        <input type="text" name="groups" class="inputText" id="inputTextGroups" pattern="[\w\.]{1,}" required>
         <input type="submit" class="button" value="Submit">
     </form>
 </main>
