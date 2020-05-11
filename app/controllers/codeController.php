@@ -7,14 +7,20 @@ class CodeController extends CodeCommentController
         $groupCodes = [];
         $groups = [];
         foreach($codes as $code){
-            if(isset($_GET['group'])&&in_array($_GET['group'],$code->getGroupsArray()))
+            if(isset($_GET['group'])&&preg_match_all('/\b'.$_GET['group'].'\b/',implode($code->getGroupsArray())))
                 array_push($groupCodes,$code);
-            foreach($code->getGroupsArray() as $group)
-                if(!in_array($group,$groups))
-                    array_push($groups,$group);
+            else
+                foreach($code->getGroupsArray() as $group)
+                    if(!in_array($group,$groups))
+                        array_push($groups,$group);
         }
-        if(isset($_GET['group']))   
+
+        if(isset($_GET['group'])){   
             $codes = $groupCodes;
+            $groups = [];
+            $groups[0] = $_GET['group'];
+        }
+
         $codeAddSuccess = "0"; 
         $codeAddFailure = "";
         if (isset($_SESSION['codeUpdated']) &&  ctype_digit($_SESSION['codeUpdated'])){
