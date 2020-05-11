@@ -192,7 +192,7 @@ a, .button, button{
   text-decoration: none;
 }
 
-a:hover, .button:hover, button:hover {
+a:hover, input.button:hover, button:hover {
   color: darkgrey;
   border-color: #2E4053;
   background-color: white;
