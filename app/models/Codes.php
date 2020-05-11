@@ -46,4 +46,12 @@ class Codes extends CodeCommentModel
 			'groups' => $this->getGroups()
 		];
 	}
+
+	public static function fetchGroup($group){
+		$dbh = App::get('dbh');
+		$statement = $dbh->prepare("select * from Codes WHERE groups= ?");
+		$statement->bindParam(1,$group,PDO::PARAM_STR);
+		$statement->execute();
+		return $statement->fetchAll(PDO::FETCH_CLASS, "Codes");
+	}
 }

@@ -278,3 +278,10 @@ form >label{
   opacity: 0.5;
   cursor: pointer;
 }
+
+nav{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #5DADE2;
+}

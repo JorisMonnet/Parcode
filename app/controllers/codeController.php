@@ -4,12 +4,17 @@ class CodeController extends CodeCommentController
 {
     public function index(){
         $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codeOrder']??"DESC");
+        $groupCodes = [];
         $groups = [];
-        foreach($codes as $code)
+        foreach($codes as $code){
+            if(isset($_GET['group'])&&in_array($_GET['group'],$code->getGroupsArray()))
+                array_push($groupCodes,$code);
             foreach($code->getGroupsArray() as $group)
                 if(!in_array($group,$groups))
                     array_push($groups,$group);
-
+        }
+        if(isset($_GET['group']))   
+            $codes = $groupCodes;
         $codeAddSuccess = "0"; 
         $codeAddFailure = "";
         if (isset($_SESSION['codeUpdated']) &&  ctype_digit($_SESSION['codeUpdated'])){

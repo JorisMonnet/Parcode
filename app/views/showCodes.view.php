@@ -7,7 +7,7 @@
   <nav>
     <?php 
       foreach ($groups as $group)
-        echo '<a href = "">'.$group.'</a>';
+        echo '<a href = "codes?group='.urlencode($group).'">'.$group.'</a>';
     ?>
   </nav>
     <h1>My codes</h1>
