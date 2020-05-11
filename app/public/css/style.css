@@ -98,11 +98,9 @@ textarea.flex-container{
     to {visibility:hidden;}
 }
 
-pre, textarea{
+pre, textarea, .flex-container{
     white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
+    word-break: break-all;
     margin:0;
 }
 
