@@ -4,6 +4,11 @@ class CodeController extends CodeCommentController
 {
     public function index(){
         $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codeOrder']??"DESC");
+        $groups = [];
+        foreach($codes as $code)
+            foreach($code->getGroupsArray() as $group)
+                if(!in_array($group,$groups))
+                    array_push($groups,$group);
 
         $codeAddSuccess = "0"; 
         $codeAddFailure = "";
@@ -16,6 +21,7 @@ class CodeController extends CodeCommentController
 
         return Helper::view("showCodes",[
                 'codes' => $codes,
+                'groups' => $groups,
                 'codeAddSuccess' => $codeAddSuccess,
                 'codeAddFailure' => $codeAddFailure,
             ]);
@@ -111,4 +117,5 @@ class CodeController extends CodeCommentController
             $_SESSION['codeOrder']=$_POST['order'];
         Helper::redirectToCodes();
     }
+
 }

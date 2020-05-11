@@ -4,6 +4,12 @@
     $_SESSION['currentPage'] ="codes";
 ?>
 <main>
+  <nav>
+    <?php 
+      foreach ($groups as $group)
+        echo '<a href = "">'.$group.'</a>';
+    ?>
+  </nav>
     <h1>My codes</h1>
     <?php
         if (isset($codeAddSuccess)&&$codeAddSuccess!="0")

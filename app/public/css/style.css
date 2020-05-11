@@ -98,7 +98,7 @@ textarea.flex-container{
     to {visibility:hidden;}
 }
 
-pre, textarea, .flex-container{
+pre, textarea{
     white-space: pre-wrap;
     word-break: break-all;
     margin:0;
