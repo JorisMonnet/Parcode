@@ -21,15 +21,16 @@ class Codes extends CodeCommentModel
 		];
 	}
 
-
-	public function setGroups($value){
-		$this->groups=$value;
-	}
 	public function getGroups(){
 		return $this->groups;
 	}
-	public function addGroups($value){
-		$this->groups+=value;
+
+	public function setGroups($value){
+		$this->groups = $value;
+	}
+
+	public function getGroupsArray(){
+		return explode(".",$this->getGroups());
 	}
 
 	public function getAttributes(){
@@ -39,5 +40,13 @@ class Codes extends CodeCommentModel
 			'author' => $this->getAuthor(),
 			'groups' => $this->getGroups()
 		];
+	}
+
+	public static function fetchGroup($group){
+		$dbh = App::get('dbh');
+		$statement = $dbh->prepare("select * from Codes WHERE groups= ?");
+		$statement->bindParam(1,$group,PDO::PARAM_STR);
+		$statement->execute();
+		return $statement->fetchAll(PDO::FETCH_CLASS, "Codes");
 	}
 }

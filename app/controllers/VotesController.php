@@ -15,16 +15,10 @@ class VotesController
             $vote->setValue($value);
             $vote->save();
     }
-    public static function parseDelete(){
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            if(isset($_POST['id'])&&ctype_digit($_POST['id'])){
-                $vote=Votes::fetchSomething($_POST['id'],"id");
-                    if(!$vote::delete($_GET['id']))
-                        throw new Exception("Vote don't exist", 1);
-            }else
-                throw new Exception("Vote don't exist", 1);
-            Helper::redirectCurrentPage();
-        }
+    public static function parseDelete($id){
+        $vote=Votes::fetchSomething($id,"id");
+        if(!$vote::delete($id))
+            throw new Exception("Vote don't exist", 1);
     }
     public static function parseUpdate($entry){
         $vote = Votes::fetchSomething($entry['id'],"id");

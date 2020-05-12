@@ -10,33 +10,53 @@
   border-radius: 10px;
   height:5%;
 }
+
 .upperpageA{
   display: flex;
   flex-direction:row;
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .upperpageA > a{
   margin: 10px;
+  max-width: 100px;
 }
+
 #formSort > select{
   margin: 10px;
 }
 
+@media screen and (min-height: 550px) and (min-width: 500px) {
+  footer{
+    position: absolute;
+  }
+
+  .upperpageA > a{
+    margin: 10px;
+    max-width: 250px;
+  }
+}
+
 footer{
+  bottom: 0;
+  left: 0; 
+  right: 0;
   background-color: #b3b3b9;
   border-radius: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  bottom: 0;
-  left: 0; 
-  right: 0;
+}
+
+footer.codeFooter{
+  position: relative;
 }
 
 .logForm{
   display: flex;
   flex-direction: column;
   max-width: 350px;
+  margin-top: 8vh;
   margin-left:auto;
   margin-right:auto;
 }
@@ -100,9 +120,7 @@ textarea.flex-container{
 
 pre, textarea{
     white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
+    word-break: break-all;
     margin:0;
 }
 
@@ -192,7 +210,7 @@ a, .button, button{
   text-decoration: none;
 }
 
-a:hover, .button:hover, button:hover {
+a:hover, input.button:hover, button:hover {
   color: darkgrey;
   border-color: #2E4053;
   background-color: white;
@@ -216,7 +234,7 @@ hr{
 }
 
 .bigTextarea{
-  height:40em;
+  height: 55vh;
 }
 form >label{
   margin-bottom:10px;
@@ -279,4 +297,11 @@ form >label{
 .glyphicon_up:hover,.glyphicon_down:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+nav{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #5DADE2;
 }

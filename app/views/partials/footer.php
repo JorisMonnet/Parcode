@@ -1,5 +1,5 @@
-<?php if (!preg_match_all('/Code*/',$title))
-		echo '<footer style="position:absolute">';
+<?php if (preg_match_all('/Code/i',$title))
+		echo '<footer class ="codeFooter">';
 	else
 		echo '<footer>';?>
 		Projet Application Web SP 2020 - HE-ARC INF2-DLMB - JORIS MONNET, ADRIEN PAYSANT 

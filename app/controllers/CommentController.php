@@ -39,21 +39,19 @@ class commentController extends CodeCommentController
                 $comment->setVotes(0);
                 $allowInsert = true;
                 if (isset($_COOKIE['comment_per_min_counter'])){
-                  if ($_COOKIE['comment_per_min_counter'] > 90){
-                    echo "set false";
-                    $allowInsert = false;
-                  }else
-                    setcookie("comment_per_min_counter",$_COOKIE['comment_per_min_counter'] + 1);
+                    if ($_COOKIE['comment_per_min_counter'] > 90){
+                        echo "set false";
+                        $allowInsert = false;
+                    }else
+                        setcookie("comment_per_min_counter",$_COOKIE['comment_per_min_counter'] + 1);
                 }
                 else
                    setcookie("comment_per_min_counter", 1, time() + 60);
                 if ($allowInsert) {
                     $comment->save();
                     Logger::addLogEvent($_SESSION['user'].' added comment number '.$comment->getId());
-                    Helper::redirectCurrentPage();
                 }
-                else 
-                   Helper::redirectCurrentPage();
+                Helper::redirectCurrentPage();
             }
             else
             	throw new Exception("Content can't be empty.", 1);
