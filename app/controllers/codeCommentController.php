@@ -13,8 +13,8 @@ abstract class CodeCommentController
         if(isset($_SESSION['userid']))
             return true;
         Helper::view("login");
-        exit();
     }
+    
     public function parseDelete(){
         if($_SERVER['REQUEST_METHOD'] === 'GET'&&$this->authorIsConnected()){
             if(isset($_GET['id'])&&ctype_digit($_GET['id'])){
