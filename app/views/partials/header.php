@@ -3,6 +3,9 @@
 <head>
 	<title><?= htmlentities($title) ?></title>
 	<link rel="stylesheet" href="app/public/css/style.css">
+	<link rel="stylesheet" href="app/public/css/button.css">
+	<?php if($title=="Login page"||$title=="SignUp page")?>
+		<link rel="stylesheet" href="app/public/css/logPage.css">
 	<link rel="icon" type="image/png" href="app/views/partials/images/logo.png" />
 	<script src="app/public/js/script.js"></script>
 	<meta name="viewport" content="width=device-width, user-scalable=no">

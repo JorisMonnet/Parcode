@@ -1,0 +1,87 @@
+.buttonEditCode{
+    display : flex;
+    flex-direction: column;
+    margin:auto;
+}
+
+.button[value="Submit"]{
+    background-color: #52BE80;
+    color:white;
+}
+
+a, .button, button{
+    border-radius: 20px;
+    border-style: outset;
+    border-color: lightgrey;
+    background-color: lightgrey;
+    color :black;
+    cursor: pointer;
+    max-width: 250px;
+    min-width: 5%;
+    padding: 0.2em;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    text-decoration: none;
+}
+  
+a:hover, input.button:hover, button:hover {
+    color: darkgrey;
+    border-color: #2E4053;
+    background-color: white;
+}
+
+#discard{
+	background-color: rgb(68, 65, 245);
+	color:white;
+}
+
+.edit{
+	background-color: #5DADE2;
+	color:white;
+}
+
+.editDeleteCode, .editDeleteComment{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+}
+
+.editDeleteCode:first-child, .editDeleteComment:first-child{
+	margin-left: auto;
+	width: 100%;
+	background-color: #5DADE2;
+	color:white;
+}
+
+.editDeleteCode:last-child,.editDeleteComment:last-child{
+	margin-right: auto;
+	width: 100%;
+}
+
+.delete{
+	background-color: rgb(156, 0, 0);
+	color:white;
+}
+
+.glyphicon_up,.glyphicon_down, .voteLabel {
+	float: right;
+	margin-right: 2vw;
+	max-width: 30px;
+	opacity: 1;
+	transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
+}
+
+.glyphicon_up:hover,.glyphicon_down:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.codeIdRef{
+	max-width:50px;
+	min-width:20px
+}
