@@ -60,6 +60,7 @@ class Vote{
         this.votes[this.commentIndex].innerHTML=this.value;
         sendVotes(this.value,this.commentIndex,-1,this.idVote);
     }
+
     showTwoGlyph(){
         this.glyphicon_up.style.visibility = "visible";
         this.glyphicon_down.style.visibility = "visible";

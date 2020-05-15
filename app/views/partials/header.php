@@ -7,7 +7,7 @@
 	<?php if($title=="Login page"||$title=="SignUp page"):?>
 		<link rel="stylesheet" href="app/public/css/logPage.css">
 	<?php endif;
-		 if(preg_match_all('/^Code \d/i',$title)):?>
+		 if(preg_match_all('/Code \d/i',$title)):?>
 		<script src="app/public/js/votes.js"></script>
 	<?php endif;?>
 	<link rel="icon" type="image/png" href="app/views/partials/images/logo.png" />

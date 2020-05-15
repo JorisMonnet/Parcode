@@ -3,7 +3,7 @@ require_once("codeCommentController.php");
 class CodeController extends CodeCommentController
 {
     public function index(){
-        $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codeOrder']??"desc");
+        $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codesOrder']??"desc");
         $groupCodes = [];
         $groups = [];
         foreach($codes as $code){
@@ -36,7 +36,7 @@ class CodeController extends CodeCommentController
                 'codeAddSuccess' => $codeAddSuccess,
                 'codeAddFailure' => $codeAddFailure,
                 'codesSort' => $_SESSION['codesSort']??"date",
-                'codeOrder' =>$_SESSION['codeOrder']??"desc"
+                'codesOrder' =>$_SESSION['codesOrder']??"desc"
             ]);
     }
 
@@ -125,9 +125,9 @@ class CodeController extends CodeCommentController
 
     public function parseSort(){
         if(isset($_POST['sort']))
-            $_SESSION['codeSort']=$_POST['sort'];
+            $_SESSION['codesSort']=$_POST['sort'];
         if(isset($_POST['order']))
-            $_SESSION['codeOrder']=$_POST['order'];
+            $_SESSION['codesOrder']=$_POST['order'];
         Helper::redirectToCodes();
     }
 

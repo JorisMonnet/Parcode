@@ -19,19 +19,20 @@
     ?>
     <form action="parseFormSort" method="post" name="formSort" id="formSort">
       	<label for="sortSelect">Trier Par</label>
-      	<select id="sortSelect" name="sort" class="button" selected="<?=$codesSort?>">
+      	<select id="sortSelect" name="sort" class="button">
         	<option value="date">Date</option>
         	<option value="id">Id</option>
         	<option value="author">Author</option>
       	</select>
       
       	<label for="orderSelect">Par Ordre</label>
-      	<select id="orderSelect" name="order" class="button" selected=<?=$codeOrder?>>
+      	<select id="orderSelect" name="order" class="button">
         	<option value="desc">Décroissant</option>
         	<option value="asc">Croissant</option>
       	</select>
       	<input type="submit" class="button" value="Submit">
     </form>
+    <script>showSortCodes("<?=$codesSort?>","<?=$codesOrder?>")</script>
     <?php foreach ($codes as $code)
     	    echo $code->asHTMLTableRow();
     ?>
