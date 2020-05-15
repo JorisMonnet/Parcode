@@ -10,8 +10,6 @@ function showEditComment(commentIndex){
 }
 
 function showSortCodes(codesSort,codesOrder){
-    console.log(codesSort);
-    console.log(codesOrder);
     let sortSelect = document.getElementById('sortSelect');
     let orderSelect = document.getElementById('orderSelect');
     sortSelect.value = codesSort;
