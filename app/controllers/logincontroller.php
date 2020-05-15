@@ -52,15 +52,13 @@ class LoginController
 			if(isset($_POST['user']) && isset($_POST['pass'])&&isset($_POST['confirmedPassword']))
 				if($_POST['confirmedPassword']===$_POST['pass']){
 					$connection = User::fetchSomething($_POST['user'],"name",PDO::PARAM_STR,PDO::FETCH_ASSOC);
-					//allow two user to have the same name but not the same pass and username
-					if(isset($connection)){
+					if($connection!=null){
 						$_SESSION['badSignUp']="User already registered !";
 						Helper::view("signUp");
-					} else {
+					}else {
 						$user = new User();
 						$user->setName($_POST['user']);
 						$user->setPass(password_hash($_POST['pass'],PASSWORD_DEFAULT));
-
 						$allowInsert = true;
 						if (isset($_COOKIE['user_per_min_counter']))
 							if ($_COOKIE['user_per_min_counter'] > 90)
@@ -72,7 +70,7 @@ class LoginController
 						if ($allowInsert){
 							$user->save();
 							Logger::addLogEvent('New User Registered :'.$_POST['user']);
-							Helper::view("signUp");
+							Helper::view("login");
 						} else {
 							$_SESSION['badSignUp']="Too fast attempts";
 							Helper::view("signUp");
