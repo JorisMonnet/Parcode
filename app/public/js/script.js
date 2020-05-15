@@ -9,6 +9,9 @@ function showEditComment(commentIndex){
         hiddenForm[commentIndex].style.display = "none";
 }
 
+function sortCodes(){
+}
+
 function sendVotes(votes,commentIndex,value,idVote) {
     let idComments = document.getElementsByClassName('idComment');
     let request = new XMLHttpRequest();

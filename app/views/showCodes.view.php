@@ -32,11 +32,9 @@
       	</select>
       	<input type="submit" class="button" value="Submit">
     </form>
-    <br>
     <?php foreach ($codes as $code)
-    	    echo $code->asHTMLTableRow()."<br>";
+    	    echo $code->asHTMLTableRow();
     ?>
 </main>
-<br>
 
 <?php require('partials/footer.php'); ?>

@@ -21,10 +21,7 @@
 .upperpageA > a{
 	margin: 10px;
 	max-width: 100px;
-}
-
-#formSort > select{
-  	margin: 10px;
+	background-color: lightsteelblue;
 }
 
 @media screen and (min-height: 550px) and (min-width: 500px) {

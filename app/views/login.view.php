@@ -7,9 +7,9 @@
   	<span class="logo_parcode">PARCODE</span>
     <h1>Login</h1>
   	<label for="username">Username:</label>
-  	<input type="text" name="user" id="username" class="inputText" required><br>
+  	<input type="text" name="user" id="username" class="inputText" required>
   	<label for="password">Password:</label>
-  	<input type="password" name="pass" id="password" class="inputText" required><br>
+  	<input type="password" name="pass" id="password" class="inputText" required>
   	<input type="submit" class="button" value="Submit">
   	<label for="signUpBut">Fresh with us ? If not please sign Up :</label>
 </form>
@@ -24,8 +24,8 @@
 
 <?php if(Logger::lastLogEventisFalseLog()):?>
   	<div id = "falseLog">
-    	user not found <br>
-    	please try again
+    	User not found <br>
+    	Please try again
   	</div>
 
 <?php endif; require("partials/footer.php");?>

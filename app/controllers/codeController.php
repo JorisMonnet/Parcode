@@ -3,7 +3,7 @@ require_once("codeCommentController.php");
 class CodeController extends CodeCommentController
 {
     public function index(){
-        $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codeOrder']??"DESC");
+        $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codeOrder']??"desc");
         $groupCodes = [];
         $groups = [];
         foreach($codes as $code){
@@ -15,7 +15,7 @@ class CodeController extends CodeCommentController
                         array_push($groups,$group);
         }
 
-        if(isset($_GET['group'])){   
+        if(isset($_GET['group'])){
             $codes = $groupCodes;
             $groups = [];
             $groups[0] = $_GET['group'];
@@ -35,6 +35,8 @@ class CodeController extends CodeCommentController
                 'groups' => $groups,
                 'codeAddSuccess' => $codeAddSuccess,
                 'codeAddFailure' => $codeAddFailure,
+                'codesSort' => $_SESSION['codesSort']??"date",
+                'codeOrder' =>$_SESSION['codeOrder']??"desc"
             ]);
     }
 

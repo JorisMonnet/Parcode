@@ -10,7 +10,9 @@
 .logCancel,#signUpButton{
     margin-bottom:20px
 }
-
+.logForm > input{
+    margin-bottom: 10px;
+}
 .logo_parcode{
     display:block;
     margin-right: auto;
