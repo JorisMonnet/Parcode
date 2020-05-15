@@ -15,7 +15,7 @@ class LoginController
 	}
 
 	public function loginPage(){
-		return require('app/views/login.view.php');
+		Helper::view("login");
 	}
 
 	public function login(){
@@ -30,7 +30,7 @@ class LoginController
 					Helper::redirectCurrentPage();
 				} else {
 					Logger::addLogEvent('connection attempt: failed');
-					return require('app/views/login.view.php');
+					Helper::view("login");
 				}
 			} else 
 				throw new Exception('user or password not set', 1);
@@ -40,11 +40,11 @@ class LoginController
 
 	public function Cancel(){
 		if($_SERVER['REQUEST_METHOD'] === 'POST')
-		return Helper::redirectCurrentPage();
+		Helper::redirectCurrentPage();
 	}
 
 	public function showSignUp(){
-		return require('app/views/signUp.view.php');
+		Helper::view("signUp");
 	}
 
 	public function signUp(){
@@ -55,7 +55,7 @@ class LoginController
 					//allow two user to have the same name but not the same pass and username
 					if(isset($connection)){
 						$_SESSION['badSignUp']="User already registered !";
-						return require('app/views/signUp.view.php');
+						Helper::view("signUp");
 					} else {
 						$user = new User();
 						$user->setName($_POST['user']);
@@ -72,15 +72,15 @@ class LoginController
 						if ($allowInsert){
 							$user->save();
 							Logger::addLogEvent('New User Registered :'.$_POST['user']);
-							return require('app/views/login.view.php');
+							Helper::view("signUp");
 						} else {
 							$_SESSION['badSignUp']="Too fast attempts";
-							return require('app/views/signUp.view.php');
+							Helper::view("signUp");
 						}
 					}
 				}else{
 					$_SESSION['badSignUp']="Bad Password Confirmation";
-					return require('app/views/signUp.view.php');
+					Helper::view("signUp");
 				}
 			else 
 				throw new Exception('user or password or confirmed Password not set', 1);

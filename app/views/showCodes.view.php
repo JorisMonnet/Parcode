@@ -19,14 +19,14 @@
     ?>
     <form action="parseFormSort" method="post" name="formSort" id="formSort">
       	<label for="sortSelect">Trier Par</label>
-      	<select id="sortSelect" name="sort" class="button">
+      	<select id="sortSelect" name="sort" class="button" selected="<?=$codesSort?>">
         	<option value="date">Date</option>
         	<option value="id">Id</option>
         	<option value="author">Author</option>
       	</select>
       
       	<label for="orderSelect">Par Ordre</label>
-      	<select id="orderSelect" name="order" class="button">
+      	<select id="orderSelect" name="order" class="button" selected=<?=$codeOrder?>>
         	<option value="desc">Décroissant</option>
         	<option value="asc">Croissant</option>
       	</select>

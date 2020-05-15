@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
 	<title><?= htmlentities($title) ?></title>
-	<link rel="stylesheet" href="app/public/css/style.css">
+	<link rel="stylesheet" href="app/public/css/generalStyle.css">
 	<link rel="stylesheet" href="app/public/css/button.css">
-	<?php if($title=="Login page"||$title=="SignUp page")?>
+	<?php if($title=="Login page"||$title=="SignUp page"):?>
 		<link rel="stylesheet" href="app/public/css/logPage.css">
+	<?php endif;
+		 if(preg_match_all('/^Code \d/i',$title)):?>
+		<script src="app/public/js/votes.js"></script>
+	<?php endif;?>
 	<link rel="icon" type="image/png" href="app/views/partials/images/logo.png" />
-	<script src="app/public/js/script.js"></script>
+	<script src="app/public/js/generalScript.js"></script>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 

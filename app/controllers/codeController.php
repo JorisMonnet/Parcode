@@ -30,7 +30,7 @@ class CodeController extends CodeCommentController
         else if ($_SERVER['REQUEST_METHOD'] === 'GET'&& isset($_GET['delay_failed'])) 
             $codeAddFailure = "submission too fast";
 
-        return Helper::view("showCodes",[
+        Helper::view("showCodes",[
                 'codes' => $codes,
                 'groups' => $groups,
                 'codeAddSuccess' => $codeAddSuccess,
@@ -50,7 +50,7 @@ class CodeController extends CodeCommentController
             throw new Exception("CODE NOT FOUND.", 1);
         $entry = array('currentCode' => $code,'comments' => $comments);
         $entry += array('user' =>$_SESSION['userid']??"");
-        return Helper::view("showCode",$entry);
+        Helper::view("showCode",$entry);
     }
 
     public function showEdit(){
@@ -60,7 +60,7 @@ class CodeController extends CodeCommentController
                 throw new Exception("CODE NOT FOUND.", 1);
         } else 
             throw new Exception("CODE NOT FOUND.", 1);
-        return Helper::view("showCodeEdit",[
+            Helper::view("showCodeEdit",[
                 'currentCode' => $code,
                 'user' => $_SESSION['userid']
             ]);
@@ -89,7 +89,7 @@ class CodeController extends CodeCommentController
     }
 
     public function showAddView(){
-        return Helper::view('addCode');
+        Helper::view('addCode');
     }
 
     public function parseAdd(){
