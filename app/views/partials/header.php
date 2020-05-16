@@ -20,24 +20,26 @@
 	if ($title!="Login page"&&$title!="SignUp page"):?>
 		<nav>
 			<ul>
-			<?php if(isset($_SESSION['userid'])):?>
-				<li><p>Welcome <?= htmlentities($_SESSION['user']);?></p></li>
-				<li><a href="logout">Logout</a></li>
-				<li><a href="addCode">Add Code</a></li>
-			<?php else: ?>
-				<li><a href="loginPage">Login</a></li>
-			<?php endif;?>
-			<li><a href="index">HOME</a></li>
+			<li><p>Welcome <?= htmlentities($_SESSION['user']??"new user");?></p></li>
+			<li><a href="index">Home</a></li>
 			<li><a href="codes">Codes</a></li>
+			<?php if(isset($_SESSION['userid'])):?>
+				<li><a href="addCode">Add Code</a></li>
+			<?php endif;?>
 			<li class="groupsMenu"><a href="javascript:void(0)" id="groupsButton">Groups</a>
 			<div id="navGroups">
-				<a href="codes">Return to all</a>
+				<a href="codes">Return to all Codes</a>
 				<?php 
 					foreach ($groups as $group)
 						echo '<a href = "codes?group='.urlencode($group).'">'.htmlentities($group).'</a>';
 				?>
 			</div>
 			</li>
+			<?php if(isset($_SESSION['userid'])):?>
+				<li><a href="logout">Logout</a></li>
+			<?php else: ?>
+				<li><a href="loginPage">Login</a></li>
+			<?php endif;?>
 			</ul>
 		</nav>
 	<?php endif;?>

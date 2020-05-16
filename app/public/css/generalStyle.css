@@ -7,24 +7,17 @@ ul{
 }
 
 li {
-	float: left;
-}
-.logNav{
-	float: right;
+	display: inline-block;
 }
 
 li a, #groupsButton{
-	display: inline-block;
 	color: white;
-	text-align: center;
 	padding: 1em 1em;
 	text-decoration: none;
 }
 
 li p{
 	color:white;
-	margin-right: 2em;
-	margin-left: 1em;
 }
 
 li a:hover, .groupsMenu:hover #groupsButton {
