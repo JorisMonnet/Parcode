@@ -156,9 +156,13 @@ form > label{
   	text-align: center;
 }
 
-nav{
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	background-color: #5DADE2;
+#navGroups{
+	display : none;
+	flex-direction: column;
+	position: sticky;
+}
+
+#groupsButton:hover #navGroups{
+	display: block;
+	background-color: red;
 }

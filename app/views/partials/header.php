@@ -30,6 +30,28 @@
 			<?php endif;?>
 			<a href="index">HOME</a>
 			<a href="codes">Codes</a>
+			<script>
+				function showNav(blocked){
+					let nav = document.getElementById("navGroups");
+					if(nav.style.display == "none")
+						nav.style.display = "block";
+					else
+						nav.style.display = "none";
+				}
+				function hoverShowNav(in){
+					let nav = document.getElementById("navGroups");
+					nav.style.display = in?"block":"none";
+				}
+			</script>
+			<nav>
+				<button id="groupsButton" onmouseout="hoverShowNav(false)" onmouseover="hoverShowNav(true)">Groups</button>
+				<div id="navGroups">
+				<?php 
+					foreach ($groups as $group)
+						echo '<a href = "codes?group='.urlencode($group).'">'.htmlentities($group).'</a>';
+				?>
+				</div>
+			</nav>
 			</div>
 		</div>
 	<?php endif;?>

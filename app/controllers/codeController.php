@@ -1,5 +1,6 @@
 <?php
-require_once("codeCommentController.php");
+require_once("CodeCommentController.php");
+
 class CodeController extends CodeCommentController
 {
     public function index(){
