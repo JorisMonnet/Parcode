@@ -1,6 +1,6 @@
 <?php
     $title = "Code ".$currentCode->getId();
-    require('partials/header.php');
+    require_once('partials/header.php');
     $_SESSION['currentPage'] ="code?id=".$currentCode->getId();
 ?>
 
@@ -26,4 +26,4 @@
         echo $comment->asHTMLTableRowWithEdit($user,$i++);
     ?>
 </main>
-<?php require('partials/footer.php'); ?>
+<?php require_once('partials/footer.php'); ?>

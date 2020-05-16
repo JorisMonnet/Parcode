@@ -1,6 +1,6 @@
 <?php
     $title = "Codes page";
-    require('partials/header.php');
+    require_once('partials/header.php');
     $_SESSION['currentPage'] ="codes";
 ?>
 <main>
@@ -32,4 +32,4 @@
     ?>
 </main>
 
-<?php require('partials/footer.php'); ?>
+<?php require_once('partials/footer.php'); ?>

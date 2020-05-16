@@ -16,6 +16,6 @@ class App
   	}
 
   	public static function load_config($fileName){
-     	self::$app['config'] = require($fileName);
+     	self::$app['config'] = require_once($fileName);
   	}
 }

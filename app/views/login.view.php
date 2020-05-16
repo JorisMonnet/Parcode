@@ -1,6 +1,6 @@
 <?php
     $title = "Login page";
-    require('partials/header.php');
+    require_once('partials/header.php');
 ?>
 
 <form id="log" class="logForm" action="login" method="post">
@@ -28,4 +28,4 @@
     	Please try again
   	</div>
 
-<?php endif; require("partials/footer.php");?>
+<?php endif; require_once("partials/footer.php");?>

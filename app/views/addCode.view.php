@@ -1,6 +1,6 @@
 <?php
     $title = "Add New Code";
-    require('partials/header.php');
+    require_once('partials/header.php');
     $_SESSION['currentPage'] ="addCode";
 ?>
 
@@ -17,4 +17,4 @@
     </form>
 </main>
 
-<?php require('partials/footer.php') ?>
+<?php require_once('partials/footer.php') ?>
