@@ -1,37 +1,68 @@
-.upperpage{
-	background-color: #b3b3b9;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 20px;
-	position:sticky;
-	top:0;
-	left:0;
-	right:0;
-	border-radius: 10px;
-	height:5%;
+ul{
+	list-style-type: none;
+  	margin: 0;
+  	padding: 0;
+  	overflow: hidden;
+  	background-color: #333;
 }
 
-.upperpageA{
-	display: flex;
-	flex-direction:row;
-	justify-content: center;
-	flex-wrap: wrap;
+li {
+	float: left;
+}
+.logNav{
+	float: right;
 }
 
-.upperpageA > a{
-	margin: 10px;
-	max-width: 100px;
-	background-color: lightsteelblue;
+li a, #groupsButton{
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 1em 1em;
+	text-decoration: none;
+}
+
+li p{
+	color:white;
+	margin-right: 2em;
+	margin-left: 1em;
+}
+
+li a:hover, .groupsMenu:hover #groupsButton {
+	background-color: red;
+}
+  
+li.groupsMenu {
+	display: inline-block;
+}
+  
+#navGroups {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+  
+#navGroups a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+  
+#navGroups a:hover {
+	background-color: #f1f1f1;
+}
+  
+.groupsMenu:hover #navGroups {
+	display: block;
 }
 
 @media screen and (min-height: 550px) and (min-width: 500px) {
 	footer{
 		position: absolute;
-	}
-
-	.upperpageA > a{
-		margin: 10px;
-		max-width: 250px;
 	}
 }
 
@@ -154,15 +185,4 @@ form > label{
 
 .flex-container > a{
   	text-align: center;
-}
-
-#navGroups{
-	display : none;
-	flex-direction: column;
-	position: sticky;
-}
-
-#groupsButton:hover #navGroups{
-	display: block;
-	background-color: red;
 }

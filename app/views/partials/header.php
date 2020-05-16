@@ -22,23 +22,22 @@
 			<ul>
 			<?php if(isset($_SESSION['userid'])):?>
 				<li><p>Welcome <?= htmlentities($_SESSION['user']);?></p></li>
-				<div class="upperpageA">
 				<li><a href="logout">Logout</a></li>
 				<li><a href="addCode">Add Code</a></li>
 			<?php else: ?>
-				<div class="upperpageA">
-				<a href="loginPage">Login</a>
+				<li><a href="loginPage">Login</a></li>
 			<?php endif;?>
-			<a href="index">HOME</a>
-			<a href="codes">Codes</a>
-			<button id="groupsButton">Groups</button>
+			<li><a href="index">HOME</a></li>
+			<li><a href="codes">Codes</a></li>
+			<li class="groupsMenu"><a href="javascript:void(0)" id="groupsButton">Groups</a>
 			<div id="navGroups">
+				<a href="codes">Return to all</a>
 				<?php 
 					foreach ($groups as $group)
 						echo '<a href = "codes?group='.urlencode($group).'">'.htmlentities($group).'</a>';
 				?>
 			</div>
-			</div>
+			</li>
 			</ul>
 		</nav>
 	<?php endif;?>

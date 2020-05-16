@@ -9,7 +9,7 @@
     color:white;
 }
 
-a, .button, button{
+.button, button, .codeIdRef, #discard, .edit, .delete{
     border-radius: 20px;
     border-style: outset;
     border-color: lightgrey;
