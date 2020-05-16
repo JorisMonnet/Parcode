@@ -6,6 +6,7 @@ ul{
 	background-color: #333;
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 li {
@@ -44,7 +45,8 @@ li.groupsMenu {
 	display: none;
 	position: absolute;
 	background-color: #f9f9f9;
-	min-width: 150px;
+	max-height: 40vh;
+	overflow: auto;
 }
   
 #navGroups a {
