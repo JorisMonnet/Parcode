@@ -8,7 +8,7 @@ class CodeController extends CodeCommentController
         $groupCodes = [];
         $groups = [];
         foreach($codes as $code){
-            if(isset($_GET['group'])&&preg_match_all('/\b'.$_GET['group'].'\b/',implode($code->getGroupsArray())))
+            if(isset($_GET['group'])&&preg_match_all('/'.$_GET['group'].'/',implode($code->getGroupsArray())))
                 array_push($groupCodes,$code);
             else
                 foreach($code->getGroupsArray() as $group)
