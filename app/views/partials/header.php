@@ -26,6 +26,7 @@
 			<?php if(isset($_SESSION['userid'])):?>
 				<li><a href="addCode">Add Code</a></li>
 			<?php endif;?>
+			<?php if ($title=="Codes page"):?>
 			<li class="groupsMenu"><a href="javascript:void(0)" id="groupsButton">Groups</a>
 			<div id="navGroups">
 				<a href="codes">Return to all Codes</a>
@@ -35,10 +36,10 @@
 				?>
 			</div>
 			</li>
-			<?php if(isset($_SESSION['userid'])):?>
-				<li><a href="logout">Logout</a></li>
+			<?php endif;if(isset($_SESSION['userid'])):?>
+				<li><a class="logNav" href="logout">Logout</a></li>
 			<?php else: ?>
-				<li><a href="loginPage">Login</a></li>
+				<li><a class="logNav" href="loginPage">Login</a></li>
 			<?php endif;?>
 			</ul>
 		</nav>
