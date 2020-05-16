@@ -8,7 +8,7 @@
     <?php
         if (isset($codeAddSuccess)&&$codeAddSuccess!="0")
           echo "<p class='successMessage'> SUCCESS - code ". ($codeAddSuccess=="1"? "added":"updated" )."</p>";
-        else
+        else if(isset($codeAddFailure)&&$codeAddFailure!="")
           echo "<p class='successMessage'>".$codeAddFailure."</p>";
     ?>
     <form action="parseFormSort" method="post" name="formSort" id="formSort">
