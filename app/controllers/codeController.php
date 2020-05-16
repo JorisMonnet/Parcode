@@ -6,20 +6,11 @@ class CodeController extends CodeCommentController
     public function index(){
         $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codesOrder']??"desc");
         $groupCodes = [];
-        $groups = [];
-        foreach($codes as $code){
-            if(isset($_GET['group'])&&preg_match_all('/\b'.$_GET['group'].'\b/',implode(" ",$code->getGroupsArray())))
-                array_push($groupCodes,$code);
-            else
-                foreach($code->getGroupsArray() as $group)
-                    if(!in_array($group,$groups))
-                        array_push($groups,$group);
-        }
-
         if(isset($_GET['group'])){
+            foreach($codes as $code)
+                if(isset($_GET['group'])&&preg_match_all('/\b'.$_GET['group'].'\b/',implode(" ",$code->getGroupsArray())))
+                    array_push($groupCodes,$code);
             $codes = $groupCodes;
-            $groups = [];
-            $groups[0] = $_GET['group'];
         }
 
         $codeAddSuccess = "0"; 
@@ -33,12 +24,22 @@ class CodeController extends CodeCommentController
 
         Helper::view("showCodes",[
                 'codes' => $codes,
-                'groups' => $groups,
                 'codeAddSuccess' => $codeAddSuccess,
                 'codeAddFailure' => $codeAddFailure,
                 'codesSort' => $_SESSION['codesSort']??"date",
                 'codesOrder' =>$_SESSION['codesOrder']??"desc"
             ]);
+    }
+
+    public static function getGroups(){
+        $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codesOrder']??"desc");
+        $groups = [];
+        foreach($codes as $code){
+            foreach($code->getGroupsArray() as $group)
+                if(!in_array($group,$groups))
+                    array_push($groups,$group);
+        }
+        return $groups;
     }
 
     public function show(){

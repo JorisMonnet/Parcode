@@ -18,29 +18,29 @@
 <body>
 	<?php 
 	if ($title!="Login page"&&$title!="SignUp page"):?>
-		<nav>
-			<ul>
+		<ul>
 			<li><p>Welcome <?= htmlentities($_SESSION['user']??"new user");?></p></li>
 			<li><a href="index">Home</a></li>
 			<li><a href="codes">Codes</a></li>
 			<?php if(isset($_SESSION['userid'])):?>
 				<li><a href="addCode">Add Code</a></li>
-			<?php endif;?>
-			<?php if ($title=="Codes page"):?>
+			<?php endif;
+			require_once("app/controllers/CodeController.php"); 
+			$groups = CodeController::getGroups();
+			if($groups!=null):?>
 			<li class="groupsMenu"><a href="javascript:void(0)" id="groupsButton">Groups</a>
 			<div id="navGroups">
-				<a href="codes">Return to all Codes</a>
 				<?php 
 					foreach ($groups as $group)
-						echo '<a href = "codes?group='.urlencode($group).'">'.htmlentities($group).'</a>';
+							echo '<a href = "codes?group='.urlencode($group).'">'.htmlentities($group).'</a>';
 				?>
 			</div>
 			</li>
-			<?php endif;if(isset($_SESSION['userid'])):?>
+			<?php endif; 
+				if(isset($_SESSION['userid'])):?>
 				<li><a class="logNav" href="logout">Logout</a></li>
 			<?php else: ?>
 				<li><a class="logNav" href="loginPage">Login</a></li>
 			<?php endif;?>
-			</ul>
-		</nav>
+		</ul>
 	<?php endif;?>

@@ -1,8 +1,8 @@
 <?php
 
-require "app/models/Codes.php";
-require "app/models/Comments.php";
-require "core/Logger.php";
+require_once("app/models/Codes.php");
+require_once("app/models/Comments.php");
+require_once("core/Logger.php");
 
 abstract class CodeCommentController
 {

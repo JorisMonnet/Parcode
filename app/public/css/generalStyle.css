@@ -46,7 +46,10 @@ li.groupsMenu {
 	position: absolute;
 	background-color: #f9f9f9;
 	max-height: 40vh;
-	overflow: auto;
+	max-width: 200px;
+	word-break: break-all;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
   
 #navGroups a {
