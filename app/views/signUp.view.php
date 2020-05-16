@@ -1,6 +1,6 @@
 <?php
     $title = "SignUp page";
-    require('partials/header.php');
+    require_once('partials/header.php');
 ?>
 
 <form id="signUp" class="logForm" action="signUp" method="post">
@@ -25,4 +25,4 @@
 		<?php echo $_SESSION['badSignUp'];unset($_SESSION['badSignUp']);?>
 		Please try again
 	</div>
-<?php  endif; require("partials/footer.php");?>
+<?php  endif; require_once("partials/footer.php");?>

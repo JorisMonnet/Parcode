@@ -50,6 +50,7 @@ li.groupsMenu {
 	word-break: break-all;
 	overflow-y: auto;
 	overflow-x: hidden;
+	z-index: 1;
 }
   
 #navGroups a {
