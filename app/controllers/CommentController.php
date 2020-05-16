@@ -1,5 +1,5 @@
 <?php
-require_once("codeCommentController.php");
+require_once("CodeCommentController.php");
 require_once('VotesController.php');
 
 class commentController extends CodeCommentController

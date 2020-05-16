@@ -4,12 +4,6 @@
     $_SESSION['currentPage'] ="codes";
 ?>
 <main>
-  <nav>
-    <?php 
-      foreach ($groups as $group)
-        echo '<a href = "codes?group='.urlencode($group).'">'.htmlentities($group).'</a>';
-    ?>
-  </nav>
     <h1>My codes</h1>
     <?php
         if (isset($codeAddSuccess)&&$codeAddSuccess!="0")
@@ -32,11 +26,10 @@
       	</select>
       	<input type="submit" class="button" value="Submit">
     </form>
-    <br>
+    <script>showSortCodes("<?=$codesSort?>","<?=$codesOrder?>")</script>
     <?php foreach ($codes as $code)
-    	    echo $code->asHTMLTableRow()."<br>";
+    	    echo $code->asHTMLTableRow();
     ?>
 </main>
-<br>
 
 <?php require('partials/footer.php'); ?>

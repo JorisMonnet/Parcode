@@ -1,0 +1,196 @@
+ul{
+	list-style-type: none;
+  	margin: 0;
+  	padding: 0;
+  	overflow: hidden;
+	background-color: #333;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+li {
+	display: inline-block;
+	flex-grow: 1;
+}
+
+li a, #groupsButton{
+	display: inline-block;
+	color: white;
+	padding: 1em 1em;
+	text-decoration: none;
+}
+
+li p{
+	color:white;
+	margin-left: 1em;
+	margin-right: auto;
+}
+
+.logNav{
+	margin-right: 1em;
+	margin-left: auto;
+}
+
+li a:hover, .groupsMenu:hover #groupsButton {
+	background-color: red;
+}
+  
+li.groupsMenu {
+	display: inline-block;
+	flex-grow: 0;
+}
+  
+#navGroups {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	max-height: 40vh;
+	max-width: 200px;
+	word-break: break-all;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+  
+#navGroups a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+  
+#navGroups a:hover {
+	background-color: #f1f1f1;
+}
+  
+.groupsMenu:hover #navGroups {
+	display: block;
+}
+
+@media screen and (min-height: 550px) and (min-width: 500px) {
+	footer{
+		position: absolute;
+	}
+}
+
+footer{
+  	bottom: 0;
+	left: 0; 
+	right: 0;
+	background-color: #b3b3b9;
+	border-radius: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+footer.codeFooter{
+  	position: relative;
+}
+
+textarea.flex-container{
+	max-width:60%;
+	min-width:60%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.inputText{
+	border-radius: 20px; 
+	padding:0.2em;
+	border-style: groove; 
+	border-color: lightgrey;
+	color:black;
+	text-align: center;
+}
+
+pre, textarea{
+    white-space: pre-wrap;
+    word-break: break-all;
+    margin:0;
+}
+
+.flex-container{
+	display: flex;
+	flex-direction: column;
+	color : darkgrey;
+	background-color: #2E4053;
+	text-align: left;
+	border-radius: 10px; 
+	margin :10px;
+	padding: 1em;
+}
+
+html, main,body{
+	background-color: #F5B041;
+	font-family: Arial,Arial Black;
+	text-align: center;
+}
+
+.successMessage {
+	width: 250px;
+	margin: auto;
+	border-radius: 200px;
+	border-style: solid;
+	font-size:1em;
+	text-align: center;
+	animation-name: anim_success;
+	animation-duration: 3s;
+	visibility:hidden;
+}
+
+@keyframes anim_success {
+    from {visibility:visible;
+      	color:green;}
+    to {visibility:hidden;
+      	color:#ECF0F1;}
+}
+
+label{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.addComment, textarea {
+	margin-right: 1%;
+	width: 99%;
+	resize: vertical;
+	white-space: pre-wrap;
+	color : darkgrey;
+	background-color: #2E4053;
+	text-align: left;
+	border-radius: 10px; 
+}
+
+hr{
+	color : white;
+	width: 100%;
+}
+
+.bigTextarea{
+  	height: 55vh;
+}
+
+form > label{
+  	margin-bottom:10px;
+}
+
+#inputTextGroups{
+  	text-align:left;
+}
+
+.bigHR{
+	border-width: 2px;
+	margin-left:1%;
+	width:98%;
+	color: black;
+	border-style: solid;
+}
+
+.hiddenForm{
+  	display:none
+}
+
+.flex-container > a{
+  	text-align: center;
+}

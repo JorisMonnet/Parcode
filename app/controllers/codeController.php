@@ -1,24 +1,16 @@
 <?php
-require_once("codeCommentController.php");
+require_once("CodeCommentController.php");
+
 class CodeController extends CodeCommentController
 {
     public function index(){
-        $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codeOrder']??"DESC");
+        $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codesOrder']??"desc");
         $groupCodes = [];
-        $groups = [];
-        foreach($codes as $code){
-            if(isset($_GET['group'])&&preg_match_all('/\b'.$_GET['group'].'\b/',implode($code->getGroupsArray())))
-                array_push($groupCodes,$code);
-            else
-                foreach($code->getGroupsArray() as $group)
-                    if(!in_array($group,$groups))
-                        array_push($groups,$group);
-        }
-
-        if(isset($_GET['group'])){   
+        if(isset($_GET['group'])){
+            foreach($codes as $code)
+                if(isset($_GET['group'])&&preg_match_all('/\b'.$_GET['group'].'\b/',implode(" ",$code->getGroupsArray())))
+                    array_push($groupCodes,$code);
             $codes = $groupCodes;
-            $groups = [];
-            $groups[0] = $_GET['group'];
         }
 
         $codeAddSuccess = "0"; 
@@ -30,12 +22,24 @@ class CodeController extends CodeCommentController
         else if ($_SERVER['REQUEST_METHOD'] === 'GET'&& isset($_GET['delay_failed'])) 
             $codeAddFailure = "submission too fast";
 
-        return Helper::view("showCodes",[
+        Helper::view("showCodes",[
                 'codes' => $codes,
-                'groups' => $groups,
                 'codeAddSuccess' => $codeAddSuccess,
                 'codeAddFailure' => $codeAddFailure,
+                'codesSort' => $_SESSION['codesSort']??"date",
+                'codesOrder' =>$_SESSION['codesOrder']??"desc"
             ]);
+    }
+
+    public static function getGroups(){
+        $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codesOrder']??"desc");
+        $groups = [];
+        foreach($codes as $code){
+            foreach($code->getGroupsArray() as $group)
+                if(!in_array($group,$groups))
+                    array_push($groups,$group);
+        }
+        return $groups;
     }
 
     public function show(){
@@ -48,7 +52,7 @@ class CodeController extends CodeCommentController
             throw new Exception("CODE NOT FOUND.", 1);
         $entry = array('currentCode' => $code,'comments' => $comments);
         $entry += array('user' =>$_SESSION['userid']??"");
-        return Helper::view("showCode",$entry);
+        Helper::view("showCode",$entry);
     }
 
     public function showEdit(){
@@ -58,7 +62,7 @@ class CodeController extends CodeCommentController
                 throw new Exception("CODE NOT FOUND.", 1);
         } else 
             throw new Exception("CODE NOT FOUND.", 1);
-        return Helper::view("showCodeEdit",[
+            Helper::view("showCodeEdit",[
                 'currentCode' => $code,
                 'user' => $_SESSION['userid']
             ]);
@@ -87,7 +91,7 @@ class CodeController extends CodeCommentController
     }
 
     public function showAddView(){
-        return Helper::view('addCode');
+        Helper::view('addCode');
     }
 
     public function parseAdd(){
@@ -123,9 +127,9 @@ class CodeController extends CodeCommentController
 
     public function parseSort(){
         if(isset($_POST['sort']))
-            $_SESSION['codeSort']=$_POST['sort'];
+            $_SESSION['codesSort']=$_POST['sort'];
         if(isset($_POST['order']))
-            $_SESSION['codeOrder']=$_POST['order'];
+            $_SESSION['codesOrder']=$_POST['order'];
         Helper::redirectToCodes();
     }
 

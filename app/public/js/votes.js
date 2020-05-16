@@ -1,14 +1,3 @@
-function showEditComment(commentIndex){
-    let hiddenForm = document.getElementsByClassName('hiddenForm');
-    if(hiddenForm[commentIndex].style.display !=="block"){
-        hiddenForm[commentIndex].style.display = "block";
-        for(let i=0;i<hiddenForm.length;i++)
-            if(i!=commentIndex)
-                hiddenForm[i].style.display = "none";
-    }else
-        hiddenForm[commentIndex].style.display = "none";
-}
-
 function sendVotes(votes,commentIndex,value,idVote) {
     let idComments = document.getElementsByClassName('idComment');
     let request = new XMLHttpRequest();
@@ -71,6 +60,7 @@ class Vote{
         this.votes[this.commentIndex].innerHTML=this.value;
         sendVotes(this.value,this.commentIndex,-1,this.idVote);
     }
+
     showTwoGlyph(){
         this.glyphicon_up.style.visibility = "visible";
         this.glyphicon_down.style.visibility = "visible";

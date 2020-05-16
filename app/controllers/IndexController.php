@@ -4,7 +4,6 @@ require "core/Logger.php";
 class IndexController
 {
     public function index(){
-        return Helper::view("index");
+        Helper::view("index");
     }
-
 }

@@ -7,10 +7,8 @@
 <main>
     <h1>Home</h1>
     <p>
-        Hello ! This Application is useful to share some lines of codes from different studies project !
-    </p>
-    <p>
-        Here you can go to the <a href="codes">Codes !</a>
+        Hello ! This Application is useful to share some lines of codes from different studies project !<br><br>
+        You can go to the Codes with the top navigation bar !
     </p>
 </main>
 

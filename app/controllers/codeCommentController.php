@@ -1,8 +1,8 @@
 <?php
 
-require "app/models/Codes.php";
-require "app/models/Comments.php";
-require "core/Logger.php";
+require_once("app/models/Codes.php");
+require_once("app/models/Comments.php");
+require_once("core/Logger.php");
 
 abstract class CodeCommentController
 {
@@ -13,8 +13,8 @@ abstract class CodeCommentController
         if(isset($_SESSION['userid']))
             return true;
         Helper::view("login");
-        exit();
     }
+    
     public function parseDelete(){
         if($_SERVER['REQUEST_METHOD'] === 'GET'&&$this->authorIsConnected()){
             if(isset($_GET['id'])&&ctype_digit($_GET['id'])){
