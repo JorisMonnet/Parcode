@@ -1,4 +1,11 @@
-ul{
+nav {
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+ul {
 	list-style-type: none;
   	margin: 0;
   	padding: 0;
@@ -7,6 +14,7 @@ ul{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	border-radius: 10px;
 }
 
 li {
@@ -14,20 +22,20 @@ li {
 	flex-grow: 1;
 }
 
-li a, #groupsButton{
+li a, #groupsButton {
 	display: inline-block;
 	color: white;
 	padding: 1em 1em;
 	text-decoration: none;
 }
 
-li p{
+li p {
 	color:white;
 	margin-left: 1em;
 	margin-right: auto;
 }
 
-.logNav{
+.logNav {
 	margin-right: 1em;
 	margin-left: auto;
 }

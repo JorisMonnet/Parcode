@@ -16,6 +16,7 @@
 </head>
 
 <body>
+	<nav>
 	<?php 
 	if ($title!="Login page"&&$title!="SignUp page"):?>
 		<ul>
@@ -44,3 +45,4 @@
 			<?php endif;?>
 		</ul>
 	<?php endif;?>
+	</nav>
