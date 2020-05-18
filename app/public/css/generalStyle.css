@@ -81,6 +81,11 @@ li.groupsMenu {
 	footer{
 		position: absolute;
 	}
+
+	li a, #groupsButton {
+		border-left-style: solid;
+		border-width: 1px;
+	}
 }
 
 footer{
