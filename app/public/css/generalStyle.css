@@ -25,7 +25,6 @@ ul {
 }
 
 li {
-	display: inline-block;
 	flex-grow: 1;
 }
 
@@ -52,7 +51,6 @@ li a:hover, .groupsMenu:hover #groupsButton {
 }
   
 li.groupsMenu {
-	display: inline-block;
 	flex-grow: 0;
 }
   
