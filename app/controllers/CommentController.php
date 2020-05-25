@@ -1,4 +1,5 @@
 <?php
+
 require_once("CodeCommentController.php");
 require_once('VotesController.php');
 
@@ -57,6 +58,7 @@ class commentController extends CodeCommentController
             	throw new Exception("Content can't be empty.", 1);
         }
     }
+    
     public function updateVotes(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST'
           &&isset($_POST['votes'])&&isset($_POST['value'])

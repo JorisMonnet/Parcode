@@ -12,10 +12,8 @@ abstract class Model{
 		$this->id = $id;
 	}
 
-//return the bindings linked to the attributes of the class
 	abstract public static function getParam();
 
-//return the attributes of the object
 	abstract public function getAttributes();
 	
 	//allows to fetch any row of the DB instead of using fetchId/fetchName
@@ -29,7 +27,7 @@ abstract class Model{
 		return $statement->fetch($arrayResult);
 	}
 	
-	// Method useful for the view
+	// Method useful for the view when showing all codes
 	public static function fetchAll($sort,$order){
 		$dbh = App::get('dbh');
 		$statement = $dbh->prepare("select * from ".get_called_class()." ORDER BY ".$sort." ".$order);
@@ -37,7 +35,7 @@ abstract class Model{
 		return $statement->fetchAll(PDO::FETCH_CLASS, get_called_class());
 	}
 
-//update something in the called class
+	//update something in the called class
 	public static function update($entry){
 		$dbh = App::get('dbh');
 		$param = get_called_class()::getParam(); //getting the bindings of all params for the called class
@@ -46,11 +44,11 @@ abstract class Model{
 		$id = $entry['id'];
 		unset($entry['id']);
 
-		foreach ($entry as $key => $row) {
+		foreach ($entry as $key => $row) { //construct the request with all params
 			$i++;
 			$req .= $key." =:$key";
 			$i < (sizeof($entry))? $req .= ", ":$req .= " ";
-		} //construct the request with all params
+		} 
 		$req .= "WHERE id=:id ";
 
 		$entry['id'] = $id;
@@ -62,7 +60,7 @@ abstract class Model{
 		$statement->execute();
 	}
 
-//insert something in the called class
+	//insert something in the called class
 	public function save(){
 		$dbh = App::get('dbh');
 		$values = $this->getAttributes();
@@ -72,9 +70,9 @@ abstract class Model{
 		$req.=join(",",array_map(null,array_keys($param))).") VALUES (";
 		$req.=join(",",array_map(function($key){return ":".$key;},array_keys($param))).")";
 		$statement = $dbh->prepare($req);
-		foreach ($param as $key => $value)
+		foreach ($param as $key => $value) // prepared statement with name placeholders 
 			$statement->bindParam($key, $values[$key], $value);
-		// prepared statement with name placeholders 
+		
 		$statement->execute();
 	}
 	public static function delete($id){

@@ -1,13 +1,13 @@
 <?php
     $title = "Code page";
     require_once('partials/header.php');
-    $_SESSION['currentPage'] ="code?id=".$currentCode->getId(); //never go to this page directly, only frome the code page
+    $_SESSION['currentPage'] ="code?id=".$currentCode->getId();
 ?>
 
 <main>
     <h1>Selected Code</h1>
     <?php if($user==$currentCode->getAuthor()):?>
-        <form action="updateForm" method="post" class="buttonEditCode">
+        <form action="updateForm" method="post" class="formEditCode">
             <p>This form allow you to edit the code</p>
             <textarea class="bigTextarea" name="content" required><?= htmlentities($currentCode->getContent()); ?>  </textarea>
             <input type="hidden"  name="id" value="<?= htmlentities($currentCode->getId()); ?>"><br>

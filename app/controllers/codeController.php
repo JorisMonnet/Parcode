@@ -1,4 +1,5 @@
 <?php
+
 require_once("CodeCommentController.php");
 
 class CodeController extends CodeCommentController

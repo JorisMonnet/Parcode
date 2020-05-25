@@ -22,6 +22,7 @@ class User extends Model
 	public function setPass($value){
 		$this->pass=$value;
 	}
+	
 	public static function getParam(){
 		return [
 			"name" => PDO::PARAM_STR,

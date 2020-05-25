@@ -1,4 +1,5 @@
 <?php
+
 require "core/Logger.php";
 
 class IndexController

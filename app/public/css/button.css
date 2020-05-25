@@ -1,7 +1,6 @@
-.buttonEditCode{
+.formEditCode{
     display : flex;
     flex-direction: column;
-    margin:auto;
 }
 
 .button[value="Submit"]{

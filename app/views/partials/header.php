@@ -17,8 +17,7 @@
 
 <body>
 	<nav>
-	<?php 
-	if ($title!="Login page"&&$title!="SignUp page"):?>
+	<?php if ($title!="Login page"&&$title!="SignUp page"):?>
 		<ul>
 			<li><p>Welcome <?= htmlentities($_SESSION['user']??"new user");?></p></li>
 			<li><a href="index"><img src="app/views/partials/images/home.png" alt="" class="logoImg">Home</a></li>
