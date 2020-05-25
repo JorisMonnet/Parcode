@@ -7,7 +7,7 @@
 <main>
     <h1>Add New Code</h1>
     <p>The following form allow you to add a new code </p>
-    <form action = "addForm" method="post" class="buttonEditCode">
+    <form action = "addForm" method="post" class="formEditCode">
         <h2>Code :</h2>
         <textarea name="content" class="bigTextarea" required></textarea>
         <h2>Groups(only characters and numbers) :</h2>
