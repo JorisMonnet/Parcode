@@ -1,4 +1,5 @@
 <?php
+
 class Logger
 {
     public static function addLogEvent($event){

@@ -1,8 +1,5 @@
 <?php
 
-/**
- *
- */
 class App
 {
   	private static $app = [];

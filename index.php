@@ -1,4 +1,5 @@
 <?php
+
 require_once('core/bootstrap.php');
 
 $uri = Request::uri();

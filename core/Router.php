@@ -18,13 +18,12 @@ class Router
 				if (!($uri = substr($uri, strlen(App::get('config')['install_prefix']) + 1)))
 					$uri = "";
 
-		if(array_key_exists ($uri, $this->routes)){
-			return $this->callAction(
-				...explode('@', $this->routes[$uri]) 
-			);
-		}
+		if(array_key_exists ($uri, $this->routes))
+			return $this->callAction(...explode('@', $this->routes[$uri]));
+
 		throw new Exception("Not routes defined for this URI.", 1);
 	}
+
 	// call a specific action (method) of a controller
 	// if not action is specified, the action index() is called by default
 	protected function callAction($controller, $action = 'index'){
@@ -37,9 +36,7 @@ class Router
 	}
 
 	public static function load($file){
-		// About 'new static':
-		// more info: http://php.net/manual/en/language.oop5.late-static-bindings.php
-		// and here: https://stackoverflow.com/questions/15898843/what-means-new-static
+		// About 'new static': http://php.net/manual/en/language.oop5.late-static-bindings.php
 		$router = new static;
 		require 'app/' . $file;
 
