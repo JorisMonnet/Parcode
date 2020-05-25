@@ -1,15 +1,10 @@
 <?php
 
-/**
-* The Codes class
-*/
 require_once("CodeCommentModel.php");
+
 class Codes extends CodeCommentModel
 {
-
 	private $groups;
-
-  // Getters and Setters
 
 	public static function getParam(){
 		return [

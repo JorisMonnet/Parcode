@@ -1,16 +1,12 @@
 <?php
 
 require_once('Codes.php');
-/**
-* The Comments class
-*/
+
 class Comments extends CodeCommentModel
 {
-    // Attribute
     private $codes;
 	private $votes;
 
-  	// Getter and Setter
     public function getCodes(){
         return $this->codes;
 	}
