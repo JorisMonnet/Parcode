@@ -1,5 +1,7 @@
 <?php
+
 require_once('app/models/Votes.php');
+
 class VotesController
 {
     public static function hasVoted($idComment){
@@ -8,6 +10,7 @@ class VotesController
             return ($votes==false?false:in_array($_SESSION['userid'],$votes));
         }
     }
+
     public static function parseAdd($value,$idComments){
             $vote = new Votes;
             $vote->setAuthor($_SESSION['userid']);
@@ -15,11 +18,13 @@ class VotesController
             $vote->setValue($value);
             $vote->save();
     }
+
     public static function parseDelete($id){
         $vote=Votes::fetchSomething($id,"id");
         if(!$vote::delete($id))
             throw new Exception("Vote don't exist", 1);
     }
+
     public static function parseUpdate($entry){
         $vote = Votes::fetchSomething($entry['id'],"id");
         if($vote->getValue()+$entry['value']===0)
