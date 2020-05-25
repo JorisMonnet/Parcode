@@ -5,12 +5,13 @@
 ?>
 <main>
     <h1>My codes</h1>
-    <?php
-        if (isset($codeAddSuccess)&&$codeAddSuccess!="0")
-          echo "<p class='successMessage'> SUCCESS - code ". ($codeAddSuccess=="1"? "added":"updated" )."</p>";
+	<?php 	
+		if (isset($codeAddSuccess)&&$codeAddSuccess!="0")
+        	echo "<p class='successMessage'> SUCCESS - code ". ($codeAddSuccess=="1"? "added":"updated" )."</p>";
         else if(isset($codeAddFailure)&&$codeAddFailure!="")
-          echo "<p class='successMessage'>".$codeAddFailure."</p>";
+        	echo "<p class='successMessage'>".$codeAddFailure."</p>";
     ?>
+
     <form action="parseFormSort" method="post" name="formSort" id="formSort">
       	<label for="sortSelect">Trier Par</label>
       	<select id="sortSelect" name="sort" class="button">
@@ -26,6 +27,7 @@
       	</select>
       	<input type="submit" class="button" value="Submit">
     </form>
+
     <script>showSortCodes("<?=$codesSort?>","<?=$codesOrder?>")</script>
     <?php foreach ($codes as $code)
     	    echo $code->asHTMLTableRow();

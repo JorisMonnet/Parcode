@@ -14,7 +14,7 @@ function sendVotes(votes,commentIndex,value,idVote) {
     window.location.reload();    //resort comments 
 }
 
-var listVotes=[];
+let listVotes=[];
 
 function addVote(commentIndex,valueUser=0,idVote){
     if(listVotes[commentIndex]==null)
