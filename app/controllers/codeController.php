@@ -57,16 +57,18 @@ class CodeController extends CodeCommentController
     }
 
     public function showEdit(){
-        if(isset($_GET["id"]) && ctype_digit($_GET["id"])&&$this->authorIsConnected()){
-            $code = Codes::fetchSomething($_GET["id"],"id");
-            if($code == null)
+        if($this->authorIsConnected()){
+            if(isset($_GET["id"]) && ctype_digit($_GET["id"])){
+                $code = Codes::fetchSomething($_GET["id"],"id");
+                if($code == null)
+                    throw new Exception("CODE NOT FOUND.", 1);
+                Helper::view("showCodeEdit",[
+                    'currentCode' => $code,
+                    'user' => $_SESSION['userid']
+                ]);
+            } else 
                 throw new Exception("CODE NOT FOUND.", 1);
-        } else 
-            throw new Exception("CODE NOT FOUND.", 1);
-            Helper::view("showCodeEdit",[
-                'currentCode' => $code,
-                'user' => $_SESSION['userid']
-            ]);
+        }
     }
 
     public function parseUpdate(){
