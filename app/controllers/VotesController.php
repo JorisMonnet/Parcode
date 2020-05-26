@@ -47,7 +47,7 @@ class VotesController
 
     /**
      * This function update a vote, if the value is now 0 after the new vote, 
-     * we just delete the row in db, otherwise, we update the vote with the entry table.
+     * we just delete the row in the database, otherwise, we update the vote with the entry table.
      * all entry elements are set, it had been verified in CodeController
      * @param array $entry all the entry to update the Vote table
      * @return void
