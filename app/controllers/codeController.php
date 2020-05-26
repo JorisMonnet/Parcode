@@ -78,7 +78,7 @@ class CodeController extends CodeCommentController
                   'date' => date('Y-m-d-H-i-s'),
                   'author' => $_SESSION['userid'],
                   'id' => $_POST['id'],
-                  'groups' =>$_POST['groups']
+                  'groups' =>CodeController::cutGroups($_POST['groups'])
                 ];
                 Codes::update($entry);
             }
@@ -95,6 +95,14 @@ class CodeController extends CodeCommentController
         Helper::view('addCode');
     }
 
+    //cut the groups to maximum of 30 characters
+    public static function cutGroups($groups){
+        $groupsMaximized=[];
+        foreach(explode(".",$groups) as $group)
+            array_push($groupsMaximized,strlen($group)>30?substr($group,0,30):$group);
+        return implode(".",$groupsMaximized);
+    }
+
     public function parseAdd(){
         if ($this->authorIsConnected()&&$_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['content'])&&isset($_POST['groups'])) {
@@ -102,13 +110,7 @@ class CodeController extends CodeCommentController
                 $code->setContent($_POST['content']);
                 $code->setAuthor($_SESSION['userid']);
                 $code->setDate(date('Y-m-d-H-i-s'));
-                $code->setGroups($_POST['groups']);
-                //allow to limit to 30 letters the groups
-                $groupsMaximized=[];
-                foreach($code->getGroupsArray() as $group)
-                    array_push($groupsMaximized,strlen($group)>30?substr($group,0,30):$group);
-                $code->setGroups(implode(".",$groupsMaximized));
-
+                $code->setGroups(CodeController::cutGroups($_POST['groups']));
 
                 $allowInsert = true;
                 if (isset($_COOKIE['code_per_min_counter']))
