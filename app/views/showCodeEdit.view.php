@@ -11,7 +11,7 @@
             <p>This form allow you to edit the code</p>
             <textarea class="bigTextarea" name="content" required><?= htmlentities($currentCode->getContent()); ?>  </textarea>
             <input type="hidden"  name="id" value="<?= htmlentities($currentCode->getId()); ?>"><br>
-            <input class="inputText" type="text" name="groups" value="<?= htmlentities($currentCode->getGroups()); ?>" required>
+            <input class="inputText" type="text" name="groups" value="<?= htmlentities($currentCode->getGroups()); ?>" pattern="^([\w]+([.]?[\w]+)+)+$" required>
             <input type="submit" class="button" value="Submit">
             <?php echo "<a href=code?id=".$currentCode->getId()."   id='discard'>Discard all changes</a>";?>
         </form>
