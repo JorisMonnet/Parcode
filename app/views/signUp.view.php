@@ -22,7 +22,8 @@
 
 <?php if(isset($_SESSION['badSignUp'])):?>
 	<div id = "falseLog">
-		<?php echo $_SESSION['badSignUp'];unset($_SESSION['badSignUp']);?>
+		<?php echo htmlentities($_SESSION['badSignUp']);unset($_SESSION['badSignUp']);?>
 		Please try again
 	</div>
-<?php  endif; require_once("partials/footer.php");?>
+<?php  endif; 
+require_once("partials/footer.php");?>

@@ -4,12 +4,12 @@
     $_SESSION['currentPage'] ="codes";
 ?>
 <main>
-    <h1>My codes</h1>
+    <h1>Parcode All Codes</h1>
 	<?php 	
 		if (isset($codeAddSuccess)&&$codeAddSuccess!="0")
         	echo "<p class='successMessage'> SUCCESS - code ". ($codeAddSuccess=="1"? "added":"updated" )."</p>";
         else if(isset($codeAddFailure)&&$codeAddFailure!="")
-        	echo "<p class='successMessage'>".$codeAddFailure."</p>";
+        	echo "<p class='successMessage'>".htmlentities($codeAddFailure)."</p>";
     ?>
 
     <form action="parseFormSort" method="post" name="formSort" id="formSort">
