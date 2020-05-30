@@ -74,7 +74,9 @@ li a:hover, .groupsMenu:hover #groupsButton {
 	footer{
 		position: absolute;
 	}
+}
 
+@media screen and (min-height: 550px) and (min-width: 802px) {
 	li a, #groupsButton {
 		border-left-style: solid;
 		border-width: 1px;
