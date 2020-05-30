@@ -198,7 +198,7 @@ form > label{
   	text-align:left;
 }
 
-#titleInput{
+.titleInput{
 	width: 70vw;
 	margin-left: auto;
 	margin-right: auto;

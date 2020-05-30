@@ -83,7 +83,7 @@ abstract class CodeCommentModel extends Model
 	private function strWithoutAuthor($onlyOne){
 		$str = '<div class="flex-container">';
 		if(get_class($this)=="Codes"&&!$onlyOne)
-			$str .= '<a class="codeIdRef" href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId()) .' </a><hr>';
+			$str .= '<a class="codeIdRef" href="code?id='.urlencode($this->getId()).'">'.htmlentities($this->getId())." : ".htmlentities($this->getTitle()).' </a><hr>';
 		$str .= '<code><pre>'.htmlentities($this->getContent()).'</pre></code><hr>';
 		$str .= date("j F Y H:i:s",strtotime($this->getDate()));
 		return $str;

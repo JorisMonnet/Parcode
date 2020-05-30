@@ -13,7 +13,8 @@ class Codes extends CodeCommentModel
 			"date" => PDO::PARAM_STR,
 			"author" => PDO::PARAM_INT,
 			"id" => PDO::PARAM_INT,
-			"groups"=> PDO::PARAM_STR
+			"groups"=> PDO::PARAM_STR,
+			"title" => PDO::PARAM_STR
 		];
 	}
 
@@ -39,10 +40,11 @@ class Codes extends CodeCommentModel
 
 	public function getAttributes(){
 		return [
-			'content' => $this->getcontent(),
-			'date' => $this->getDate(),
-			'author' => $this->getAuthor(),
-			'groups' => $this->getGroups()
+			"content" => $this->getcontent(),
+			"date" => $this->getDate(),
+			"author" => $this->getAuthor(),
+			"groups" => $this->getGroups(),
+			"title" => $this->getTitle()
 		];
 	}
 

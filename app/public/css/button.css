@@ -81,6 +81,5 @@ a:hover, input.button:hover, button:hover {
 }
 
 .codeIdRef{
-	max-width:50px;
-	min-width:20px
+	word-break: break-all;
 }

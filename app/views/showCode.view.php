@@ -5,7 +5,7 @@
 ?>
 
 <main>
-  	<h1>Code <?= htmlentities($currentCode->getId()); ?></h1>
+  	<h1>Code <?= htmlentities($currentCode->getId())." : ".htmlentities($currentCode->getTitle()); ?></h1>
   
   	<?php echo $currentCode->asHTMLTableRowWithEdit($user); ?>
   	<h2>Commentaires</h2>
