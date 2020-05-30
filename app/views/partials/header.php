@@ -28,13 +28,14 @@
 			require_once("app/controllers/CodeController.php"); 
 			$groups = CodeController::getGroups();
 			if($groups!=null):?>
-			<li class="groupsMenu"><a href="javascript:void(0)" id="groupsButton"><img src="app/views/partials/images/menu.png" alt="" class="logoImg">Groups</a>
-			<div id="navGroups">
-				<?php 
-					foreach ($groups as $group)
-							echo '<a href = "codes?group='.urlencode($group).'">'.htmlentities($group).'</a>';
-				?>
-			</div>
+			<li class="groupsMenu">
+				<a href="javascript:void(0)" id="groupsButton"><img src="app/views/partials/images/menu.png" alt="" class="logoImg">Groups</a>
+				<div id="navGroups">
+					<?php 
+						foreach ($groups as $group)
+								echo '<a href = "codes?group='.urlencode($group).'">'.htmlentities($group).'</a>';
+					?>
+				</div>
 			</li>
 			<?php endif; 
 				if(isset($_SESSION['userid'])):?>

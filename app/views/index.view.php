@@ -5,6 +5,7 @@
 ?>
 
 <main>
+    <br><br><span class="logo_parcode">PARCODE</span>
     <h1>Parcode - Home</h1>
     <p>
         Welcome to PARCODE ! <br>

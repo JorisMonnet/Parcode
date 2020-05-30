@@ -15,20 +15,6 @@
     margin-bottom: 10px;
 }
 
-.logo_parcode{
-    display:block;
-    margin-right: auto;
-    margin-left: auto;
-    font-size: xx-large;
-    width: 6em;
-    border-radius: 20px; 
-    border-style: outset; 
-    border-top-color: red; 
-    border-left-color: red;
-    border-bottom-color:grey;
-    border-right-color: grey;
-}
-
 #falseLog{
     width: 250px;
     margin-top: 10px;
