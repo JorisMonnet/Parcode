@@ -7,10 +7,10 @@
   
   	<span class="logo_parcode">PARCODE</span>
   	<h1>Sign up</h1>
-  	<label for="username">Username :</label>
-  	<input type="text" name="user" id="username" class="inputText" required>
-  	<label for="password">Password :</label>
-  	<input type="password" name="pass" id="password" class="inputText" required>
+  	<label for="username">Username (20 characters maximum):</label>
+  	<input type="text" name="user" id="username" class="inputText" pattern="^.{0,25}$" required>
+  	<label for="password">Password (40 characters maximum):</label>
+  	<input type="password" name="pass" id="password" class="inputText" pattern="^.{0,40}$" required>
   	<label for="confirmedPassword">Confirm password :</label>
   	<input type="password" name="confirmedPassword" id="confirmedPassword" class="inputText" required>
   	<input type="submit" class="button" value="Submit">
