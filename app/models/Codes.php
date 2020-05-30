@@ -5,6 +5,7 @@ require_once("CodeCommentModel.php");
 class Codes extends CodeCommentModel
 {
 	private $groups;
+	private $title;
 
 	public static function getParam(){
 		return [
@@ -18,6 +19,14 @@ class Codes extends CodeCommentModel
 
 	public function getGroups(){
 		return $this->groups;
+	}
+
+	public function getTitle(){
+		return $this->title;
+	}
+
+	public function setTitle($value){
+		$this->title = $value;
 	}
 
 	public function setGroups($value){

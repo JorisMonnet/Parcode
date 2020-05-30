@@ -73,14 +73,15 @@ class CodeController extends CodeCommentController
 
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(isset($_POST['id']) && isset($_POST['content']) 
+            if(isset($_POST['id']) && isset($_POST['content'])&&isset($_POST['title']) 
             && ctype_digit($_POST['id']) && isset($_POST['groups'])){
                 $entry = [
                   'content' => $_POST['content'],
                   'date' => date('Y-m-d-H-i-s'),
                   'author' => $_SESSION['userid'],
                   'id' => $_POST['id'],
-                  'groups' =>CodeController::cutGroups($_POST['groups'])
+                  'groups' => CodeController::cutGroups($_POST['groups']),
+                  'title' => $_POST['title']
                 ];
                 Codes::update($entry);
             }
@@ -107,12 +108,13 @@ class CodeController extends CodeCommentController
 
     public function parseAdd(){
         if ($this->authorIsConnected()&&$_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(isset($_POST['content'])&&isset($_POST['groups'])) {
+            if(isset($_POST['content'])&&isset($_POST['groups'])&&isset($_POST['title'])) {
                 $code = new Codes;
                 $code->setContent($_POST['content']);
                 $code->setAuthor($_SESSION['userid']);
                 $code->setDate(date('Y-m-d-H-i-s'));
                 $code->setGroups(CodeController::cutGroups($_POST['groups']));
+                $code->setTitle($_POST['title']);
 
                 $allowInsert = true;
                 if (isset($_COOKIE['code_per_min_counter']))

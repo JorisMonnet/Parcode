@@ -48,7 +48,7 @@ li p {
 }
 
 li a:hover, .groupsMenu:hover #groupsButton {
-	background-color: red;
+	background-color:red;
 }
   
 li.groupsMenu {
@@ -194,8 +194,16 @@ form > label{
   	margin-bottom:10px;
 }
 
-#inputTextGroups{
+#inputTextGroups, #titleInput{
   	text-align:left;
+}
+
+#titleInput{
+	width: 70vw;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	margin-bottom: 10px;
 }
 
 .bigHR{
