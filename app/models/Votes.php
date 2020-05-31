@@ -49,6 +49,7 @@ class Votes extends Model
 		];
 	}
 
+	//get all the votes as id => value for a comment and user given
 	public static function fetchComments($idComments,$user){
 		$dbh = App::get('dbh');
 		$req = "SELECT id,value FROM Votes WHERE comments = ? AND author = ?";

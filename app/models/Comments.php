@@ -43,7 +43,8 @@ class Comments extends CodeCommentModel
 			'votes' => $this->getVotes()
 		];
 	}
-  	
+	  
+	//get all comments for one code
 	public static function fetchAllComments($id){
 		$dbh = App::get('dbh');
 		$statement = $dbh->prepare("SELECT * FROM Comments WHERE codes = ? ORDER BY votes DESC,id DESC");
@@ -51,10 +52,11 @@ class Comments extends CodeCommentModel
 		$statement->execute();
 		return $statement->fetchAll(PDO::FETCH_CLASS, get_called_class());
 	}
+
+	//set the votes on a comment 
 	public static function updateVotes($votes,$id){
 		$dbh = App::get('dbh');
 		$req = "UPDATE Comments SET votes=:votes WHERE id=:id";
-
 		$statement = $dbh->prepare($req);
 		$statement->bindParam(":votes", $votes, PDO::PARAM_INT);
 		$statement->bindParam(":id", $id, PDO::PARAM_INT);

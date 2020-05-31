@@ -36,6 +36,7 @@ abstract class CodeCommentModel extends Model
 		return $this->strWithoutAuthor(false).$this->strAuthor(0);
 	}
 	
+	//show the author of code and comment and the votes for comments
 	private function strAuthor($i){
 		$authorName = User::fetchSomething($this->getAuthor(),"id");
 		$str = '<span> Authored by '.htmlentities($authorName->getName());
@@ -51,11 +52,12 @@ abstract class CodeCommentModel extends Model
 					<span class="voteLabel">'.$this->getVotes().'</span>
 					<img class="glyphicon_down" src="app/views/partials/images/chevron_down.png" alt="downvote" onclick="listVotes['.$i.'].downvote()"></img>';
 		}
-		else if(get_class($this)=="Comments")
+		else if(get_class($this)=="Comments")//if user not set, he can't vote but see the votes
 			$str.='<span class="voteLabel">Votes: '.$this->getVotes().'</span>';
 		return $str.'</span></div>';
 	}
 
+	//show a code with Edit/delete button and the hidden update form for comments
 	public function asHTMLTableRowWithEdit($user,$i=0){
 		$str = $this->strWithoutAuthor(true);
 		if($this->getAuthor()===$user)
@@ -80,6 +82,7 @@ abstract class CodeCommentModel extends Model
 		return $str;
 	}
 	
+	//show the code/comment without author
 	private function strWithoutAuthor($onlyOne){
 		$str = '<div class="flex-container">';
 		if(get_class($this)=="Codes"&&!$onlyOne)

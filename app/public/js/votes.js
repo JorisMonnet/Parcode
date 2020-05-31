@@ -1,3 +1,4 @@
+//Request via JS to update the votes DataBase
 function sendVotes(votes,commentIndex,value,idVote) {
     let idComments = document.getElementsByClassName('idComment');
     let request = new XMLHttpRequest();
@@ -16,11 +17,16 @@ function sendVotes(votes,commentIndex,value,idVote) {
 
 let listVotes=[];
 
+//add vote in the list of votes
 function addVote(commentIndex,valueUser=0,idVote){
     if(listVotes[commentIndex]==null)
         listVotes[commentIndex] = new Vote(commentIndex,valueUser,idVote);
 }
 
+/**
+ * Class for votes of the comments, manage the glyphicon image and the value
+ * on a given vote
+ */
 class Vote{
     constructor(commentIndex,ValueUser,idVote){
         this.upvoted = ValueUser>0;

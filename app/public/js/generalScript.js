@@ -1,3 +1,4 @@
+//function to show hidden form to update comments
 function showEditComment(commentIndex){
     let hiddenForm = document.getElementsByClassName('hiddenForm');
     if(hiddenForm[commentIndex].style.display !=="block"){
@@ -9,6 +10,7 @@ function showEditComment(commentIndex){
         hiddenForm[commentIndex].style.display = "none";
 }
 
+//function useful to keep the value of the sort form in codes Page
 function showSortCodes(codesSort,codesOrder){
     let sortSelect = document.getElementById('sortSelect');
     let orderSelect = document.getElementById('orderSelect');

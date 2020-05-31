@@ -13,7 +13,6 @@ abstract class Model{
 	}
 
 	abstract public static function getParam();
-
 	abstract public function getAttributes();
 	
 	//allows to fetch any row of the DB instead of using fetchId/fetchName
@@ -75,6 +74,7 @@ abstract class Model{
 		
 		$statement->execute();
 	}
+	
 	public static function delete($id){
 		$dbh = App::get('dbh');
 		$req = "DELETE FROM ". get_called_class(). " WHERE id = ?";
