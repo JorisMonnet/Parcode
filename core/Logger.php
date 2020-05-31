@@ -8,12 +8,11 @@ class Logger
       	file_put_contents("log.txt", $event, FILE_APPEND);
     }
     /**
-     * On cherche si le dernier log event est un failed
-     * en premier on verifie si il est failed
-     * si oui on calcule la différence de temps entre le failed log et maintenant,
-     * ce qui permet de verifier si la derniere fois que l'on s'est log remonte à moins de 15 secondes
-     * de ce fait, si on se deconnecte du site et qu'on se reconnecte plus tard, apres avoir failed un log,
-     * ça n'affichera pas le message d'erreur
+     * We search if the last log event is a failed log
+     * First, we verify that it is a failed one,
+     * if so, we calculate the time difference between now and this log
+     * if it is less than 15 seconds, it's true, it means we tried to connect but failed recently
+     * it avoids to say "userName/password not found" if the user reconnect 6 month after his failed log
      */
     public static function lastLogEventisFalseLog(){
       	if(file_get_contents("log.txt",false,null,-7,6)==='failed'){            

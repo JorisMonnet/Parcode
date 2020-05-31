@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * create a connection with the db
+ */
 class Connection
 {
   	public static function make($config){

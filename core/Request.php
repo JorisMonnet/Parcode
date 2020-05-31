@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * remove white blanks an URI request
+ */
 class Request
 {
 	public static function uri(){

@@ -13,7 +13,11 @@
         <input type="text" name="title" class="titleInput" class="inputText" pattern="^.{0,100}$" required>
         <textarea name="content" class="bigTextarea" required></textarea>
         <h2>Groups(only characters and numbers) :</h2>
-        <p>You can add a group by putting a "." between the two groups <br>A group can have 30 letters Maximum <br> (example: appWeb.php.projects)</p>
+        <p>
+            You can add a group by putting a "." between the two groups <br>
+            A group can have 30 letters Maximum <br> 
+            (example: appWeb.php.projects)
+        </p>
         <input type="text" name="groups" class="inputText" id="inputTextGroups" pattern="^([\w]+([.]?[\w]+)+)+$" required>
         <input type="submit" class="button" value="Submit">
     </form>

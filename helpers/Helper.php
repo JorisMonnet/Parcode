@@ -1,9 +1,13 @@
 <?php
 
+/**
+ * Very useful class, it allows to redirect to a view with some data 
+ * or to redirect to a defined page
+ */
 class Helper
 {
 	public static function view($name, $data = []){
-		extract($data); 								// La function extract importe les variables
+		extract($data); 								// extract function import the variables
 		return require "app/views/{$name}.view.php";
 	}
 

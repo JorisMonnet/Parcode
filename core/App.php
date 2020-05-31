@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Create a tab of useful part of the application
+ */
 class App
 {
   	private static $app = [];

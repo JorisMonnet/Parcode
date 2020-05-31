@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Create the routes of our application
+ */
 class Router
 {
 	protected $routes = [];
