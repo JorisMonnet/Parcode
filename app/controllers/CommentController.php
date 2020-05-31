@@ -3,8 +3,9 @@
 require_once("CodeCommentController.php");
 require_once('VotesController.php');
 
-class commentController extends CodeCommentController
+class CommentController extends CodeCommentController
 {
+    //update comment
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['id']) && isset($_POST['content']) 
@@ -29,6 +30,7 @@ class commentController extends CodeCommentController
         }
     }
 
+    //add comment
     public function parseAdd(){
         if ($this->authorIsConnected()&&$_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['content'])&&isset($_POST['codesid'])&&ctype_digit($_POST['codesid'])) {
@@ -59,6 +61,7 @@ class commentController extends CodeCommentController
         }
     }
     
+    //change the votes of a comment
     public function updateVotes(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST'
           &&isset($_POST['votes'])&&isset($_POST['value'])

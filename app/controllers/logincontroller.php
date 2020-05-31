@@ -1,13 +1,13 @@
 <?php
 
-require "app/models/User.php";
-require "core/Logger.php";
+require_once("app/models/User.php");
+require_once("core/Logger.php");
 
 class LoginController
 {
 	public function logout(){
 		Logger::addLogEvent($_SESSION['user'].' disconnected.');
-		$currentPage = $_SESSION['currentPage']; //we keep the varoable before erasing the session to redirect to the good page
+		$currentPage = $_SESSION['currentPage']; //we keep the currentPage variable before erasing the session to redirect to the good page
 		$_SESSION=array();
 		session_destroy();
 		$_SESSION['currentPage']=$currentPage;
@@ -18,6 +18,7 @@ class LoginController
 		Helper::view("login");
 	}
 
+	//verify password to log in
 	public function login(){
 		if($_SERVER['REQUEST_METHOD'] === 'POST')
 			if(isset($_POST['user']) && isset($_POST['pass'])){
@@ -47,6 +48,7 @@ class LoginController
 		Helper::view("signUp");
 	}
 
+	//add a new User
 	public function signUp(){
 		if($_SERVER['REQUEST_METHOD'] === 'POST')
 			if(isset($_POST['user']) && isset($_POST['pass'])&&isset($_POST['confirmedPassword']))

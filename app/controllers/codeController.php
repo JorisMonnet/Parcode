@@ -4,6 +4,7 @@ require_once("CodeCommentController.php");
 
 class CodeController extends CodeCommentController
 {
+    //default : show all the codes
     public function index(){
         $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codesOrder']??"desc");
         $groupCodes = [];
@@ -32,6 +33,7 @@ class CodeController extends CodeCommentController
             ]);
     }
 
+    //get all the Groups existing for the codes
     public static function getGroups(){
         $codes = Codes::fetchAll($_SESSION['codesSort']??"date",$_SESSION['codesOrder']??"desc");
         $groups = [];
@@ -43,6 +45,7 @@ class CodeController extends CodeCommentController
         return $groups;
     }
 
+    //show only one Code
     public function show(){
         if(isset($_GET["id"]) && ctype_digit($_GET["id"])){
             $code = Codes::fetchSomething($_GET["id"],"id");
@@ -56,6 +59,7 @@ class CodeController extends CodeCommentController
         Helper::view("showCode",$entry);
     }
 
+    //show the Edit page for one code
     public function showEdit(){
         if($this->authorIsConnected()){
             if(isset($_GET["id"]) && ctype_digit($_GET["id"])){
@@ -71,6 +75,7 @@ class CodeController extends CodeCommentController
         }
     }
 
+    //update Code
     public function parseUpdate(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['id']) && isset($_POST['content'])&&isset($_POST['title']) 
@@ -106,6 +111,7 @@ class CodeController extends CodeCommentController
         return implode(".",$groupsMaximized);
     }
 
+    //add a code
     public function parseAdd(){
         if ($this->authorIsConnected()&&$_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['content'])&&isset($_POST['groups'])&&isset($_POST['title'])) {
@@ -138,6 +144,7 @@ class CodeController extends CodeCommentController
         }
     }
 
+    //sort the codes
     public function parseSort(){
         if(isset($_POST['sort']))
             $_SESSION['codesSort']=$_POST['sort'];

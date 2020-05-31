@@ -15,7 +15,7 @@ class VotesController
     public static function hasVoted($idComment){
         if(isset($_SESSION['userid'])){
             $votes = Votes::fetchSomething($idComment,"comments");
-            return ($votes==false?false:in_array($_SESSION['userid'],$votes));
+            return ($votes==null?false:in_array($_SESSION['userid'],$votes));
         }
     }
 
@@ -48,7 +48,7 @@ class VotesController
     /**
      * This function update a vote, if the value is now 0 after the new vote, 
      * we just delete the row in the database, otherwise, we update the vote with the entry table.
-     * all entry elements are set, it had been verified in CodeController
+     * all entry elements are set, it had been verified in CommentController
      * @param array $entry all the entry to update the Vote table
      * @return void
      */
