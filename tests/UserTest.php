@@ -20,5 +20,15 @@ final class UserTest extends TestCase
         $user->setPass(password_hash("user",PASSWORD_DEFAULT));
         $this->assertEquals("User",$user->getName());
         $this->assertTrue(password_verify("user",$user->getPass()));   
+        $this->assertTrue($user->getAttributes()!==null);
+        return $user;
+    }
+
+    /**
+     * @depends testNewUser
+     */
+    public function testExtend($user){
+        $user->setId(5);
+        $this->assertEquals(5,$user->getId());
     }
 }
